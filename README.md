@@ -16,20 +16,16 @@
 - **GAR** (Geometry-aware Refinement) — Proximity-guided densification in world coordinates
 - **ADM** (Adaptive Density Modulation) — K-Planes based spatial density modulation
 
-![SPAGS Framework](docs/fig4-1.pdf)
-
 ### Key Results (PSNR / SSIM)
 
 | Setting | Metric | R²-Gaussian | SPAGS (Ours) | Gain |
 |---------|--------|-------------|--------------|------|
 | **3-view** | PSNR ↑ | 27.88 | **28.35** | **+0.47** |
-| **3-view** | SSIM ↑ | 0.903 | **0.906** | +0.003 |
 | **6-view** | PSNR ↑ | 33.18 | **33.40** | **+0.22** |
-| **6-view** | SSIM ↑ | 0.952 | **0.954** | +0.002 |
-| **9-view** | PSNR ↑ | 36.09 | **36.03** | −0.06 |
+| **9-view** | PSNR ↑ | 36.09 | 36.03 | −0.06 |
 | **9-view** | SSIM ↑ | 0.966 | **0.967** | +0.001 |
 
-> SPAGS achieves consistent improvements in the most challenging sparse-view settings (3/6 views), with the largest gains at extreme sparsity.
+> SPAGS achieves the largest gains at extreme sparsity (3-view +0.47 dB).
 
 ---
 
@@ -46,15 +42,12 @@ PG2026/
 │   │   ├── render_query.py     # Render/query functions
 │   │   ├── kplanes.py          # K-Planes encoder (ADM)
 │   │   └── initialize.py       # Initialization logic
-│   ├── baselines/              # 7 comparison methods
+│   ├── baselines/              # 5 comparison 3DGS methods
 │   │   ├── registry.py         # Method registry
 │   │   ├── xgaussian/          # X-Gaussian
 │   │   ├── fsgs/               # FSGS
 │   │   ├── dngaussian/         # DN-Gaussian
-│   │   ├── corgs/              # CoR-GS
-│   │   ├── naf/                # NAF (NeRF)
-│   │   ├── tensorf/            # TensoRF (NeRF)
-│   │   └── saxnerf/            # SAX-NeRF (NeRF)
+│   │   └── corgs/              # CoR-GS
 │   ├── innovations/            # Innovation modules
 │   │   └── fsgs/               # Proximity densifier (GAR)
 │   ├── dataset/                # Data loading
@@ -63,13 +56,9 @@ PG2026/
 │   └── submodules/             # CUDA extensions
 │       ├── simple-knn/         # KNN CUDA kernel
 │       └── xray-gaussian-*/    # X-ray rasterization CUDA
-├── cc-agent/                   # AI research assistant system
-│   ├── scripts/                # Experiment scripts
-│   │   └── run_spags_ablation.sh  # Main ablation script
-│   └── experiment/             # Experiment results
 ├── docs/                       # Documentation
-│   └── chapter4_thesis.tex     # Thesis Chapter 4 (Chinese)
-└── data_generator/             # Data generation tools
+│   └── SPAGS_PAPER_GUIDE.md    # Paper writing guide
+└── scripts/                    # Utility scripts
 ```
 
 ---
@@ -84,55 +73,42 @@ conda activate r2_gaussian_new
 
 # Build CUDA extensions
 cd r2_gaussian/submodules/simple-knn && pip install -e .
-cd ../../../
 cd r2_gaussian/submodules/xray-gaussian-rasterization-voxelization && pip install -e .
-cd ../../../
-
-# Install TIGRE for FDK initialization (optional, for new data)
-pip install TIGRE-2.3/Python --no-build-isolation
 ```
 
 ### 2. Data Preparation
 
-Download the dataset from [Google Drive](https://drive.google.com/drive/folders/1YZ3w87XrCNyjDRos6gkY8zgT5hESl-PN?usp=sharing) and organize as:
+Download the dataset (contact authors) and place under `data/369/`:
 
 ```
 data/369/
-├── chest_50_3views.pickle
-├── chest_50_6views.pickle
-├── foot_50_3views.pickle
-├── foot_50_6views.pickle
-├── head_50_9views.pickle
-├── ...
-├── init_chest_50_3views.npy
-├── init_foot_50_3views.npy
-└── ...
+├── {organ}_50_{3|6|9}views.pickle
+└── init_{organ}_50_{3|6|9}views.npy
 ```
 
 ### 3. Run Experiments
 
 ```bash
 # Full SPAGS
-./cc-agent/scripts/run_spags_ablation.sh spags foot 3 0
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/2026_04_29_foot_3views_spags \
+  --ply_path data/369/init_foot_50_3views.npy \
+  --enable_sps --enable_gar --enable_adm
 
 # Baseline (R²-Gaussian)
-./cc-agent/scripts/run_spags_ablation.sh baseline chest 6 1
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/2026_04_29_foot_3views_baseline \
+  --ply_path data/369/init_foot_50_3views.npy
 
-# Other comparison methods
-./cc-agent/scripts/run_spags_ablation.sh xgaussian foot 3 0
-./cc-agent/scripts/run_spags_ablation.sh fsgs chest 6 1
-./cc-agent/scripts/run_spags_ablation.sh dngaussian head 9 0
-./cc-agent/scripts/run_spags_ablation.sh corgs abdomen 3 0
-
-# NeRF methods
-./cc-agent/scripts/run_spags_ablation.sh naf chest 6 1
-./cc-agent/scripts/run_spags_ablation.sh tensorf head 9 0
-./cc-agent/scripts/run_spags_ablation.sh saxnerf abdomen 3 0
-
-# Ablation variants
-./cc-agent/scripts/run_spags_ablation.sh sps foot 3 0
-./cc-agent/scripts/run_spags_ablation.sh gar foot 3 0
-./cc-agent/scripts/run_spags_ablation.sh adm foot 3 0
+# Other 3DGS methods (via --method flag)
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/foot_3views_xgaussian --method xgaussian
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/foot_3views_fsgs --method fsgs
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/foot_3views_corgs --method corgs
+python train.py -s data/369/foot_50_3views.pickle \
+  -m output/foot_3views_dngaussian --method dngaussian
 ```
 
 ### 4. Evaluation
@@ -145,24 +121,34 @@ python test.py -m output/<run_directory>
 
 ## SPAGS Ablation Configurations
 
-| Config | SPS | GAR | ADM | Description |
-|--------|-----|-----|-----|-------------|
-| `baseline` | ✗ | ✗ | ✗ | R²-Gaussian baseline |
-| `sps` | ✓ | ✗ | ✗ | Spatial Prior Seeding only |
-| `gar` | ✗ | ✓ | ✗ | Geometry-aware Refinement only |
-| `adm` | ✗ | ✗ | ✓ | Adaptive Density Modulation only |
-| `sps_gar` | ✓ | ✓ | ✗ | SPS + GAR |
-| `sps_adm` | ✓ | ✗ | ✓ | SPS + ADM |
-| `gar_adm` | ✗ | ✓ | ✓ | GAR + ADM |
-| `spags` | ✓ | ✓ | ✓ | Full SPAGS |
+| Config | SPS | GAR | ADM | CLI flags |
+|--------|-----|-----|-----|-----------|
+| `baseline` | ✗ | ✗ | ✗ | *(none)* |
+| `sps` | ✓ | ✗ | ✗ | `--enable_sps` |
+| `gar` | ✗ | ✓ | ✗ | `--enable_gar` |
+| `adm` | ✗ | ✗ | ✓ | `--enable_adm` |
+| `sps_gar` | ✓ | ✓ | ✗ | `--enable_sps --enable_gar` |
+| `sps_adm` | ✓ | ✗ | ✓ | `--enable_sps --enable_adm` |
+| `gar_adm` | ✗ | ✓ | ✓ | `--enable_gar --enable_adm` |
+| `spags` | ✓ | ✓ | ✓ | `--enable_sps --enable_gar --enable_adm` |
+
+---
+
+## Comparison Methods
+
+| Method | Venue | Description |
+|--------|-------|-------------|
+| **R²-Gaussian** | NeurIPS 2024 | Radiative Gaussian Splatting (baseline) |
+| **X-Gaussian** | ECCV 2024 | X-ray adapted 3DGS |
+| **FSGS** | ECCV 2024 | Few-shot Gaussian Splatting |
+| **DN-Gaussian** | CVPR 2024 | Depth-normalized sparse-view 3DGS |
+| **CoR-GS** | ECCV 2024 | Co-regularized Gaussian Splatting |
 
 ---
 
 ## Citation
 
-If you find this work useful, please cite:
-
-```
+```bibtex
 @inproceedings{spags2026,
   title={SPAGS: Spatial-aware Progressive Adaptive Gaussian Splatting 
          for Sparse-view CT Reconstruction},
@@ -176,8 +162,6 @@ If you find this work useful, please cite:
 
 ## Acknowledgement
 
-This code is built upon [R²-Gaussian](https://github.com/Ruyi-Zha/r2_gaussian) (NeurIPS 2024), 
-[3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting), 
-[SAX-NeRF](https://github.com/caiyuanhao1998/SAX-NeRF), 
-[NAF](https://github.com/Ruyi-Zha/naf_cbct), 
+This code is built upon [R²-Gaussian](https://github.com/Ruyi-Zha/r2_gaussian) (NeurIPS 2024),
+[3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting),
 and the [TIGRE toolbox](https://github.com/CERN/TIGRE.git).

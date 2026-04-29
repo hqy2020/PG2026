@@ -133,21 +133,6 @@ METHOD_REGISTRY = {
         'description': 'X-Gaussian baseline',
         'module': 'r2_gaussian.baselines.xgaussian',
     },
-    'naf': {
-        'type': 'nerf',
-        'description': 'Neural Attenuation Fields',
-        'module': 'r2_gaussian.baselines.naf',
-    },
-    'tensorf': {
-        'type': 'nerf',
-        'description': 'TensoRF',
-        'module': 'r2_gaussian.baselines.tensorf',
-    },
-    'saxnerf': {
-        'type': 'nerf',
-        'description': 'SAX-NeRF with Lineformer',
-        'module': 'r2_gaussian.baselines.saxnerf',
-    },
     'corgs': {
         'type': 'gaussian',
         'description': 'CoR-GS: Co-Regularization Gaussian Splatting',

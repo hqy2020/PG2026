@@ -28,3 +28,5 @@ init_files_30k/
 ablation-foot3/
 error/
 init_comparison_test/
+__pycache__/
+*.pyc
