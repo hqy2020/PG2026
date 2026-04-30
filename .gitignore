@@ -30,3 +30,4 @@ error/
 init_comparison_test/
 __pycache__/
 *.pyc
+output_old_20260429/**/*.pth
