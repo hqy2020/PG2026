@@ -909,18 +909,10 @@ if __name__ == "__main__":
             args.start_checkpoint,
         )
     elif args.method in ["naf", "tensorf", "saxnerf"]:
-        # NeRF 系列 baseline
-        from r2_gaussian.baselines.nerf_base import training_nerf
-        training_nerf(
-            args.method,
-            lp.extract(args),
-            op.extract(args),
-            pp.extract(args),
-            tb_writer,
-            args.test_iterations,
-            args.save_iterations,
-            args.checkpoint_iterations,
-            args.start_checkpoint,
+        # NeRF 方法已移除
+        raise ValueError(
+            f"NeRF methods ({args.method}) removed from this repo. "
+            f"Use: r2_gaussian, xgaussian, fsgs, corgs, dngaussian"
         )
     else:
         raise ValueError(f"Unknown method: {args.method}")
