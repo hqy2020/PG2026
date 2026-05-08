@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Hermes Agent" modified="2026-05-06T10:05:43.581645" version="24.2.5">
+  <diagram id="d0" name="Pipeline">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="200" value="SPAGS Training Pipeline" style="text;html=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+<mxGeometry x="250" y="10" width="300" height="30" as="geometry" />
+</mxCell>
+<mxCell id="201" value="" style="rectangle;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+<mxGeometry x="30" y="50" width="900" height="350" as="geometry" />
+</mxCell>
+<mxCell id="202" value="<b>Stage 1: SPS (Spatial Prior Seeding)</b>" style="text;html=1;fontSize=12;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" vertex="1" parent="1">
+<mxGeometry x="50" y="70" width="860" height="30" as="geometry" />
+</mxCell>
+<mxCell id="203" value="CT Projections
+(2/3/4 views)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+<mxGeometry x="70" y="120" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="204" value="FDK
+Reconstruction" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="200" y="120" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="205" value="Density-weighted
+Sampling
+(α=0.2, γ=1.0)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="330" y="120" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="206" value="Initial 50K
+Gaussians" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="470" y="120" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="207" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="203" target="204">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="208" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="204" target="205">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="209" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="205" target="206">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="210" value="<b>Stage 2: GAR (Geometry-aware Refinement)</b> [Iteration 2K..20K]" style="text;html=1;fontSize=12;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" vertex="1" parent="1">
+<mxGeometry x="50" y="190" width="860" height="30" as="geometry" />
+</mxCell>
+<mxCell id="211" value="Current
+Gaussians" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+<mxGeometry x="70" y="240" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="212" value="KNN Proximity
+Score (K=5)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+<mxGeometry x="200" y="240" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="213" value="Score < τ?
+(τ=0.015)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+<mxGeometry x="340" y="240" width="90" height="50" as="geometry" />
+</mxCell>
+<mxCell id="214" value="Gradient-aware
+Filtering (δ=0.0002)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+<mxGeometry x="460" y="240" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="215" value="Prune (max 2%)
+per iteration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+<mxGeometry x="600" y="240" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="216" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="211" target="212">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="217" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="212" target="213">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="218" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="213" target="214">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="219" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="214" target="215">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="220" value="<b>Stage 3: ADM (Adaptive Density Modulation)</b> [After 15K iterations]" style="text;html=1;fontSize=12;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;" vertex="1" parent="1">
+<mxGeometry x="50" y="310" width="860" height="30" as="geometry" />
+</mxCell>
+<mxCell id="221" value="Position x
+→ K-Planes
+(64×64, d=32)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="70" y="360" width="120" height="50" as="geometry" />
+</mxCell>
+<mxCell id="222" value="MLP Decoder
+(3×128 units)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="220" y="360" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="223" value="Δρ (tanh×0.3)
++ c(x) (sigmoid)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="360" y="360" width="130" height="50" as="geometry" />
+</mxCell>
+<mxCell id="224" value="Zero-mean
+Modulation" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="520" y="360" width="110" height="50" as="geometry" />
+</mxCell>
+<mxCell id="225" value="Final Density
+ρ₍final₎" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="660" y="360" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="226" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="221" target="222">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="227" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="222" target="223">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="228" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="223" target="224">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="229" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="224" target="225">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

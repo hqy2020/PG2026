@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Hermes Agent" modified="2026-05-06T10:05:43.582002" version="24.2.5">
+  <diagram id="d0" name="ADM">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="500" value="<b>ADM: Adaptive Density Modulation</b>" style="text;html=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+<mxGeometry x="200" y="10" width="370" height="30" as="geometry" />
+</mxCell>
+<mxCell id="501" value="Position
+x = (x,y,z)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+<mxGeometry x="40" y="80" width="90" height="50" as="geometry" />
+</mxCell>
+<mxCell id="502" value="K-Planes Encoder
+(resolution=64)
+──────────────
+F_xy(x,y) ∈ R³²
+F_xz(x,z) ∈ R³²
+F_yz(y,z) ∈ R³²" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="170" y="70" width="130" height="80" as="geometry" />
+</mxCell>
+<mxCell id="503" value="Concatenate
+F(x) ∈ R⁹⁶" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="340" y="80" width="100" height="40" as="geometry" />
+</mxCell>
+<mxCell id="504" value="MLP Decoder
+(3 layers × 128)
+──────────────
+MLP_Δ → Δρ ∈ [-r, r]
+MLP_c → c ∈ [0, 1]" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="480" y="60" width="130" height="80" as="geometry" />
+</mxCell>
+<mxCell id="505" value="ρ_final = ρ_base
++ c(x)·Δρ(x)
+(Zero-mean norm)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+<mxGeometry x="650" y="70" width="130" height="60" as="geometry" />
+</mxCell>
+<mxCell id="506" value="<b>Modulated
+Density ρ</b>" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+<mxGeometry x="820" y="70" width="100" height="50" as="geometry" />
+</mxCell>
+<mxCell id="507" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="501" target="502">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="508" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="502" target="503">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="509" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="503" target="504">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="510" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="504" target="505">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="a78095" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" edge="1" parent="1">
+<mxGeometry x="780" y="95" width="40" height="0" as="geometry">
+<mxPoint x="780" y="95" as="sourcePoint" />
+<mxPoint x="820" y="95" as="targetPoint" />
+</mxGeometry>
+</mxCell>
+<mxCell id="511" value="<i>F(x) = [f_xy, f_xz, f_yz] ∈ R^(3d)</i>" style="text;html=1;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+<mxGeometry x="40" y="180" width="350" height="20" as="geometry" />
+</mxCell>
+<mxCell id="512" value="<i>Δρ(x) = tanh(MLP(F(x))) · r ,  c(x) = σ(MLP(F(x)))</i>" style="text;html=1;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+<mxGeometry x="40" y="200" width="420" height="20" as="geometry" />
+</mxCell>
+<mxCell id="513" value="<i>ρ_final(x) = ρ_base(x) + c(x) · Δρ(x)</i>" style="text;html=1;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+<mxGeometry x="40" y="220" width="350" height="20" as="geometry" />
+</mxCell>
+<mxCell id="514" value="Key Parameters" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+<mxGeometry x="40" y="260" width="120" height="20" as="geometry" />
+</mxCell>
+<mxCell id="515" value="• Plane resolution: 64×64
+• Feature dimension: d=32
+• MLP: 3 layers × 128 units
+• Max range r: 0.3
+• Warmup: 15K iterations
+• Zero-mean normalization" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+<mxGeometry x="40" y="280" width="250" height="100" as="geometry" />
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Hermes Agent" modified="2026-05-06T10:05:43.581797" version="24.2.5">
+  <diagram id="d0" name="SPS">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="300" value="<b>SPS: Spatial Prior Seeding</b>" style="text;html=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+<mxGeometry x="200" y="10" width="350" height="30" as="geometry" />
+</mxCell>
+<mxCell id="301" value="Sparse CT
+Projections
+{θ₁,θ₂,...θₙ}" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+<mxGeometry x="40" y="70" width="100" height="60" as="geometry" />
+</mxCell>
+<mxCell id="302" value="FDK Filtered
+Back-Projection" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="180" y="70" width="120" height="60" as="geometry" />
+</mxCell>
+<mxCell id="303" value="FDK Volume
+V(x,y,z)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="340" y="70" width="100" height="60" as="geometry" />
+</mxCell>
+<mxCell id="304" value="p(x) ∝ V(x)ᵞ
+γ = 1.0" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="480" y="60" width="110" height="40" as="geometry" />
+</mxCell>
+<mxCell id="305" value="Uniform
+Sampling
+α = 0.2" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="480" y="110" width="110" height="40" as="geometry" />
+</mxCell>
+<mxCell id="306" value="Mixed Strategy
+X = Xᵤ ∪ X_w" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+<mxGeometry x="630" y="70" width="120" height="60" as="geometry" />
+</mxCell>
+<mxCell id="307" value="<b>50K Initial
+Gaussians</b>" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+<mxGeometry x="790" y="70" width="110" height="60" as="geometry" />
+</mxCell>
+<mxCell id="308" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="301" target="302">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="309" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="302" target="303">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="310" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="303" target="304">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="311" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="304" target="306">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="312" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="305" target="306">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="313" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="306" target="307">
+<mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="314" value="<i>p(x) ∝ V<sub>FDK</sub>(x)ᵞ</i>" style="text;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+<mxGeometry x="100" y="160" width="250" height="30" as="geometry" />
+</mxCell>
+<mxCell id="315" value="<i>X = X<sub>uniform</sub> ∪ X<sub>weighted</sub></i>" style="text;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+<mxGeometry x="100" y="190" width="280" height="30" as="geometry" />
+</mxCell>
+<mxCell id="316" value="Key Parameters" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+<mxGeometry x="40" y="240" width="120" height="20" as="geometry" />
+</mxCell>
+<mxCell id="317" value="• α (uniform ratio) = 0.2
+• γ (density weight) = 1.0
+• K (initial points) = 50,000
+• Init mode = raw FDK values" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+<mxGeometry x="40" y="260" width="250" height="80" as="geometry" />
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

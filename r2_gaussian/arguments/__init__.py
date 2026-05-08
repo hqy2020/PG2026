@@ -120,6 +120,21 @@ class ModelParams(ParamGroup):
         self.gar_scale_shrink_factor = 0.8  # [GAR] 🆕 尺度收缩系数（与 3DGS split 的 0.8 对齐）
 
         # ════════════════════════════════════════════════════════════════════
+        # [GAP] Geometry-aware Pruning - 几何感知剪枝
+        # 替代GAR：移除靠得太近的冗余高斯，CT场景比密化更有效
+        # 主开关: enable_gap
+        # ════════════════════════════════════════════════════════════════════
+        self.enable_gap = False  # [GAP] 主开关：启用几何感知剪枝
+        self.gap_k = 5  # [GAP] K-NN 邻居数量
+        self.gap_threshold = 0.015  # [GAP] 剪枝阈值（分数低于此=靠太近=冗余）
+        self.gap_start_iter = 2000  # [GAP] 开始迭代
+        self.gap_interval = 500  # [GAP] 间隔迭代
+        self.gap_until_iter = 20000  # [GAP] 结束迭代
+        self.gap_max_ratio = 0.03  # [GAP] 每次最多剪枝比例
+        self.gap_gradient_aware = True  # [GAP] 梯度感知：只剪枝低梯度点
+        self.gap_gradient_threshold = 0.0002  # [GAP] 梯度阈值
+
+        # ════════════════════════════════════════════════════════════════════
         # [ADM] Adaptive Density Modulation - K-Planes 空间调制参数
         # Stage 3: 自适应密度调制
         # 主开关: enable_adm (或兼容旧名 enable_kplanes)

@@ -749,3 +749,141 @@ class ProximityGuidedDensifier:
             'base_threshold': threshold,
             'decay_mult': decay_mult,
         }
+
+
+class GAPPruner:
+    """
+    GAP: Geometry-aware Pruning (几何感知剪枝)
+    邻近剪枝：移除靠得太近的高斯（冗余），替代GAR的密化策略。
+
+    核心思想：
+        GAR (邻近密化) 在CT上效果差，因为CT场景不需要填补空洞；
+        反而"点堆叠"（太多高斯聚在同一区域）是更严重的问题。
+        本模块查找靠得太近的高斯 → 移除冗余点 → 释放名额给更有需要的区域。
+
+    Usage:
+        pruner = GAPPruner(k_neighbors=5, gap_threshold=0.015)
+        positions = gaussians.get_xyz
+        prune_mask = pruner.identify_prune_candidates(
+            positions, grads=gaussians.xyz_gradient_accum / gaussians.denom
+        )
+        gaussians.prune_points(prune_mask)
+    """
+
+    def __init__(
+        self,
+        k_neighbors: int = 5,
+        gap_threshold: float = 0.015,
+        chunk_size: int = 5000,
+        enable: bool = True,
+        gap_gradient_aware: bool = True,
+        gap_gradient_threshold: float = 0.0002,
+        gap_max_ratio: float = 0.03,
+        min_points: int = 5000,
+    ):
+        self.k_neighbors = k_neighbors
+        self.gap_threshold = gap_threshold
+        self.chunk_size = chunk_size
+        self.enable = enable
+        self.gap_gradient_aware = gap_gradient_aware
+        self.gap_gradient_threshold = gap_gradient_threshold
+        self.gap_max_ratio = gap_max_ratio
+        self.min_points = min_points
+
+    def compute_proximity_scores(
+        self, positions: torch.Tensor, return_neighbors: bool = False
+    ) -> Tuple[torch.Tensor, Optional[torch.Tensor], Optional[torch.Tensor]]:
+        """
+        计算邻近分数：每个点到 K 个最近邻的平均距离。
+        分数越低 → 越密集 → 越可能冗余。
+        """
+        N = positions.shape[0]
+        device = positions.device
+        K = min(self.k_neighbors, N - 1)
+
+        if K <= 0:
+            dummy = torch.zeros(N, device=device)
+            return (dummy, None, None) if not return_neighbors else (dummy, None, None)
+
+        all_dists, all_idxs = [], []
+        for start in range(0, N, self.chunk_size):
+            end = min(start + self.chunk_size, N)
+            chunk = positions[start:end]
+            dists = torch.cdist(chunk, positions, p=2)
+            for i in range(dists.shape[0]):
+                dists[i, start + i] = float('inf')
+            d, idx = torch.topk(dists, K, dim=1, largest=False)
+            all_dists.append(d)
+            all_idxs.append(idx)
+
+        dists = torch.cat(all_dists, dim=0)
+        idxs = torch.cat(all_idxs, dim=0)
+        scores = dists.mean(dim=1)  # (N,) — 平均到K个邻居的距离
+
+        if return_neighbors:
+            return scores, idxs, dists
+        return scores, None, None
+
+    def identify_prune_candidates(
+        self,
+        positions: torch.Tensor,
+        grads: Optional[torch.Tensor] = None,
+        custom_threshold: Optional[float] = None,
+    ) -> torch.Tensor:
+        """
+        识别需要剪枝的候选点：
+        1. 邻近分数 < 阈值（靠得太近 → 冗余）
+        2. 可选：且梯度小（该区域已收敛，不需要这么多点）
+
+        Args:
+            positions: (N, 3) 所有高斯位置
+            grads: (N, 1) 可选，每个高斯的梯度累积
+            custom_threshold: 自定义剪枝阈值（覆盖默认值）
+
+        Returns:
+            prune_mask: (N,) bool tensor，True=移除
+        """
+        if not self.enable or positions.shape[0] <= self.min_points:
+            return torch.zeros(positions.shape[0], device=positions.device, dtype=torch.bool)
+
+        scores, _, _ = self.compute_proximity_scores(positions, return_neighbors=False)
+        threshold = custom_threshold if custom_threshold is not None else self.gap_threshold
+
+        # 候选：靠得太近（分数低）
+        candidates = scores < threshold
+        num_candidates = candidates.sum().item()
+
+        if num_candidates == 0:
+            return torch.zeros_like(candidates)
+
+        # 梯度过滤：只保留梯度低的（已收敛的点）
+        if self.gap_gradient_aware and grads is not None:
+            grads_flat = grads.squeeze()
+            grads_flat[grads_flat.isnan()] = 0.0
+            low_grad = grads_flat < self.gap_gradient_threshold
+            candidates = candidates & low_grad
+
+        num_candidates = candidates.sum().item()
+        if num_candidates == 0:
+            return torch.zeros_like(candidates)
+
+        # 限制最多剪枝比例
+        gap_max_prune = max(1, int(positions.shape[0] * self.gap_max_ratio))
+        if num_candidates > gap_max_prune:
+            # 选择最冗余（分数最低）的候选点
+            candidate_indices = torch.where(candidates)[0]
+            candidate_scores = scores[candidate_indices]
+            _, sorted_idx = torch.sort(candidate_scores, descending=False)  # 最低分优先
+            selected_indices = candidate_indices[sorted_idx[:gap_max_prune]]
+            prune_mask = torch.zeros(positions.shape[0], device=positions.device, dtype=torch.bool)
+            prune_mask[selected_indices] = True
+        else:
+            prune_mask = candidates
+
+        # 保底：确保不低于 min_points
+        remaining = positions.shape[0] - prune_mask.sum().item()
+        if remaining < self.min_points:
+            # 回退：不剪枝
+            return torch.zeros_like(prune_mask)
+
+        return prune_mask

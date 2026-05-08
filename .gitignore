@@ -4,6 +4,7 @@ build/
 .vscode/
 data/
 output/
+output_old_20260429/
 *.zip
 TIGRE*
 volume_processed/
@@ -17,7 +18,6 @@ model/
 *.npy
 *.log
 *.jpg
-*.png
 *.pid
 nohup.out
 logs/
@@ -31,3 +31,6 @@ init_comparison_test/
 __pycache__/
 *.pyc
 output_old_20260429/**/*.pth
+.aris/
+.claude/
+

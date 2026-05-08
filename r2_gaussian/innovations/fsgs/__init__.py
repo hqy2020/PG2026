@@ -30,7 +30,7 @@ Usage:
     new_gaussians = densifier.generate_new_gaussians(source, neighbor_indices, all_positions, attributes)
 """
 
-from .proximity_densifier import ProximityGuidedDensifier
+from .proximity_densifier import ProximityGuidedDensifier, GAPPruner
 from .config import FSGSConfig
 from .utils import compute_knn, log_proximity_stats
 

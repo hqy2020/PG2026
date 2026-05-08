@@ -32,7 +32,7 @@ from r2_gaussian.utils.loss_utils import l1_loss, ssim, tv_3d_loss
 from r2_gaussian.utils.regulation import compute_plane_tv_loss
 from r2_gaussian.utils.image_utils import metric_vol, metric_proj
 from r2_gaussian.utils.plot_utils import show_two_slice
-from r2_gaussian.innovations.fsgs import ProximityGuidedDensifier
+from r2_gaussian.innovations.fsgs import ProximityGuidedDensifier, GAPPruner
 import copy
 
 
@@ -189,6 +189,34 @@ def training(
             logger.config(f"  - scale_shrink: True (factor={float(gar_scale_shrink_factor):.3f})")
         else:
             logger.config(f"  - scale_shrink: False")
+
+    # 🆕 GAP: Geometry-aware Pruning（替代GAR的邻近剪枝）
+    use_gap = getattr(dataset, 'enable_gap', False)
+    gap_pruner = None
+    if use_gap:
+        logger.config("Use Geometry-aware Pruning (GAP)")
+        gap_k = getattr(dataset, 'gap_k', 5)
+        gap_threshold = getattr(dataset, 'gap_threshold', 0.015)
+        gap_start_iter = getattr(dataset, 'gap_start_iter', 2000)
+        gap_interval = getattr(dataset, 'gap_interval', 500)
+        gap_until_iter = getattr(dataset, 'gap_until_iter', 20000)
+        gap_max_ratio = getattr(dataset, 'gap_max_ratio', 0.03)
+        gap_gradient_aware = getattr(dataset, 'gap_gradient_aware', True)
+        gap_gradient_threshold = getattr(dataset, 'gap_gradient_threshold', 0.0002)
+
+        gap_pruner = GAPPruner(
+            k_neighbors=gap_k,
+            gap_threshold=gap_threshold,
+            enable=True,
+            gap_gradient_aware=gap_gradient_aware,
+            gap_gradient_threshold=gap_gradient_threshold,
+            gap_max_ratio=gap_max_ratio,
+        )
+        logger.config(f"  - k_neighbors: {gap_k}")
+        logger.config(f"  - gap_threshold: {gap_threshold}")
+        logger.config(f"  - start_iter: {gap_start_iter}, interval: {gap_interval}, until: {gap_until_iter}")
+        logger.config(f"  - gap_max_ratio: {gap_max_ratio}")
+        logger.config(f"  - gradient_aware: {gap_gradient_aware} (threshold: {gap_gradient_threshold})")
 
     # 🆕 [SPS] 打印初始化点云信息
     if dataset.ply_path:
@@ -568,6 +596,26 @@ def training(
                                           f"range=[{gar_diag['score_min']:.4f}, {gar_diag['score_max']:.4f}]", iteration=iteration)
                                 logger.info(f"  阈值: {gar_diag['threshold']:.4f} (衰减系数: {gar_diag['decay_mult']:.3f})", iteration=iteration)
                                 logger.info(f"  密化: +{num_new} (候选: {num_candidates}, 总数: {gaussians.get_xyz.shape[0]})", iteration=iteration)
+
+            # 🆕 GAP: Geometry-aware Pruning — 在GAR之后、opacity decay之前执行
+            if use_gap and gap_pruner is not None:
+                if (iteration >= gap_start_iter and
+                    iteration <= gap_until_iter and
+                    iteration % gap_interval == 0):
+                    positions = gaussians.get_xyz
+                    grads = None
+                    if gap_gradient_aware:
+                        grads = gaussians.xyz_gradient_accum / (gaussians.denom + 1e-7)
+
+                    prune_mask = gap_pruner.identify_prune_candidates(
+                        positions, grads=grads
+                    )
+                    num_prune = prune_mask.sum().item()
+                    if num_prune > 0:
+                        gaussians.prune_points(prune_mask)
+                        if iteration % 1000 == 0:
+                            logger.info(f"=== GAP 剪枝完成 ===", iteration=iteration)
+                            logger.info(f"  剪枝: -{num_prune} (剩余: {gaussians.get_xyz.shape[0]})", iteration=iteration)
 
             if gaussians.get_density.shape[0] == 0:
                 raise ValueError(
