@@ -3,7 +3,7 @@
 Fig 4-6: SPAGS 消融实验可视化（真实实验输出）
 
 功能：
-1) 上半部分：2 行 × 7 列网格对比（GT / Baseline / +SPS / +GAR / +ADM / +SPS+ADM / Full）
+1) 上半部分：2 行 × 7 列网格对比（GT / Baseline / +SPS / +GAP / +ADM / +SPS+ADM / Full）
 2) 下半部分：柱状图展示相对 Baseline 的 PSNR 提升，并标注协同增益（Synergy）
 
 说明：
@@ -51,12 +51,12 @@ ORGAN_LABELS = {
     "pancreas": "Pancreas",
 }
 
-COLUMN_ORDER = ["gt", "baseline", "sps", "gar", "adm", "sps_adm", "spags"]
+COLUMN_ORDER = ["gt", "baseline", "sps", "gap", "adm", "sps_adm", "spags"]
 COLUMN_LABELS = {
     "gt": "Ground Truth",
     "baseline": "Baseline",
     "sps": "+SPS",
-    "gar": "+GAR",
+    "gap": "+GAP",
     "adm": "+ADM",
     "sps_adm": "+SPS+ADM",
     "spags": "Full SPAGS",
@@ -73,7 +73,7 @@ ROI_CONFIGS = {
 
 BOX_COLORS = {
     "sps": "#2E7DFF",  # 蓝
-    "gar": "#2ECC71",  # 绿
+    "gap": "#2ECC71",  # 绿
     "adm": "#FF9F1C",  # 橙
     "gt": "#2ECC71",  # GT 默认绿框（示例）
 }
@@ -135,27 +135,27 @@ def _classify_config(cfg: Dict) -> str:
 
     注意：
     - SPS 在本仓库实验中通常表现为 `ply_path` 非空（使用密度加权/先验播种 init）
-    - GAR：`enable_fsgs_proximity: true`
+    - GAP：`enable_fsgs_proximity: true`
     - ADM：`enable_kplanes: true`
     """
     ply_path = str(cfg.get("ply_path", "") or "")
     sps = bool(ply_path.strip())
-    gar = bool(cfg.get("enable_fsgs_proximity", False))
+    gap = bool(cfg.get("enable_fsgs_proximity", False))
     adm = bool(cfg.get("enable_kplanes", False))
 
-    if sps and gar and adm:
+    if sps and gap and adm:
         return "spags"
-    if sps and adm and not gar:
+    if sps and adm and not gap:
         return "sps_adm"
-    if sps and gar and not adm:
-        return "sps_gar"
-    if gar and adm and not sps:
-        return "gar_adm"
-    if sps and not gar and not adm:
+    if sps and gap and not adm:
+        return "sps_gap"
+    if gap and adm and not sps:
+        return "gap_adm"
+    if sps and not gap and not adm:
         return "sps"
-    if gar and not sps and not adm:
-        return "gar"
-    if adm and not sps and not gar:
+    if gap and not sps and not adm:
+        return "gap"
+    if adm and not sps and not gap:
         return "adm"
     return "baseline"
 
@@ -291,7 +291,7 @@ def load_ablation_table_from_tex(tex_path: Path) -> Dict[str, Dict[str, float]]:
         dict: {config_name: {"avg": float, "delta": float}, ...}
 
     config_name 使用内部 key：
-        baseline / sps / gar / adm / sps_adm / spags
+        baseline / sps / gap / adm / sps_adm / spags
     """
     if not tex_path.exists():
         return {}
@@ -310,7 +310,7 @@ def load_ablation_table_from_tex(tex_path: Path) -> Dict[str, Dict[str, float]]:
     mapping = {
         "Baseline": "baseline",
         "+SPS": "sps",
-        "+GAR": "gar",
+        "+GAP": "gap",
         "+ADM": "adm",
         "+SPS+ADM": "sps_adm",
         "Full": "spags",
@@ -718,7 +718,7 @@ def plot_ablation_figure(
     # =======================
     # 柱状图：PSNR 提升 & 协同增益
     # =======================
-    bar_configs = ["baseline", "sps", "gar", "adm", "sps_adm", "spags"]
+    bar_configs = ["baseline", "sps", "gap", "adm", "sps_adm", "spags"]
     bar_labels = [COLUMN_LABELS.get(c, c) for c in bar_configs]
 
     # 计算平均提升（默认对 5 个器官求均值，可通过 bar_organs 控制）
@@ -761,7 +761,7 @@ def plot_ablation_figure(
     colors = {
         "baseline": "#BDBDBD",
         "sps": "#2E7DFF",
-        "gar": "#2ECC71",
+        "gap": "#2ECC71",
         "adm": "#FF9F1C",
         "sps_adm": "#F7E967",
         "spags": "#E91E63",
@@ -776,12 +776,12 @@ def plot_ablation_figure(
     spags_idx = bar_configs.index("spags")
     spags_val = improves[spags_idx]
     sps_val = improves[bar_configs.index("sps")]
-    gar_val = improves[bar_configs.index("gar")]
+    gap_val = improves[bar_configs.index("gap")]
     adm_val = improves[bar_configs.index("adm")]
 
-    can_synergy = all(v is not None for v in [spags_val, sps_val, gar_val, adm_val])
+    can_synergy = all(v is not None for v in [spags_val, sps_val, gap_val, adm_val])
     if can_synergy:
-        expected = float(sps_val + gar_val + adm_val)
+        expected = float(sps_val + gap_val + adm_val)
         synergy = float(spags_val - expected)
         base_part = expected
         synergy_part = synergy

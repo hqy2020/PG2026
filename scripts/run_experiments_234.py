@@ -43,9 +43,9 @@ METHODS = {
         "cli": "r2_gaussian",
         "args": [
             f"--ply_path", f"{SPS_DIR}/init_{{organ}}_50_{{views}}views.npy",
-            "--enable_fsgs_proximity", "--gar_proximity_threshold", "0.05",
-            "--gar_proximity_k", "5", "--no_gar_adaptive_threshold",
-            "--no_gar_progressive_decay", "--gar_new_per_source", "1", "--gar_max_candidates", "2000",
+            "--enable_fsgs_proximity", "--gap_proximity_threshold", "0.05",
+            "--gap_proximity_k", "5", "--no_gap_adaptive_threshold",
+            "--no_gap_progressive_decay", "--gap_new_per_source", "1", "--gap_max_candidates", "2000",
             "--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "32",
             "--adm_decoder_hidden", "128", "--adm_decoder_layers", "3",
             "--kplanes_lr_init", "0.005", "--lambda_plane_tv", "0.0005",

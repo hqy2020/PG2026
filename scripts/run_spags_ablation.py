@@ -20,9 +20,9 @@ TEST_ITERS = [5000, 10000, 15000, 20000, 25000, 30000]
 
 # SPAGS base args
 SPAGS_BASE = [
-    "--enable_fsgs_proximity", "--gar_proximity_threshold", "0.05",
-    "--gar_proximity_k", "5", "--no_gar_adaptive_threshold",
-    "--no_gar_progressive_decay", "--gar_new_per_source", "1", "--gar_max_candidates", "2000",
+    "--enable_fsgs_proximity", "--gap_proximity_threshold", "0.05",
+    "--gap_proximity_k", "5", "--no_gap_adaptive_threshold",
+    "--no_gap_progressive_decay", "--gap_new_per_source", "1", "--gap_max_candidates", "2000",
     "--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "32",
     "--adm_decoder_hidden", "128", "--adm_decoder_layers", "3",
     "--kplanes_lr_init", "0.005", "--lambda_plane_tv", "0.0005",
@@ -31,11 +31,11 @@ SPAGS_BASE = [
 ]
 
 ABLATIONS = {
-    "spags_wogar": {  # w/o GAR: only ADM
+    "spags_wogap": {  # w/o GAP: only ADM
         "args": [],
-        "label": "SPAGS w/o GAR",
+        "label": "SPAGS w/o GAP",
     },
-    "spags_woadm": {  # w/o ADM: only GAR
+    "spags_woadm": {  # w/o ADM: only GAP
         "args": [],
         "label": "SPAGS w/o ADM",
     },
@@ -47,9 +47,9 @@ ABLATIONS = {
 
 # 构建各消融的参数列表
 for i, (key, val) in enumerate(zip(SPAGS_BASE[::2], SPAGS_BASE[1::2])):
-    # w/o GAR: 去掉所有 --gar_* 和 --enable_fsgs_proximity
-    if key not in ["--enable_fsgs_proximity"] and not key.startswith("--gar_"):
-        ABLATIONS["spags_wogar"]["args"].extend([key, val])
+    # w/o GAP: 去掉所有 --gap_* 和 --enable_fsgs_proximity
+    if key not in ["--enable_fsgs_proximity"] and not key.startswith("--gap_"):
+        ABLATIONS["spags_wogap"]["args"].extend([key, val])
     
     # w/o ADM: 去掉所有 --adm_*, --kplanes_*, --enable_kplanes, --lambda_plane_tv
     if not key.startswith("--adm_") and not key.startswith("--kplanes_") \

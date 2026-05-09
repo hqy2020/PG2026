@@ -19,10 +19,10 @@ VIEW = 3
 ITERS = 30000
 TITERS = [5000, 10000, 15000, 20000, 25000, 30000]
 
-# GAR args
-GAR_ARGS = ["--enable_fsgs_proximity", "--gar_proximity_threshold", "0.05",
-            "--gar_proximity_k", "5", "--no_gar_adaptive_threshold",
-            "--no_gar_progressive_decay", "--gar_new_per_source", "1", "--gar_max_candidates", "2000"]
+# GAP args
+GAP_ARGS = ["--enable_fsgs_proximity", "--gap_proximity_threshold", "0.05",
+            "--gap_proximity_k", "5", "--no_gap_adaptive_threshold",
+            "--no_gap_progressive_decay", "--gap_new_per_source", "1", "--gap_max_candidates", "2000"]
 
 # ADM args
 ADM_ARGS = ["--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "32",
@@ -33,14 +33,14 @@ ADM_ARGS = ["--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "
 
 # 8 个配置
 CONFIGS = [
-    {"name": "r2_gaussian", "ply": f"{D}/init",        "gar": [],          "adm": [],          "label": "R²-Gaussian (基线)"},
-    {"name": "sps_only",    "ply": f"{SD}/init",       "gar": [],          "adm": [],          "label": "+SPS"},
-    {"name": "gar_only",    "ply": f"{D}/init",        "gar": GAR_ARGS,    "adm": [],          "label": "+GAR"},
-    {"name": "adm_only",    "ply": f"{D}/init",        "gar": [],          "adm": ADM_ARGS,    "label": "+ADM"},
-    {"name": "sps_gar",     "ply": f"{SD}/init",       "gar": GAR_ARGS,    "adm": [],          "label": "+SPS+GAR"},
-    {"name": "sps_adm",     "ply": f"{SD}/init",       "gar": [],          "adm": ADM_ARGS,    "label": "+SPS+ADM"},
-    {"name": "gar_adm",     "ply": f"{D}/init",        "gar": GAR_ARGS,    "adm": ADM_ARGS,    "label": "+GAR+ADM"},
-    {"name": "spags",       "ply": f"{SD}/init",       "gar": GAR_ARGS,    "adm": ADM_ARGS,    "label": "Full SPAGS (完整)"},
+    {"name": "r2_gaussian", "ply": f"{D}/init",        "gap": [],          "adm": [],          "label": "R²-Gaussian (基线)"},
+    {"name": "sps_only",    "ply": f"{SD}/init",       "gap": [],          "adm": [],          "label": "+SPS"},
+    {"name": "gap_only",    "ply": f"{D}/init",        "gap": GAP_ARGS,    "adm": [],          "label": "+GAP"},
+    {"name": "adm_only",    "ply": f"{D}/init",        "gap": [],          "adm": ADM_ARGS,    "label": "+ADM"},
+    {"name": "sps_gap",     "ply": f"{SD}/init",       "gap": GAP_ARGS,    "adm": [],          "label": "+SPS+GAP"},
+    {"name": "sps_adm",     "ply": f"{SD}/init",       "gap": [],          "adm": ADM_ARGS,    "label": "+SPS+ADM"},
+    {"name": "gap_adm",     "ply": f"{D}/init",        "gap": GAP_ARGS,    "adm": ADM_ARGS,    "label": "+GAP+ADM"},
+    {"name": "spags",       "ply": f"{SD}/init",       "gap": GAP_ARGS,    "adm": ADM_ARGS,    "label": "Full SPAGS (完整)"},
 ]
 
 def check_existing(name, organ):
@@ -75,7 +75,7 @@ def run_one(cfg, organ, gpu):
            "--iterations", str(ITERS),
            "--test_iterations"] + [str(t) for t in TITERS] + \
            ["--save_iterations", "30000", "--ply_path", ply_path] + \
-           cfg["gar"] + cfg["adm"]
+           cfg["gap"] + cfg["adm"]
     
     env = os.environ.copy(); env["CUDA_VISIBLE_DEVICES"] = str(gpu)
     

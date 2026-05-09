@@ -5,7 +5,7 @@ SPAGS 性能优化实验 — 基于 ARIS 分析
 目标：在 2/3/4 views 设定上压榨 SPAGS 的最佳性能
 
 ARIS (MiniMax + DeepSeek V4 Pro) 分析结论：
-- GAR threshold 是最关键的超参数
+- GAP threshold 是最关键的超参数
 - ADM warmup/zero-mean 次之
 - K-planes TV 影响最小
 """
@@ -30,10 +30,10 @@ RESULTS_DIR = PROJECT_ROOT / "results"
 
 # ========== 实验设计 ==========
 
-# Batch 1: GAR threshold 扫描 (最关键)
+# Batch 1: GAP threshold 扫描 (最关键)
 # 根据 ARIS 分析：proximity_threshold=0.05 是稀疏视角定制的，
 # 不同视角密度需要不同阈值
-GAR_THRESHOLDS = [0.02, 0.05, 0.08, 0.12]
+GAP_THRESHOLDS = [0.02, 0.05, 0.08, 0.12]
 
 # Batch 2: ADM warmup 调整
 # 不同 warmup 迭代数对性能的影响
@@ -45,10 +45,10 @@ ADM_ZERO_MEAN_MODES = ["density_confidence", "none"]
 
 # 默认 SPAGS 参数
 DEFAULT_SPAGS_ARGS = [
-    "--enable_fsgs_proximity", "--gar_proximity_threshold", "0.05",
-    "--gar_proximity_k", "5",
-    "--no_gar_adaptive_threshold", "--no_gar_progressive_decay",
-    "--gar_new_per_source", "1", "--gar_max_candidates", "2000",
+    "--enable_fsgs_proximity", "--gap_proximity_threshold", "0.05",
+    "--gap_proximity_k", "5",
+    "--no_gap_adaptive_threshold", "--no_gap_progressive_decay",
+    "--gap_new_per_source", "1", "--gap_max_candidates", "2000",
     "--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "32",
     "--adm_decoder_hidden", "128", "--adm_decoder_layers", "3",
     "--kplanes_lr_init", "0.005", "--lambda_plane_tv", "0.0005",
@@ -60,25 +60,25 @@ DEFAULT_SPAGS_ARGS = [
 
 EXPERIMENTS = []
 
-# ---- Batch A: GAR 阈值扫描 (Chest, 最具代表性) ----
-# 问题：不同视角密度需要不同的 GAR 阈值
+# ---- Batch A: GAP 阈值扫描 (Chest, 最具代表性) ----
+# 问题：不同视角密度需要不同的 GAP 阈值
 for v in [2, 3, 4]:
-    for thr in GAR_THRESHOLDS:
-        name = f"gar_thr{thr}_{v}v"
+    for thr in GAP_THRESHOLDS:
+        name = f"gap_thr{thr}_{v}v"
         args = list(DEFAULT_SPAGS_ARGS)
         # 替换默认 threshold
-        idx = args.index("--gar_proximity_threshold") if "--gar_proximity_threshold" in args else -1
+        idx = args.index("--gap_proximity_threshold") if "--gap_proximity_threshold" in args else -1
         if idx >= 0:
             args[idx+1] = str(thr)
         else:
-            args += ["--gar_proximity_threshold", str(thr)]
+            args += ["--gap_proximity_threshold", str(thr)]
         EXPERIMENTS.append({
             "name": name,
             "organ": "chest",
             "views": v,
             "args": args,
-            "batch": "A_GAR_threshold",
-            "desc": f"GAR proximity_threshold={thr}",
+            "batch": "A_GAP_threshold",
+            "desc": f"GAP proximity_threshold={thr}",
         })
 
 # ---- Batch B: ADM warmup 扫描 (Chest, 3v, 用 Batch A 最优 threshold) ----
@@ -119,14 +119,14 @@ for zm in ADM_ZERO_MEAN_MODES:
     })
 
 # ---- Batch D: 最优组合 × 全部器官 ----
-# 用优化后的 GAR threshold + ADM warmup 在所有器官上复现
+# 用优化后的 GAP threshold + ADM warmup 在所有器官上复现
 BEST_THRESHOLD_BY_VIEW = {2: 0.05, 3: 0.05, 4: 0.05}  # 会被 Batch A 结果更新
 for organ in ["head", "abdomen", "foot", "pancreas"]:
     for v in [2, 3, 4]:
         name = f"optimized_{organ}_{v}v"
         args = list(DEFAULT_SPAGS_ARGS)
         thr = BEST_THRESHOLD_BY_VIEW[v]
-        idx = args.index("--gar_proximity_threshold")
+        idx = args.index("--gap_proximity_threshold")
         args[idx+1] = str(thr)
         EXPERIMENTS.append({
             "name": name,
@@ -134,7 +134,7 @@ for organ in ["head", "abdomen", "foot", "pancreas"]:
             "views": v,
             "args": args,
             "batch": "D_optimized_all",
-            "desc": f"优化配置 (GAR thr={thr})",
+            "desc": f"优化配置 (GAP thr={thr})",
         })
 
 
@@ -212,7 +212,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--gpus", type=int, nargs="+", default=[0, 1])
     parser.add_argument("--batch", type=str, default=None, 
-                        choices=["A_GAR_threshold", "B_ADM_warmup", "C_ADM_zeromean", "D_optimized_all", None])
+                        choices=["A_GAP_threshold", "B_ADM_warmup", "C_ADM_zeromean", "D_optimized_all", None])
     parser.add_argument("--summarize-only", action="store_true")
     args = parser.parse_args()
     

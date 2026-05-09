@@ -81,9 +81,9 @@ def training(
     # 🆕 设置训练视角数（用于视角自适应的 ADM 调制）
     num_train_views = len(scene.getTrainCameras())
     gaussians.set_num_train_views(num_train_views)
-    # 🆕 GAR 视角自适应缩放因子（与 ADM 解耦：即使不启用 ADM 也生效）
-    gar_view_scale = 1.0 / math.sqrt(max(float(num_train_views), 1.0) / 3.0)
-    gar_view_scale = max(gar_view_scale, 0.3)
+    # 🆕 GAP 视角自适应缩放因子（与 ADM 解耦：即使不启用 ADM 也生效）
+    gap_view_scale = 1.0 / math.sqrt(max(float(num_train_views), 1.0) / 3.0)
+    gap_view_scale = max(gap_view_scale, 0.3)
 
     logger = get_logger()
 
@@ -100,56 +100,56 @@ def training(
         tv_vol_nVoxel = torch.tensor([tv_vol_size, tv_vol_size, tv_vol_size])
         tv_vol_sVoxel = torch.tensor(scanner_cfg["dVoxel"]) * tv_vol_nVoxel
 
-    # 🆕 Set up Proximity-Guided Densification (GAR 邻近引导密化)
-    # 支持 enable_gar (主开关) 或 enable_gar_proximity / enable_fsgs_proximity (兼容旧名)
-    use_proximity = getattr(dataset, 'enable_gar', False) or getattr(dataset, 'enable_gar_proximity', False) or getattr(dataset, 'enable_fsgs_proximity', False)
+    # 🆕 Set up Proximity-Guided Densification (GAP 邻近引导密化)
+    # 支持 enable_gap (主开关) 或 enable_gap_proximity / enable_fsgs_proximity (兼容旧名)
+    use_proximity = getattr(dataset, 'enable_gap', False) or getattr(dataset, 'enable_gap_proximity', False) or getattr(dataset, 'enable_fsgs_proximity', False)
     proximity_densifier = None
     proximity_start_iter = dataset.proximity_start_iter
     proximity_interval = dataset.proximity_interval
     proximity_until_iter = dataset.proximity_until_iter
-    # 🆕 GAR 优化参数
-    gar_adaptive_threshold = getattr(dataset, 'gar_adaptive_threshold', False)
-    gar_auto_threshold = getattr(dataset, 'gar_auto_threshold', True)
-    gar_auto_min_ratio = getattr(dataset, 'gar_auto_min_ratio', 0.01)
-    gar_auto_max_ratio = getattr(dataset, 'gar_auto_max_ratio', 0.30)
-    gar_adaptive_method = getattr(dataset, 'gar_adaptive_method', 'percentile')
-    gar_adaptive_percentile = getattr(dataset, 'gar_adaptive_percentile', 90.0)
-    gar_progressive_decay = getattr(dataset, 'gar_progressive_decay', False)
-    gar_decay_start_ratio = getattr(dataset, 'gar_decay_start_ratio', 0.5)
-    gar_final_strength = getattr(dataset, 'gar_final_strength', 0.3)
-    gar_gradient_filter = getattr(dataset, 'gar_gradient_filter', False)
-    gar_gradient_threshold = getattr(dataset, 'gar_gradient_threshold', 0.0002)
-    gar_max_candidates = getattr(dataset, 'gar_max_candidates', 5000)  # 每次密化最大候选点数
-    gar_candidate_ratio_cap = getattr(dataset, 'gar_candidate_ratio_cap', 0.15)  # 每次密化候选占比上限（0 表示不限制）
-    gar_new_per_source = getattr(dataset, 'gar_new_per_source', 1)  # 每个候选点最多生成的新点数（<=0 表示使用全部K）
-    # 🆕 GAR 稳定性选项
-    gar_view_adaptive = getattr(dataset, 'gar_view_adaptive', True)
-    gar_mass_preserve = getattr(dataset, 'gar_mass_preserve', True)
-    gar_scale_shrink = getattr(dataset, 'gar_scale_shrink', True)
-    gar_scale_shrink_factor = getattr(dataset, 'gar_scale_shrink_factor', 0.8)
+    # 🆕 GAP 优化参数
+    gap_adaptive_threshold = getattr(dataset, 'gap_adaptive_threshold', False)
+    gap_auto_threshold = getattr(dataset, 'gap_auto_threshold', True)
+    gap_auto_min_ratio = getattr(dataset, 'gap_auto_min_ratio', 0.01)
+    gap_auto_max_ratio = getattr(dataset, 'gap_auto_max_ratio', 0.30)
+    gap_adaptive_method = getattr(dataset, 'gap_adaptive_method', 'percentile')
+    gap_adaptive_percentile = getattr(dataset, 'gap_adaptive_percentile', 90.0)
+    gap_progressive_decay = getattr(dataset, 'gap_progressive_decay', False)
+    gap_decay_start_ratio = getattr(dataset, 'gap_decay_start_ratio', 0.5)
+    gap_final_strength = getattr(dataset, 'gap_final_strength', 0.3)
+    gap_gradient_filter = getattr(dataset, 'gap_gradient_filter', False)
+    gap_gradient_threshold = getattr(dataset, 'gap_gradient_threshold', 0.0002)
+    gap_max_candidates = getattr(dataset, 'gap_max_candidates', 5000)  # 每次密化最大候选点数
+    gap_candidate_ratio_cap = getattr(dataset, 'gap_candidate_ratio_cap', 0.15)  # 每次密化候选占比上限（0 表示不限制）
+    gap_new_per_source = getattr(dataset, 'gap_new_per_source', 1)  # 每个候选点最多生成的新点数（<=0 表示使用全部K）
+    # 🆕 GAP 稳定性选项
+    gap_view_adaptive = getattr(dataset, 'gap_view_adaptive', True)
+    gap_mass_preserve = getattr(dataset, 'gap_mass_preserve', True)
+    gap_scale_shrink = getattr(dataset, 'gap_scale_shrink', True)
+    gap_scale_shrink_factor = getattr(dataset, 'gap_scale_shrink_factor', 0.8)
 
     if use_proximity:
-        logger.config("Use FSGS proximity-guided densification (GAR)")
+        logger.config("Use FSGS proximity-guided densification (GAP)")
         # 🔧 修复：使用 None 检查而非 or，避免 falsy 值被错误覆盖
-        # 优先使用新参数名 gar_*，旧参数名 proximity_* 作为 fallback
-        _gar_k = getattr(dataset, 'gar_proximity_k', None)
-        k_neighbors = _gar_k if _gar_k is not None else getattr(dataset, 'proximity_k_neighbors', 5)
+        # 优先使用新参数名 gap_*，旧参数名 proximity_* 作为 fallback
+        _gap_k = getattr(dataset, 'gap_proximity_k', None)
+        k_neighbors = _gap_k if _gap_k is not None else getattr(dataset, 'proximity_k_neighbors', 5)
 
-        _gar_threshold = getattr(dataset, 'gar_proximity_threshold', None)
-        proximity_threshold = _gar_threshold if _gar_threshold is not None else getattr(dataset, 'proximity_threshold', 0.05)
+        _gap_threshold = getattr(dataset, 'gap_proximity_threshold', None)
+        proximity_threshold = _gap_threshold if _gap_threshold is not None else getattr(dataset, 'proximity_threshold', 0.05)
         # 🔴 注意：旧 fallback 值是 5.0（错误！），现在改为 0.05（与 arguments/__init__.py 一致）
         proximity_densifier = ProximityGuidedDensifier(
             k_neighbors=k_neighbors,
             proximity_threshold=proximity_threshold,
             chunk_size=5000,
             enable=True,
-            # 🆕 GAR 优化参数
-            adaptive_threshold=gar_adaptive_threshold,
-            adaptive_method=gar_adaptive_method,
-            adaptive_percentile=gar_adaptive_percentile,
-            progressive_decay=gar_progressive_decay,
-            decay_start_ratio=gar_decay_start_ratio,
-            final_strength=gar_final_strength,
+            # 🆕 GAP 优化参数
+            adaptive_threshold=gap_adaptive_threshold,
+            adaptive_method=gap_adaptive_method,
+            adaptive_percentile=gap_adaptive_percentile,
+            progressive_decay=gap_progressive_decay,
+            decay_start_ratio=gap_decay_start_ratio,
+            final_strength=gap_final_strength,
         )
         logger.config(f"  - k_neighbors: {proximity_densifier.k_neighbors}")
         logger.config(f"  - proximity_threshold: {proximity_densifier.proximity_threshold}")
@@ -157,40 +157,40 @@ def training(
 
         # 🆕 视角自适应：views 越多越保守（减少密化次数/每次密化预算）
         effective_proximity_until_iter = int(proximity_until_iter)
-        effective_gar_max_candidates = int(gar_max_candidates)
-        effective_gar_candidate_ratio_cap = float(gar_candidate_ratio_cap) if gar_candidate_ratio_cap is not None else None
-        if gar_view_adaptive:
+        effective_gap_max_candidates = int(gap_max_candidates)
+        effective_gap_candidate_ratio_cap = float(gap_candidate_ratio_cap) if gap_candidate_ratio_cap is not None else None
+        if gap_view_adaptive:
             effective_proximity_until_iter = int(round(
-                proximity_start_iter + (proximity_until_iter - proximity_start_iter) * gar_view_scale
+                proximity_start_iter + (proximity_until_iter - proximity_start_iter) * gap_view_scale
             ))
             effective_proximity_until_iter = max(int(proximity_start_iter), int(effective_proximity_until_iter))
-            effective_gar_max_candidates = max(1, int(round(effective_gar_max_candidates * gar_view_scale)))
-            if effective_gar_candidate_ratio_cap is not None and effective_gar_candidate_ratio_cap > 0:
-                effective_gar_candidate_ratio_cap = float(effective_gar_candidate_ratio_cap) * float(gar_view_scale)
+            effective_gap_max_candidates = max(1, int(round(effective_gap_max_candidates * gap_view_scale)))
+            if effective_gap_candidate_ratio_cap is not None and effective_gap_candidate_ratio_cap > 0:
+                effective_gap_candidate_ratio_cap = float(effective_gap_candidate_ratio_cap) * float(gap_view_scale)
 
         # 🆕 打印优化参数
-        if gar_adaptive_threshold:
-            logger.config(f"  - adaptive_threshold: {gar_adaptive_method} (p={gar_adaptive_percentile})")
-        if (not gar_adaptive_threshold) and gar_auto_threshold:
-            logger.config(f"  - auto_threshold: ratio in [{gar_auto_min_ratio:.3f},{gar_auto_max_ratio:.3f}] -> {gar_adaptive_method}(p={gar_adaptive_percentile})")
-        if gar_progressive_decay:
-            logger.config(f"  - progressive_decay: start={gar_decay_start_ratio}, final={gar_final_strength}")
-        if gar_gradient_filter:
-            logger.config(f"  - gradient_filter: threshold={gar_gradient_threshold}")
-        if gar_candidate_ratio_cap and gar_candidate_ratio_cap > 0:
-            logger.config(f"  - candidate_ratio_cap: {gar_candidate_ratio_cap} (effective={effective_gar_candidate_ratio_cap:.4f})")
-        if gar_new_per_source <= 0:
+        if gap_adaptive_threshold:
+            logger.config(f"  - adaptive_threshold: {gap_adaptive_method} (p={gap_adaptive_percentile})")
+        if (not gap_adaptive_threshold) and gap_auto_threshold:
+            logger.config(f"  - auto_threshold: ratio in [{gap_auto_min_ratio:.3f},{gap_auto_max_ratio:.3f}] -> {gap_adaptive_method}(p={gap_adaptive_percentile})")
+        if gap_progressive_decay:
+            logger.config(f"  - progressive_decay: start={gap_decay_start_ratio}, final={gap_final_strength}")
+        if gap_gradient_filter:
+            logger.config(f"  - gradient_filter: threshold={gap_gradient_threshold}")
+        if gap_candidate_ratio_cap and gap_candidate_ratio_cap > 0:
+            logger.config(f"  - candidate_ratio_cap: {gap_candidate_ratio_cap} (effective={effective_gap_candidate_ratio_cap:.4f})")
+        if gap_new_per_source <= 0:
             logger.config(f"  - new_per_source: all (K={proximity_densifier.k_neighbors})")
         else:
-            logger.config(f"  - new_per_source: {gar_new_per_source}")
-        logger.config(f"  - view_adaptive: {bool(gar_view_adaptive)} (views={num_train_views}, scale={gar_view_scale:.3f}, until={effective_proximity_until_iter}, max_candidates={effective_gar_max_candidates})")
-        logger.config(f"  - mass_preserve: {bool(gar_mass_preserve)}")
-        if gar_scale_shrink:
-            logger.config(f"  - scale_shrink: True (factor={float(gar_scale_shrink_factor):.3f})")
+            logger.config(f"  - new_per_source: {gap_new_per_source}")
+        logger.config(f"  - view_adaptive: {bool(gap_view_adaptive)} (views={num_train_views}, scale={gap_view_scale:.3f}, until={effective_proximity_until_iter}, max_candidates={effective_gap_max_candidates})")
+        logger.config(f"  - mass_preserve: {bool(gap_mass_preserve)}")
+        if gap_scale_shrink:
+            logger.config(f"  - scale_shrink: True (factor={float(gap_scale_shrink_factor):.3f})")
         else:
             logger.config(f"  - scale_shrink: False")
 
-    # 🆕 GAP: Geometry-aware Pruning（替代GAR的邻近剪枝）
+    # 🆕 GAP: Geometry-aware Pruning（替代GAP的邻近剪枝）
     use_gap = getattr(dataset, 'enable_gap', False)
     gap_pruner = None
     if use_gap:
@@ -265,8 +265,8 @@ def training(
     for iteration in range(first_iter, opt.iterations + 1):
         iter_start.record()
 
-        # 初始化 GAR 诊断变量（用于 TensorBoard）
-        gar_diag = None
+        # 初始化 GAP 诊断变量（用于 TensorBoard）
+        gap_diag = None
         num_new = 0
 
         # 传递当前迭代次数给 ADM 调度
@@ -387,7 +387,7 @@ def training(
                         bbox,
                     )
 
-            # 🆕 FSGS Proximity-Guided Densification (GAR核心组件) - 优化版
+            # 🆕 FSGS Proximity-Guided Densification (GAP核心组件) - 优化版
             if use_proximity and proximity_densifier is not None:
                 if (iteration >= proximity_start_iter and
                     iteration <= effective_proximity_until_iter and
@@ -401,7 +401,7 @@ def training(
 
                     # 🔧 诊断日志：输出邻近分数统计（帮助调试阈值设置）
                     if iteration % 1000 == 0 or iteration == proximity_start_iter:
-                        logger.info("[GAR 诊断]", iteration=iteration)
+                        logger.info("[GAP 诊断]", iteration=iteration)
                         logger.info(f"  - 邻近分数范围: [{proximity_scores.min():.4f}, {proximity_scores.max():.4f}]", iteration=iteration)
                         logger.info(f"  - 邻近分数均值: {proximity_scores.mean():.4f}, 标准差: {proximity_scores.std():.4f}", iteration=iteration)
                         logger.info(f"  - 百分位数: p25={torch.quantile(proximity_scores, 0.25):.4f}, "
@@ -417,23 +417,23 @@ def training(
                     auto_triggered = False
 
                     # 2a. 自适应阈值（强制）
-                    if gar_adaptive_threshold:
+                    if gap_adaptive_threshold:
                         effective_threshold = proximity_densifier.compute_adaptive_threshold_value(proximity_scores)
-                        threshold_mode = f"adaptive:{gar_adaptive_method}(p={gar_adaptive_percentile})"
+                        threshold_mode = f"adaptive:{gap_adaptive_method}(p={gap_adaptive_percentile})"
 
                     # 2a'. 自动阈值保护：固定阈值太松/太严时，自动切到自适应阈值
-                    if (not gar_adaptive_threshold) and gar_auto_threshold:
+                    if (not gap_adaptive_threshold) and gap_auto_threshold:
                         fixed_ratio = (proximity_scores > base_threshold).float().mean().item()
-                        if (fixed_ratio < float(gar_auto_min_ratio)) or (fixed_ratio > float(gar_auto_max_ratio)):
+                        if (fixed_ratio < float(gap_auto_min_ratio)) or (fixed_ratio > float(gap_auto_max_ratio)):
                             effective_threshold = proximity_densifier.compute_adaptive_threshold_value(proximity_scores)
-                            threshold_mode = f"auto->adaptive:{gar_adaptive_method}(p={gar_adaptive_percentile})"
+                            threshold_mode = f"auto->adaptive:{gap_adaptive_method}(p={gap_adaptive_percentile})"
                             auto_triggered = True
                         else:
                             threshold_mode = "auto->fixed"
 
                     # 2b. 渐进衰减（对最终阈值做乘法放大）
                     decay_mult = 1.0
-                    if gar_progressive_decay:
+                    if gap_progressive_decay:
                         decay_mult = proximity_densifier.get_decay_multiplier(
                             iteration, proximity_start_iter, effective_proximity_until_iter
                         )
@@ -447,10 +447,10 @@ def training(
                     )
 
                     # 🆕 4. 梯度过滤（只保留高梯度点）
-                    if gar_gradient_filter:
+                    if gap_gradient_filter:
                         grads = gaussians.xyz_gradient_accum / (gaussians.denom + 1e-7)
                         grads[grads.isnan()] = 0.0
-                        gradient_mask = grads.squeeze() > gar_gradient_threshold
+                        gradient_mask = grads.squeeze() > gap_gradient_threshold
                         densify_mask = densify_mask & gradient_mask
 
                     num_candidates = densify_mask.sum().item()
@@ -465,8 +465,8 @@ def training(
                         if num_candidates == 0:
                             logger.warn("候选点为 0！可能阈值设置不合理", iteration=iteration)
 
-                    # 获取 GAR 诊断信息（用于 TensorBoard；需反映实际使用的阈值）
-                    gar_diag = {
+                    # 获取 GAP 诊断信息（用于 TensorBoard；需反映实际使用的阈值）
+                    gap_diag = {
                         'score_mean': float(proximity_scores.mean().item()),
                         'threshold': float(effective_threshold.item()) if torch.is_tensor(effective_threshold) else float(effective_threshold),
                         'decay_mult': float(decay_mult),
@@ -475,13 +475,13 @@ def training(
 
                     if num_candidates > 0:
                         # ------------------------------------------------------------------
-                        # FSGS 对齐：每个候选点可沿 KNN 的多条边生成新点（gar_new_per_source）
+                        # FSGS 对齐：每个候选点可沿 KNN 的多条边生成新点（gap_new_per_source）
                         # 同时需要遵守全局点数预算（opt.max_num_gaussians），避免与 baseline densify 叠加后爆点
                         # ------------------------------------------------------------------
                         k_neighbors = proximity_densifier.k_neighbors
                         new_per_source = (
-                            k_neighbors if gar_new_per_source <= 0
-                            else min(int(gar_new_per_source), k_neighbors)
+                            k_neighbors if gap_new_per_source <= 0
+                            else min(int(gap_new_per_source), k_neighbors)
                         )
 
                         # 全局点数预算：与 baseline densify_and_prune 的 max_num_gaussians 保持一致
@@ -489,7 +489,7 @@ def training(
                         if max_num_gaussians is not None and max_num_gaussians > 0:
                             remaining_budget = int(max_num_gaussians - positions.shape[0])
                             if remaining_budget <= 0:
-                                # 无预算，跳过本次 GAR 密化（但不影响本次迭代的反传与优化）
+                                # 无预算，跳过本次 GAP 密化（但不影响本次迭代的反传与优化）
                                 budget_max_candidates = 0
                                 num_candidates = 0
                             else:
@@ -497,13 +497,13 @@ def training(
                         else:
                             budget_max_candidates = None
 
-                        effective_max_candidates = int(effective_gar_max_candidates)
+                        effective_max_candidates = int(effective_gap_max_candidates)
                         if budget_max_candidates is not None:
                             effective_max_candidates = min(effective_max_candidates, int(budget_max_candidates))
 
                         # 占比上限：避免小点云一次性密化过多
-                        if effective_gar_candidate_ratio_cap and effective_gar_candidate_ratio_cap > 0:
-                            ratio = float(effective_gar_candidate_ratio_cap)
+                        if effective_gap_candidate_ratio_cap and effective_gap_candidate_ratio_cap > 0:
+                            ratio = float(effective_gap_candidate_ratio_cap)
                             ratio = min(max(ratio, 0.0), 1.0)
                             ratio_cap_candidates = max(1, int(ratio * positions.shape[0]))
                             effective_max_candidates = min(effective_max_candidates, int(ratio_cap_candidates))
@@ -546,8 +546,8 @@ def training(
                             new_rotations = gaussians._rotation[source_indices].repeat_interleave(new_per_source, dim=0)
 
                             # 7.2 scaling：新点可选收缩（不改动 source 自身的 scaling）
-                            if gar_scale_shrink:
-                                denom = max(float(gar_scale_shrink_factor), 1e-6) * float(new_per_source + 1)
+                            if gap_scale_shrink:
+                                denom = max(float(gap_scale_shrink_factor), 1e-6) * float(new_per_source + 1)
                                 src_scaling = gaussians.get_scaling[source_indices]
                                 new_scaling = gaussians.scaling_inverse_activation(src_scaling / denom)
                             else:
@@ -555,7 +555,7 @@ def training(
                             new_scaling = new_scaling.repeat_interleave(new_per_source, dim=0)
 
                             # 7.3 density：质量守恒分摊（同时把 source 自身 density 调低，避免“凭空加密度”导致噪声/过拟合）
-                            if gar_mass_preserve:
+                            if gap_mass_preserve:
                                 split = 1.0 / float(new_per_source + 1)
                                 src_base_density = gaussians.get_base_density[source_indices]
                                 new_base_density = src_base_density * split
@@ -586,18 +586,18 @@ def training(
                                 new_max_radii2D=new_max_radii,
                             )
 
-                            # GAR 诊断日志（每1000次迭代）
+                            # GAP 诊断日志（每1000次迭代）
                             if iteration % 1000 == 0:
-                                gar_diag = proximity_densifier.get_diagnostics(
+                                gap_diag = proximity_densifier.get_diagnostics(
                                     proximity_scores, iteration, proximity_start_iter, effective_proximity_until_iter
                                 )
-                                logger.info("=== GAR 密化完成 ===", iteration=iteration)
-                                logger.info(f"  邻近分数: mean={gar_diag['score_mean']:.4f}, std={gar_diag['score_std']:.4f}, "
-                                          f"range=[{gar_diag['score_min']:.4f}, {gar_diag['score_max']:.4f}]", iteration=iteration)
-                                logger.info(f"  阈值: {gar_diag['threshold']:.4f} (衰减系数: {gar_diag['decay_mult']:.3f})", iteration=iteration)
+                                logger.info("=== GAP 密化完成 ===", iteration=iteration)
+                                logger.info(f"  邻近分数: mean={gap_diag['score_mean']:.4f}, std={gap_diag['score_std']:.4f}, "
+                                          f"range=[{gap_diag['score_min']:.4f}, {gap_diag['score_max']:.4f}]", iteration=iteration)
+                                logger.info(f"  阈值: {gap_diag['threshold']:.4f} (衰减系数: {gap_diag['decay_mult']:.3f})", iteration=iteration)
                                 logger.info(f"  密化: +{num_new} (候选: {num_candidates}, 总数: {gaussians.get_xyz.shape[0]})", iteration=iteration)
 
-            # 🆕 GAP: Geometry-aware Pruning — 在GAR之后、opacity decay之前执行
+            # 🆕 GAP: Geometry-aware Pruning — 在GAP之后、opacity decay之前执行
             if use_gap and gap_pruner is not None:
                 if (iteration >= gap_start_iter and
                     iteration <= gap_until_iter and
@@ -678,14 +678,14 @@ def training(
                     metrics["adm/modulation_std"] = adm_diag.get('modulation', {}).get('std', 0.0)
                     metrics["adm/density_change_pct"] = adm_diag.get('density_change_pct', {}).get('mean', 0.0)
 
-            # GAR TensorBoard 指标
-            if use_proximity and gar_diag is not None:
-                metrics["gar/proximity_score_mean"] = gar_diag.get('score_mean', 0.0)
-                metrics["gar/threshold"] = gar_diag.get('threshold', 0.0)
-                metrics["gar/decay_mult"] = gar_diag.get('decay_mult', 1.0)
-                metrics["gar/auto_threshold_used"] = gar_diag.get('auto_threshold_used', 0.0)
-                metrics["gar/new_gaussians"] = num_new
-                metrics["gar/total_gaussians"] = gaussians.get_xyz.shape[0]
+            # GAP TensorBoard 指标
+            if use_proximity and gap_diag is not None:
+                metrics["gap/proximity_score_mean"] = gap_diag.get('score_mean', 0.0)
+                metrics["gap/threshold"] = gap_diag.get('threshold', 0.0)
+                metrics["gap/decay_mult"] = gap_diag.get('decay_mult', 1.0)
+                metrics["gap/auto_threshold_used"] = gap_diag.get('auto_threshold_used', 0.0)
+                metrics["gap/new_gaussians"] = num_new
+                metrics["gap/total_gaussians"] = gaussians.get_xyz.shape[0]
 
             training_report(
                 tb_writer,

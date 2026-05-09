@@ -122,7 +122,7 @@ ax1.tick_params(labelsize=9)
 ax1.grid(axis='y', alpha=0.25, linestyle='--')
 
 # 右: 最终对比柱状图
-right_configs = ['R²-Gaussian', 'SPS+ADM', 'SPS+ADM+GAP', 'Full SPAGS\n(with GAR)']
+right_configs = ['R²-Gaussian', 'SPS+ADM', 'SPS+ADM+GAP', 'Full SPAGS\n(with GAP)']
 right_vals = [27.80, 28.09, 28.22, 28.06]
 right_colors = ['#95A5A6', '#2980B9', '#C0392B', '#F39C12']
 

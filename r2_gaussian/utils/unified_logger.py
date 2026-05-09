@@ -13,7 +13,7 @@
     logger = get_logger()
     logger.info("训练开始")
     logger.config("SPS: 启用")
-    logger.info("GAR 密化完成", iteration=1000)
+    logger.info("GAP 密化完成", iteration=1000)
     logger.eval("PSNR: 28.56", iteration=5000)
     logger.warn("内存使用较高")
     logger.error("CUDA OOM")

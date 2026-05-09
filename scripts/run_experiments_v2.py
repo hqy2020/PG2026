@@ -7,7 +7,7 @@ PG2026 实验编排系统 v2
 方法:
   - r2_gaussian (baseline): R²-Gaussian，不加 SPAGS 特征
   - xgaussian, fsgs, corgs, dngaussian: 对比基线
-  - spags: 我们的完整方法 (SPS + GAR + ADM)
+  - spags: 我们的完整方法 (SPS + GAP + ADM)
 
 用法:
   # 运行所有实验
@@ -48,9 +48,9 @@ METHODS = {
         "cli": "r2_gaussian",
         "args": [
             "--ply_path", "data/369-sps/init_{organ}_50_{views}views.npy",
-            "--enable_fsgs_proximity", "--gar_proximity_threshold", "0.05",
-            "--gar_proximity_k", "5", "--no_gar_adaptive_threshold",
-            "--no_gar_progressive_decay", "--gar_new_per_source", "1", "--gar_max_candidates", "2000",
+            "--enable_fsgs_proximity", "--gap_proximity_threshold", "0.05",
+            "--gap_proximity_k", "5", "--no_gap_adaptive_threshold",
+            "--no_gap_progressive_decay", "--gap_new_per_source", "1", "--gap_max_candidates", "2000",
             "--enable_kplanes", "--adm_resolution", "64", "--adm_feature_dim", "32",
             "--adm_decoder_hidden", "128", "--adm_decoder_layers", "3",
             "--kplanes_lr_init", "0.005", "--lambda_plane_tv", "0.0005",

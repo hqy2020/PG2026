@@ -11,7 +11,7 @@ OUT = "output"
 VIEWS = [2, 3, 4]
 ORGANS = ["chest", "head", "abdomen", "foot", "pancreas"]
 
-# 8个消融配置（不带GAR，带GAP）
+# 8个消融配置（不带GAP，带GAP）
 CONFIGS = {
     "r2_gaussian":      {"label": "R²-Gaussian (基线)",  "sps": False, "adm": False, "gap": False},
     "sps_only":         {"label": "+SPS",                "sps": True,  "adm": False, "gap": False},

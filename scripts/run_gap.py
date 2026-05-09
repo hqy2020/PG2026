@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GAP (Geometry-aware Pruning) 实验 — 替代GAR，在SPS+ADM基础上添加邻近剪枝"""
+"""GAP (Geometry-aware Pruning) 实验 — 替代GAP，在SPS+ADM基础上添加邻近剪枝"""
 import os, sys, subprocess, time, concurrent.futures
 from pathlib import Path
 
@@ -67,7 +67,7 @@ def run_one(organ, gpu):
            "--iterations", str(ITERS),
            "--test_iterations"] + [str(t) for t in TITERS] + \
            ["--save_iterations", "30000", "--ply_path", ply_path,
-            "--no_enable_gar"] + ADM_ARGS + GAP_ARGS
+            "--no_enable_gap"] + ADM_ARGS + GAP_ARGS
 
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)

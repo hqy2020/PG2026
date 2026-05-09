@@ -13,7 +13,7 @@
 **SPAGS** is a spatial-aware progressive adaptive Gaussian splatting framework for sparse-view CT reconstruction. It builds on R²-Gaussian (NeurIPS 2024) and introduces three novel components:
 
 - **SPS** (Spatial Prior Seeding) — Density-weighted FDK initialization for better geometric prior
-- **GAR** (Geometry-aware Refinement) — Proximity-guided densification in world coordinates
+- **GAP** (Geometry-aware Pruning) — Proximity-guided densification in world coordinates
 - **ADM** (Adaptive Density Modulation) — K-Planes based spatial density modulation
 
 ### Key Results (PSNR / SSIM)
@@ -49,7 +49,7 @@ PG2026/
 │   │   ├── dngaussian/         # DN-Gaussian
 │   │   └── corgs/              # CoR-GS
 │   ├── innovations/            # Innovation modules
-│   │   └── fsgs/               # Proximity densifier (GAR)
+│   │   └── fsgs/               # Proximity densifier (GAP)
 │   ├── dataset/                # Data loading
 │   ├── utils/                  # Utilities
 │   ├── arguments/              # CLI parameters
@@ -93,7 +93,7 @@ data/369/
 python train.py -s data/369/foot_50_3views.pickle \
   -m output/2026_04_29_foot_3views_spags \
   --ply_path data/369/init_foot_50_3views.npy \
-  --enable_sps --enable_gar --enable_adm
+  --enable_sps --enable_gap --enable_adm
 
 # Baseline (R²-Gaussian)
 python train.py -s data/369/foot_50_3views.pickle \
@@ -121,16 +121,16 @@ python test.py -m output/<run_directory>
 
 ## SPAGS Ablation Configurations
 
-| Config | SPS | GAR | ADM | CLI flags |
+| Config | SPS | GAP | ADM | CLI flags |
 |--------|-----|-----|-----|-----------|
 | `baseline` | ✗ | ✗ | ✗ | *(none)* |
 | `sps` | ✓ | ✗ | ✗ | `--enable_sps` |
-| `gar` | ✗ | ✓ | ✗ | `--enable_gar` |
+| `gap` | ✗ | ✓ | ✗ | `--enable_gap` |
 | `adm` | ✗ | ✗ | ✓ | `--enable_adm` |
-| `sps_gar` | ✓ | ✓ | ✗ | `--enable_sps --enable_gar` |
+| `sps_gap` | ✓ | ✓ | ✗ | `--enable_sps --enable_gap` |
 | `sps_adm` | ✓ | ✗ | ✓ | `--enable_sps --enable_adm` |
-| `gar_adm` | ✗ | ✓ | ✓ | `--enable_gar --enable_adm` |
-| `spags` | ✓ | ✓ | ✓ | `--enable_sps --enable_gar --enable_adm` |
+| `gap_adm` | ✗ | ✓ | ✓ | `--enable_gap --enable_adm` |
+| `spags` | ✓ | ✓ | ✓ | `--enable_sps --enable_gap --enable_adm` |
 
 ---
 

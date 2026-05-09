@@ -18,16 +18,16 @@ OUT = ROOT / "output"
 # 核心变化: 启用自适应阈值 + 渐进衰减
 OPTIMIZED_ARGS = [
     "--enable_fsgs_proximity",
-    "--gar_proximity_threshold", "0.05",
-    "--gar_proximity_k", "5",
-    "--gar_adaptive_threshold",           # 🆕 启用自适应阈值！
-    "--gar_adaptive_method", "percentile",
-    "--gar_adaptive_percentile", "85",     # 只密化最稀疏 15%
-    "--gar_progressive_decay",             # 🆕 启用渐进衰减！
-    "--gar_decay_start_ratio", "0.7",
-    "--gar_final_strength", "0.5",
-    "--gar_new_per_source", "1",
-    "--gar_max_candidates", "2000",
+    "--gap_proximity_threshold", "0.05",
+    "--gap_proximity_k", "5",
+    "--gap_adaptive_threshold",           # 🆕 启用自适应阈值！
+    "--gap_adaptive_method", "percentile",
+    "--gap_adaptive_percentile", "85",     # 只密化最稀疏 15%
+    "--gap_progressive_decay",             # 🆕 启用渐进衰减！
+    "--gap_decay_start_ratio", "0.7",
+    "--gap_final_strength", "0.5",
+    "--gap_new_per_source", "1",
+    "--gap_max_candidates", "2000",
     "--enable_kplanes",
     "--adm_resolution", "64",
     "--adm_feature_dim", "32",

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 PPrune (邻近剪枝) 实验
-替代GAR，在SPS+ADM基础上添加邻近剪枝
+替代GAP，在SPS+ADM基础上添加邻近剪枝
 
 设计：
   baseline: SPS+ADM（已有数据）
@@ -104,7 +104,7 @@ def run_one(exp, organ, gpu):
            "--iterations", str(ITERS),
            "--test_iterations"] + [str(t) for t in TITERS] + \
            ["--save_iterations", "30000", "--ply_path", ply_path,
-            "--no_enable_gar"] + ADM_ARGS + pprune_cfg["args"]
+            "--no_enable_gap"] + ADM_ARGS + pprune_cfg["args"]
 
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)

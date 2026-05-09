@@ -52,7 +52,7 @@ class ProximityGuidedDensifier:
         proximity_threshold: float = 0.05,
         chunk_size: int = 5000,
         enable: bool = True,
-        # 🆕 GAR 优化参数
+        # 🆕 GAP 优化参数
         adaptive_threshold: bool = False,
         adaptive_method: str = "percentile",
         adaptive_percentile: float = 90.0,
@@ -97,7 +97,7 @@ class ProximityGuidedDensifier:
         self.chunk_size = chunk_size
         self.enable = enable
 
-        # 🆕 GAR 优化参数
+        # 🆕 GAP 优化参数
         self.adaptive_threshold = adaptive_threshold
         self.adaptive_method = adaptive_method
         self.adaptive_percentile = adaptive_percentile
@@ -428,8 +428,8 @@ class ProximityGuidedDensifier:
 
         Args:
             iteration: 当前迭代次数
-            start_iter: GAR 开始迭代
-            until_iter: GAR 结束迭代
+            start_iter: GAP 开始迭代
+            until_iter: GAP 结束迭代
             decay_start_ratio: 衰减开始的进度比例（默认 0.5）
             final_strength: 最终强度（默认 0.3，阈值提高 ~3.3 倍）
 
@@ -700,13 +700,13 @@ class ProximityGuidedDensifier:
         until_iter: int,
     ) -> Dict[str, float]:
         """
-        获取 GAR 诊断信息，用于训练日志输出
+        获取 GAP 诊断信息，用于训练日志输出
 
         Args:
             proximity_scores: (N,) 邻近分数张量
             iteration: 当前迭代次数
-            start_iter: GAR 开始迭代
-            until_iter: GAR 结束迭代
+            start_iter: GAP 开始迭代
+            until_iter: GAP 结束迭代
 
         Returns:
             diagnostics: 诊断信息字典
@@ -754,10 +754,10 @@ class ProximityGuidedDensifier:
 class GAPPruner:
     """
     GAP: Geometry-aware Pruning (几何感知剪枝)
-    邻近剪枝：移除靠得太近的高斯（冗余），替代GAR的密化策略。
+    邻近剪枝：移除靠得太近的高斯（冗余），替代GAP的密化策略。
 
     核心思想：
-        GAR (邻近密化) 在CT上效果差，因为CT场景不需要填补空洞；
+        GAP (邻近密化) 在CT上效果差，因为CT场景不需要填补空洞；
         反而"点堆叠"（太多高斯聚在同一区域）是更严重的问题。
         本模块查找靠得太近的高斯 → 移除冗余点 → 释放名额给更有需要的区域。
 

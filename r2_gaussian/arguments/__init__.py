@@ -16,7 +16,7 @@ SPAGS: Spatial-aware Progressive Adaptive Gaussian Splatting
 
 三阶段渐进式优化框架：
   - [SPS]  Stage 1: Spatial Prior Seeding - 空间先验播种（密度加权初始化）
-  - [GAR]  Stage 2: Geometry-aware Refinement - 几何感知细化（邻近密化）
+  - [GAP]  Stage 2: Geometry-aware Pruning - 几何感知细化（邻近密化）
   - [ADM]  Stage 3: Adaptive Density Modulation - 自适应密度调制（K-Planes）
 
 --------------------------------------------------------------------------------
@@ -24,29 +24,29 @@ SPAGS 消融实验配置：
 --------------------------------------------------------------------------------
 
 1. Baseline（不加任何技术）：
-   --enable_sps false --enable_gar false --enable_adm false
+   --enable_sps false --enable_gap false --enable_adm false
 
 2. 仅 SPS（空间先验播种）：
-   --enable_sps true --enable_gar false --enable_adm false
+   --enable_sps true --enable_gap false --enable_adm false
    # 需预生成点云: python initialize_pcd.py -s <data_path> --enable_sps
 
-3. 仅 GAR（几何感知细化）：
-   --enable_sps false --enable_gar true --enable_adm false
+3. 仅 GAP（几何感知细化）：
+   --enable_sps false --enable_gap true --enable_adm false
 
 4. 仅 ADM（自适应密度调制）：
-   --enable_sps false --enable_gar false --enable_adm true
+   --enable_sps false --enable_gap false --enable_adm true
 
-5. SPS + GAR：
-   --enable_sps true --enable_gar true --enable_adm false
+5. SPS + GAP：
+   --enable_sps true --enable_gap true --enable_adm false
 
 6. SPS + ADM：
-   --enable_sps true --enable_gar false --enable_adm true
+   --enable_sps true --enable_gap false --enable_adm true
 
-7. GAR + ADM：
-   --enable_sps false --enable_gar true --enable_adm true
+7. GAP + ADM：
+   --enable_sps false --enable_gap true --enable_adm true
 
 8. Full SPAGS（全部启用）：
-   --enable_sps true --enable_gar true --enable_adm true
+   --enable_sps true --enable_gap true --enable_adm true
 
 ================================================================================
 """
@@ -74,54 +74,54 @@ class ModelParams(ParamGroup):
         self.eval = True  # [BASELINE] 是否启用评估
 
         # ════════════════════════════════════════════════════════════════════
-        # [GAR] Geometry-aware Refinement - 邻近感知密化参数
+        # [GAP] Geometry-aware Pruning - 邻近感知密化参数
         # Stage 2: 几何感知细化（Proximity-guided Densification）
-        # 主开关: enable_gar (或兼容旧名 enable_gar_proximity / enable_fsgs_proximity)
+        # 主开关: enable_gap (或兼容旧名 enable_gap_proximity / enable_fsgs_proximity)
         # ════════════════════════════════════════════════════════════════════
-        self.enable_gar = False  # [GAR] 主开关：启用几何感知细化（邻近密化）
-        self.enable_gar_proximity = False  # [兼容] 旧名，映射到 enable_gar
-        self.gar_proximity_threshold = 0.05  # [GAR] proximity score 阈值（场景归一化到[-1,1]³，典型分数范围0.01-0.5）
-        self.gar_proximity_k = 5  # [GAR] 邻居数量
+        self.enable_gap = False  # [GAP] 主开关：启用几何感知细化（邻近密化）
+        self.enable_gap_proximity = False  # [兼容] 旧名，映射到 enable_gap
+        self.gap_proximity_threshold = 0.05  # [GAP] proximity score 阈值（场景归一化到[-1,1]³，典型分数范围0.01-0.5）
+        self.gap_proximity_k = 5  # [GAP] 邻居数量
         # 向下兼容旧参数名
-        self.enable_fsgs_proximity = False  # [兼容] 旧名，映射到 enable_gar_proximity
+        self.enable_fsgs_proximity = False  # [兼容] 旧名，映射到 enable_gap_proximity
         self.proximity_threshold = 0.05  # [兼容] 旧名（注意：场景归一化后邻近分数范围约0.01-0.5）
         self.proximity_k_neighbors = 5  # [兼容] 旧名
         # 邻近密化时间参数
-        self.proximity_start_iter = 1000  # [GAR] 邻近密化开始迭代
-        self.proximity_interval = 500  # [GAR] 邻近密化间隔
-        self.proximity_until_iter = 15000  # [GAR] 邻近密化结束迭代
+        self.proximity_start_iter = 1000  # [GAP] 邻近密化开始迭代
+        self.proximity_interval = 500  # [GAP] 邻近密化间隔
+        self.proximity_until_iter = 15000  # [GAP] 邻近密化结束迭代
 
-        # 🆕 GAR 优化参数（可选）
+        # 🆕 GAP 优化参数（可选）
         # 默认尽量对齐 FSGS：使用固定阈值触发，点云变密后会自然减弱/停止密化。
         # 如果固定阈值在 3-views 场景触发过多，可手动启用自适应阈值做保护。
-        self.gar_adaptive_threshold = False  # [GAR] 启用自适应阈值（基于邻近分数分布）
+        self.gap_adaptive_threshold = False  # [GAP] 启用自适应阈值（基于邻近分数分布）
         # 🆕 自动阈值：在固定阈值“过松/过严”时自动切到自适应阈值（更鲁棒，尤其跨器官/视角数）
-        # - gar_adaptive_threshold=True 时将始终使用自适应阈值；此开关仅对 gar_adaptive_threshold=False 生效
-        self.gar_auto_threshold = True  # [GAR] 自动阈值保护
-        self.gar_auto_min_ratio = 0.01  # [GAR] 固定阈值下候选比例 < min → 自动启用自适应阈值
-        self.gar_auto_max_ratio = 0.30  # [GAR] 固定阈值下候选比例 > max → 自动启用自适应阈值
-        self.gar_adaptive_method = "percentile"  # [GAR] 自适应方法: percentile/std/iqr
-        self.gar_adaptive_percentile = 90.0  # [GAR] percentile 百分位（90=只密化最稀疏10%，理想范围5-15%）
-        self.gar_progressive_decay = False  # [GAR] 启用渐进衰减（训练后期减少密化）
-        self.gar_decay_start_ratio = 0.7  # [GAR] 衰减开始进度（0.7=70%进度后开始）
-        self.gar_final_strength = 0.5  # [GAR] 最终强度（0.5=阈值提高2倍）
-        self.gar_gradient_filter = False  # [GAR] 启用梯度过滤（只密化高梯度点）
-        self.gar_gradient_threshold = 0.0002  # [GAR] 梯度过滤阈值
-        self.gar_max_candidates = 5000  # [GAR] 每次密化最大候选点数（避免 OOM）
-        self.gar_candidate_ratio_cap = 0.15  # [GAR] 每次最多密化点数占比上限（0 表示不限制）
+        # - gap_adaptive_threshold=True 时将始终使用自适应阈值；此开关仅对 gap_adaptive_threshold=False 生效
+        self.gap_auto_threshold = True  # [GAP] 自动阈值保护
+        self.gap_auto_min_ratio = 0.01  # [GAP] 固定阈值下候选比例 < min → 自动启用自适应阈值
+        self.gap_auto_max_ratio = 0.30  # [GAP] 固定阈值下候选比例 > max → 自动启用自适应阈值
+        self.gap_adaptive_method = "percentile"  # [GAP] 自适应方法: percentile/std/iqr
+        self.gap_adaptive_percentile = 90.0  # [GAP] percentile 百分位（90=只密化最稀疏10%，理想范围5-15%）
+        self.gap_progressive_decay = False  # [GAP] 启用渐进衰减（训练后期减少密化）
+        self.gap_decay_start_ratio = 0.7  # [GAP] 衰减开始进度（0.7=70%进度后开始）
+        self.gap_final_strength = 0.5  # [GAP] 最终强度（0.5=阈值提高2倍）
+        self.gap_gradient_filter = False  # [GAP] 启用梯度过滤（只密化高梯度点）
+        self.gap_gradient_threshold = 0.0002  # [GAP] 梯度过滤阈值
+        self.gap_max_candidates = 5000  # [GAP] 每次密化最大候选点数（避免 OOM）
+        self.gap_candidate_ratio_cap = 0.15  # [GAP] 每次最多密化点数占比上限（0 表示不限制）
         # FSGS 原始策略是沿 KNN 的多条边生成新点；这里提供可控上限
         # - 1: 只沿最近邻生成 1 个新点（更保守，默认）
         # - <=0: 使用全部 K 个邻居（更贴近 FSGS，但更激进）
-        self.gar_new_per_source = 1  # [GAR] 每个候选点最多生成的新点数
+        self.gap_new_per_source = 1  # [GAP] 每个候选点最多生成的新点数
         # 🆕 稳定性选项（CT 更推荐开启）
-        self.gar_view_adaptive = True  # [GAR] 🆕 按训练视角数自适应密化强度（views 越多越保守）
-        self.gar_mass_preserve = True  # [GAR] 🆕 密化时对 source density 做质量守恒分配（降低噪声/过拟合）
-        self.gar_scale_shrink = True  # [GAR] 🆕 新点尺度收缩（类似 densify_and_split，更利于细节建模）
-        self.gar_scale_shrink_factor = 0.8  # [GAR] 🆕 尺度收缩系数（与 3DGS split 的 0.8 对齐）
+        self.gap_view_adaptive = True  # [GAP] 🆕 按训练视角数自适应密化强度（views 越多越保守）
+        self.gap_mass_preserve = True  # [GAP] 🆕 密化时对 source density 做质量守恒分配（降低噪声/过拟合）
+        self.gap_scale_shrink = True  # [GAP] 🆕 新点尺度收缩（类似 densify_and_split，更利于细节建模）
+        self.gap_scale_shrink_factor = 0.8  # [GAP] 🆕 尺度收缩系数（与 3DGS split 的 0.8 对齐）
 
         # ════════════════════════════════════════════════════════════════════
         # [GAP] Geometry-aware Pruning - 几何感知剪枝
-        # 替代GAR：移除靠得太近的冗余高斯，CT场景比密化更有效
+        # 替代GAP：移除靠得太近的冗余高斯，CT场景比密化更有效
         # 主开关: enable_gap
         # ════════════════════════════════════════════════════════════════════
         self.enable_gap = False  # [GAP] 主开关：启用几何感知剪枝
@@ -176,15 +176,17 @@ class ModelParams(ParamGroup):
         #       compatibility. Here we sync them so downstream code can safely
         #       read either one.
 
-        # GAR enable flags: any alias enables GAR
-        enable_gar = bool(
-            getattr(g, "enable_gar", False)
-            or getattr(g, "enable_gar_proximity", False)
+        # GAP enable flags: any alias enables GAP
+        enable_gap = bool(
+            getattr(g, "enable_gap", False)
+            or getattr(g, "enable_gar", False)        # backward compat
+            or getattr(g, "enable_gap_proximity", False)
             or getattr(g, "enable_fsgs_proximity", False)
         )
-        g.enable_gar = enable_gar
-        g.enable_gar_proximity = enable_gar
-        g.enable_fsgs_proximity = enable_gar
+        g.enable_gap = enable_gap
+        g.enable_gar = enable_gap                     # backward compat
+        g.enable_gap_proximity = enable_gap
+        g.enable_fsgs_proximity = enable_gap
 
         # ADM enable flags: any alias enables ADM
         enable_adm = bool(
@@ -223,9 +225,9 @@ class ModelParams(ParamGroup):
             setattr(g, new_name, new_val)
             setattr(g, old_name, old_val)
 
-        # GAR scalar aliases
-        _sync_scalar_alias("gar_proximity_threshold", "proximity_threshold")
-        _sync_scalar_alias("gar_proximity_k", "proximity_k_neighbors")
+        # GAP scalar aliases
+        _sync_scalar_alias("gap_proximity_threshold", "proximity_threshold")
+        _sync_scalar_alias("gap_proximity_k", "proximity_k_neighbors")
 
         # ADM scalar aliases (ModelParams part)
         _sync_scalar_alias("adm_resolution", "kplanes_resolution")
@@ -277,11 +279,11 @@ class OptimizationParams(ParamGroup):
         self.opacity_lr = 0.05  # [BASELINE] 不透明度学习率
 
         # ════════════════════════════════════════════════════════════════════
-        # [GAR] Geometry-aware Refinement - 辅助参数
-        # 注意: GAR 主开关 enable_gar 在 ModelParams 中定义
+        # [GAP] Geometry-aware Pruning - 辅助参数
+        # 注意: GAP 主开关 enable_gap 在 ModelParams 中定义
         # ════════════════════════════════════════════════════════════════════
-        self.enable_opacity_decay = False  # [GAR] 不透明度衰减（CT 场景关闭）
-        self.opacity_decay_factor = 0.995  # [GAR] 衰减系数
+        self.enable_opacity_decay = False  # [GAP] 不透明度衰减（CT 场景关闭）
+        self.opacity_decay_factor = 0.995  # [GAP] 衰减系数
 
         # ════════════════════════════════════════════════════════════════════
         # [ADM] Adaptive Density Modulation - K-Planes 优化参数

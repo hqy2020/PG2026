@@ -39,7 +39,7 @@ def draw_fig1():
     big_box(ax, 3.0, 3.3, 10.5, 2.0, 'SPAGS Pipeline', '#666')
     y_s = 4.5
     round_box(ax, 3.3, y_s, 3.0, 0.4, 'Stage 1: SPS (Spatial Prior Seeding)', '#dae8fc', '#6c8ebf', 9)
-    round_box(ax, 6.5, y_s, 3.0, 0.4, 'Stage 2: GAR (Geometry-aware Refinement)', '#d5e8d4', '#82b366', 9)
+    round_box(ax, 6.5, y_s, 3.0, 0.4, 'Stage 2: GAP (Geometry-aware Pruning)', '#d5e8d4', '#82b366', 9)
     round_box(ax, 9.7, y_s, 3.0, 0.4, 'Stage 3: ADM (Adaptive Density Modulation)', '#fff2cc', '#d6b656', 9)
     round_box(ax, 3.3, 3.5, 3.0, 0.9, 'FDK → Density-weighted\nsampling → 50K Gaussians\n\u03b3=1.0, \u03b1=0.2, raw init',
               '#dae8fc', '#6c8ebf', 8)
@@ -85,7 +85,7 @@ def draw_fig2():
     arrow(ax, 2.0, 5.35, 2.3, 5.35); arrow(ax, 3.8, 5.35, 4.1, 5.35)
     arrow(ax, 5.9, 5.35, 6.2, 5.35); arrow(ax, 7.7, 5.35, 8.0, 5.35)
     ax.text(0.5, 4.5, 'p(x) \u221d V_FDK(x)^\u03b3,  X = X_uniform \u222a X_weighted', ha='left', fontsize=8, style='italic', color='#6c8ebf')
-    round_box(ax, 0.5, 3.8, 4.5, 0.4, 'Stage 2: GAR \u2014 Geometry-aware Refinement [Iters 2K-20K, every 500 iter]', '#d5e8d4', '#82b366', 9)
+    round_box(ax, 0.5, 3.8, 4.5, 0.4, 'Stage 2: GAP \u2014 Geometry-aware Pruning [Iters 2K-20K, every 500 iter]', '#d5e8d4', '#82b366', 9)
     round_box(ax, 0.5, 2.8, 1.3, 0.7, 'Current\nGaussians', 'white', '#999', 8)
     round_box(ax, 2.0, 2.8, 1.8, 0.7, 'KNN Proximity\nK=5, s(p)=mean(d)', '#d5e8d4', '#82b366', 8)
     round_box(ax, 4.0, 2.8, 1.5, 0.7, 's(p) < 0.015?\n\u2192 Candidate', '#d5e8d4', '#82b366', 8)
@@ -140,7 +140,7 @@ def draw_fig3():
 # FIGURE 4
 def draw_fig4():
     fig, ax = setup_fig(12, 4.5)
-    ax.text(6, 4.3, 'GAR: Geometry-aware Refinement', ha='center', fontsize=14, fontweight='bold')
+    ax.text(6, 4.3, 'GAP: Geometry-aware Pruning', ha='center', fontsize=14, fontweight='bold')
     round_box(ax, 0.3, 3.0, 1.8, 0.7, 'All Gaussians\nat iteration t\n(n \u2248 80-120K)', '#f0f0f0', '#999', 8)
     round_box(ax, 2.4, 2.8, 2.0, 0.8, 'For each Gaussian:\ns(p\u1d62) = \u00b9/\u2096 \u03a3||p\u1d62-p\u2c7c||\u2082\nK = 5 nearest neighbors', '#d5e8d4', '#82b366', 7)
     round_box(ax, 4.7, 2.8, 1.5, 0.8, 's(p\u1d62) < 0.015?\n\u2192 Candidate', '#d5e8d4', '#82b366', 8)
@@ -158,7 +158,7 @@ def draw_fig4():
     ax.text(5.5, 1.0, '\u03b2 (max prune ratio) = 2%', fontsize=9)
     ax.text(5.5, 0.6, '\u03b4 (gradient threshold) = 0.0002', fontsize=9)
     fig.tight_layout()
-    fig.savefig(f'{FIGS_DIR}/fig_gar.pdf', bbox_inches='tight', dpi=150)
+    fig.savefig(f'{FIGS_DIR}/fig_gap.pdf', bbox_inches='tight', dpi=150)
     plt.close(fig)
     print("OK fig4")
 

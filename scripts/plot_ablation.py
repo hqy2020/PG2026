@@ -17,11 +17,11 @@ os.makedirs(FIGURE_DIR, exist_ok=True)
 data = {
     "R²-Gaussian (baseline)": {"Chest": 26.08, "Head": 26.53, "Abdomen": 29.20, "Foot": 28.57, "Pancreas": 28.60},
     "+SPS":                   {"Chest": 26.65, "Head": 26.39, "Abdomen": 29.45, "Foot": 28.48, "Pancreas": 29.07},
-    "+GAR":                   {"Chest": 25.95, "Head": 26.72, "Abdomen": 29.23, "Foot": 28.60, "Pancreas": 28.83},
+    "+GAP":                   {"Chest": 25.95, "Head": 26.72, "Abdomen": 29.23, "Foot": 28.60, "Pancreas": 28.83},
     "+ADM":                   {"Chest": 26.12, "Head": 26.58, "Abdomen": 29.33, "Foot": 28.70, "Pancreas": 28.84},
-    "SPS+GAR":                {"Chest": 26.57, "Head": 26.54, "Abdomen": 29.47, "Foot": 28.18, "Pancreas": 29.20},
+    "SPS+GAP":                {"Chest": 26.57, "Head": 26.54, "Abdomen": 29.47, "Foot": 28.18, "Pancreas": 29.20},
     "SPS+ADM":                {"Chest": 26.71, "Head": 26.59, "Abdomen": 29.62, "Foot": 28.35, "Pancreas": 29.20},
-    "GAR+ADM":                {"Chest": 25.99, "Head": 26.78, "Abdomen": 29.34, "Foot": 28.63, "Pancreas": 29.14},
+    "GAP+ADM":                {"Chest": 25.99, "Head": 26.78, "Abdomen": 29.34, "Foot": 28.63, "Pancreas": 29.14},
     "SPAGS (full)":           {"Chest": 26.63, "Head": 26.55, "Abdomen": 29.55, "Foot": 28.34, "Pancreas": 29.24},
 }
 
@@ -30,34 +30,34 @@ organs = ["Chest", "Head", "Abdomen", "Foot", "Pancreas"]
 
 # 每个 config 含哪些组件 (用于着色)
 components = {
-    "R²-Gaussian (baseline)": (0, 0, 0),  # SPS, GAR, ADM
+    "R²-Gaussian (baseline)": (0, 0, 0),  # SPS, GAP, ADM
     "+SPS":         (1, 0, 0),
-    "+GAR":         (0, 1, 0),
+    "+GAP":         (0, 1, 0),
     "+ADM":         (0, 0, 1),
-    "SPS+GAR":      (1, 1, 0),
+    "SPS+GAP":      (1, 1, 0),
     "SPS+ADM":      (1, 0, 1),
-    "GAR+ADM":      (0, 1, 1),
+    "GAP+ADM":      (0, 1, 1),
     "SPAGS (full)": (1, 1, 1),
 }
 
 # ── 颜色方案 ──
-# SPS_init=红/橙, GAR=蓝/青, ADM=绿
+# SPS_init=红/橙, GAP=蓝/青, ADM=绿
 base_color = np.array([0.55, 0.55, 0.55])  # baseline 灰色
 sps_color = np.array([0.90, 0.30, 0.20])    # 红橙
-gar_color = np.array([0.20, 0.50, 0.85])    # 蓝
+gap_color = np.array([0.20, 0.50, 0.85])    # 蓝
 adm_color = np.array([0.20, 0.70, 0.30])    # 绿
 
-def blend_color(has_sps, has_gar, has_adm):
+def blend_color(has_sps, has_gap, has_adm):
     """混合颜色表示组件组合"""
-    if not (has_sps or has_gar or has_adm):
+    if not (has_sps or has_gap or has_adm):
         return base_color
     colors = []
     weights = []
     if has_sps:
         colors.append(sps_color)
         weights.append(1.0)
-    if has_gar:
-        colors.append(gar_color)
+    if has_gap:
+        colors.append(gap_color)
         weights.append(0.7)
     if has_adm:
         colors.append(adm_color)
@@ -136,7 +136,7 @@ ax_avg.grid(axis='y', alpha=0.3, linestyle='--')
 # ── 图例 (组件指示) ──
 legend_patches = [
     mpatches.Patch(color=sps_color, label='SPS init'),
-    mpatches.Patch(color=gar_color, label='GAR'),
+    mpatches.Patch(color=gap_color, label='GAP'),
     mpatches.Patch(color=adm_color, label='ADM'),
     mpatches.Patch(color=base_color, label='(none)'),
 ]
@@ -162,20 +162,20 @@ fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5), facecolor='white')
 effects = {
     'SPS init': 0.0755,
     'ADM': 0.0480,
-    'SPS×GAR': -0.0225,
-    'GAR': 0.0105,
+    'SPS×GAP': -0.0225,
+    'GAP': 0.0105,
     'SPS×ADM': -0.0090,
-    'GAR×ADM': -0.0030,
-    'SPS×GAR×ADM': -0.0010,
+    'GAP×ADM': -0.0030,
+    'SPS×GAP×ADM': -0.0010,
 }
 contribs = {
     'SPS init': 65.43,
     'ADM': 26.45,
-    'SPS×GAR': 5.81,
-    'GAR': 1.27,
+    'SPS×GAP': 5.81,
+    'GAP': 1.27,
     'SPS×ADM': 0.93,
-    'GAR×ADM': 0.10,
-    'SPS×GAR×ADM': 0.01,
+    'GAP×ADM': 0.10,
+    'SPS×GAP×ADM': 0.01,
 }
 
 # 按效应绝对值排序

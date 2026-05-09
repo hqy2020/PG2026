@@ -74,7 +74,7 @@ def run_one(cfg, organ, gpu):
            "--iterations", str(ITERS),
            "--test_iterations"] + [str(t) for t in TITERS] + \
            ["--save_iterations", "30000", "--ply_path", ply_path,
-            "--no_enable_gar"] + ADM_ARGS + cfg["args"]
+            "--no_enable_gap"] + ADM_ARGS + cfg["args"]
 
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu)
