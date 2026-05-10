@@ -82,8 +82,19 @@ def imshow_off(ax, img, vmin=0, vmax=1):
 # ================================================================
 # 1. fig_ablation_visual — 3-col: Baseline / +GAP / Full + residuals
 # ================================================================
+def _load_render(organ, cfg_key, view):
+    """Load a single render. Returns (pred_img_or_None, gt_img_or_None)."""
+    if cfg_key in ("spags", "r2_gaussian"):
+        pred = _find_render(organ, cfg_key, view)
+    else:
+        pred = _find_render_by_dir(organ, cfg_key, view,
+                                   skip_prefixes=['opt_', 'pprune', 'retry',
+                                                  'adaptive', 'spsv', 'gap_th'])
+    gt = _find_gt(organ, view)
+    return pred, gt
+
 def make_ablation():
-    print("=== fig_ablation_visual (R4) ===")
+    print("=== fig_ablation_visual (R5) ===")
 
     CONFIGS = [
         ("r2_gaussian", "Baseline"),
@@ -91,50 +102,69 @@ def make_ablation():
         ("spags", "Full"),
     ]
 
-    # Two challenging cases from different organs
+    # Two challenging cases — both chest (only gar_only has renders for chest)
+    # view=10: coronal view showing rib cage
+    # view=35: different perspective, challenging for consistency
     CASES = [
-        ("chest", 10, "Chest\nRib Border"),
-        ("head", 25, "Head\nSkull Detail"),
+        ("chest", 10, "Case A\nRib Border"),
+        ("chest", 35, "Case B\nLung Apex"),
     ]
 
-    # ROI for each case in the full image
     ROIS = {
-        "chest": (60, 170, 180, 270),   # rib border tight crop
-        "head":  (30, 70, 150, 180),    # skull bone boundary
+        10: (60, 170, 180, 280),   # rib border — high gradient bone boundary
+        35: (45, 40, 175, 140),    # upper lung apex — fine vascular structures
     }
 
     n_rows = len(CASES)
     n_cols = len(CONFIGS)
 
+    # ========== Pre-flight: verify ALL renders exist ==========
+    print("  Pre-flight check: verifying all ablation renders...")
+    for ci, (organ, view, cname) in enumerate(CASES):
+        for col, (cfg_key, cfg_name) in enumerate(CONFIGS):
+            pred, gt = _load_render(organ, cfg_key, view)
+            if pred is None:
+                raise ValueError(
+                    f"FAIL-FAST: {cname} / {cfg_name} pred not found "
+                    f"(organ={organ}, view={view}, cfg={cfg_key})")
+            if gt is None:
+                raise ValueError(
+                    f"FAIL-FAST: {cname} GT not found (organ={organ}, view={view})")
+            # Verify crop is non-empty
+            rx0, ry0, rx1, ry1 = ROIS[view]
+            crop = pred[ry0:ry1, rx0:rx1]
+            if crop.size == 0:
+                raise ValueError(
+                    f"FAIL-FAST: {cname} / {cfg_name} crop is empty "
+                    f"(ROI=({rx0},{ry0},{rx1},{ry1}), img_size={pred.shape})")
+            # Verify crop is not all-white / NaN
+            if np.all(crop > 0.999) or np.isnan(crop).all():
+                raise ValueError(
+                    f"FAIL-FAST: {cname} / {cfg_name} crop is all-white/NaN")
+        print(f"   ✅ {cname}: all {n_cols} cells OK")
+    print("  ✓ All renders verified — generating figure")
+
+    # ========== Build figure ==========
     fig = plt.figure(figsize=(7.1, 3.5))
-    # 2 rows per case: main + residual
     gs = gridspec.GridSpec(n_rows * 2, n_cols + 1,
                            figure=fig,
                            width_ratios=[0.04] + [1]*n_cols,
                            wspace=0.04, hspace=0.15)
 
     for ci, (organ, view, cname) in enumerate(CASES):
-        rx0, ry0, rx1, ry1 = ROIS[organ]
-        gt_crop = None
+        rx0, ry0, rx1, ry1 = ROIS[view]
+
+        # Pre-load GT crop once for this case
+        _, gt = _load_render(organ, CONFIGS[0][0], view)
+        gt_crop = gt[ry0:ry1, rx0:rx1] if gt is not None else None
 
         for col, (cfg_key, cfg_name) in enumerate(CONFIGS):
+            pred, _ = _load_render(organ, cfg_key, view)
+            crop = pred[ry0:ry1, rx0:rx1]
+
             # === Main crop row ===
             ax = fig.add_subplot(gs[ci * 2, col + 1])
-
-            # Load render for this config
-            if cfg_key in ("spags", "r2_gaussian"):
-                pred = _find_render(organ, cfg_key, view)
-            else:
-                pred = _find_render_by_dir(organ, cfg_key, view, skip_prefixes=['opt_', 'pprune', 'retry', 'adaptive', 'spsv', 'gap_th'])
-
-            if pred is not None:
-                crop = pred[ry0:ry1, rx0:rx1]
-                ax.imshow(crop, cmap="gray", vmin=0, vmax=1, aspect="auto")
-
-                # Also load GT for residual
-                gt = _find_gt(organ, view)
-                if gt is not None and gt_crop is None:
-                    gt_crop = gt[ry0:ry1, rx0:rx1]
+            ax.imshow(crop, cmap="gray", vmin=0, vmax=1, aspect="auto")
             ax.axis("off")
 
             if ci == 0:
@@ -149,14 +179,10 @@ def make_ablation():
 
             # === Residual row ===
             ax_res = fig.add_subplot(gs[ci * 2 + 1, col + 1])
-            if pred is not None and gt is not None:
-                gt = _find_gt(organ, view)
-                if gt is not None:
-                    gt_crop = gt[ry0:ry1, rx0:rx1]
-                    residual = np.abs(crop - gt_crop)
-                    # Normalize residual for visibility
-                    res_vmax = max(residual.max(), 0.05)
-                    ax_res.imshow(residual, cmap="hot", vmin=0, vmax=res_vmax, aspect="auto")
+            if gt_crop is not None:
+                residual = np.abs(crop - gt_crop)
+                res_vmax = max(residual.max(), 0.05)
+                ax_res.imshow(residual, cmap="hot", vmin=0, vmax=res_vmax, aspect="auto")
             ax_res.axis("off")
 
             if col == 0 and ci == 0:
