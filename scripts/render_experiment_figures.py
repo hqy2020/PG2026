@@ -24,6 +24,7 @@ BEST_VIEWS = {"chest": 10, "head": 25, "pancreas": 35}
 
 # Method order and display names
 METHODS = [
+    ("xgaussian", "X-Gaussian"),
     ("dngaussian", "DN-Gaussian"),
     ("corgs", "CoR-GS"),
     ("fsgs", "FSGS"),
@@ -32,11 +33,12 @@ METHODS = [
 ]
 
 METHOD_COLORS = {
+    "X-Gaussian": "#c0c0c0",
     "DN-Gaussian": "#8f8f8f",
     "CoR-GS": "#a0a0a0",
     "FSGS": "#b0b0b0",
-    "X-Gaussian": "#c0c0c0",
     "R²-Gaussian": "#4a7bb5",
+    "R²-G": "#4a7bb5",
     "SPAGS (Ours)": "#c44e52",
     "SPAGS": "#c44e52",
 }
@@ -50,7 +52,7 @@ def find_best_dir(organ, method_key):
         "fsgs": lambda d: "fsgs" in d and "opt_" not in d,
         "corgs": lambda d: "corgs" in d and "opt_" not in d,
         "dngaussian": lambda d: "dngaussian" in d and "opt_" not in d,
-        "xgaussian": lambda d: "xgaussian" in d and "opt_" not in d,
+        "xgaussian": lambda d: "xgaussian" in d and "opt_" not in d and "retry" not in d and "adaptive" not in d,
     }
     
     all_dirs = sorted(glob.glob(f"{BASE}/output/*{organ}*3v*"))
