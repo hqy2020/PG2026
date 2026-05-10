@@ -251,7 +251,7 @@ def make_consistency():
 # 3. fig_efficiency_tradeoff — fine-tune labels, shrink legend
 # ================================================================
 def make_efficiency():
-    print("=== fig_efficiency_tradeoff (R4) ===")
+    print("=== fig_efficiency_tradeoff (R5) ===")
 
     data = [
         ("DN-Gaussian", 20.70, 85, 120000),
@@ -267,44 +267,120 @@ def make_efficiency():
     fig, ax = plt.subplots(figsize=(3.4, 2.8))
 
     for (method, psnr, fps, n_gauss), color in zip(data, colors):
-        alpha = 0.9 if method == "SPAGS" else 0.45
+        alpha = 0.9 if method == "SPAGS" else 0.40
         size = (n_gauss / 1000) * 15
         ax.scatter(fps, psnr, s=size, c=color, alpha=alpha,
                   edgecolors="white" if method == "SPAGS" else "none",
-                  linewidths=0.5, zorder=5)
+                  linewidths=0.8 if method == "SPAGS" else 0.3, zorder=5)
 
-        # Manual label offsets — pushed further out to avoid overlap
+        # Method name outside point with short leader line
         offsets = {
-            "SPAGS": (-12, 5),          # left-down from default
-            "R²-Gaussian": (10, -6),    # right-down
-            "X-Gaussian": (12, 4),      # right-up
-            "DN-Gaussian": (-14, 4),    # left-up
-            "FSGS": (10, -6),           # right-down
-            "CoR-GS": (-12, 5),         # left-up
+            "SPAGS": (-18, 10),         # upper-left, outside chart area
+            "R²-Gaussian": (12, -10),   # right-down
+            "X-Gaussian": (14, 6),      # right-up
+            "DN-Gaussian": (-18, 8),    # left-up
+            "FSGS": (14, -8),           # right-down
+            "CoR-GS": (-16, 8),         # left-up
         }
         off = offsets.get(method, (0, 0))
         ax.annotate(method, (fps, psnr), textcoords="offset points",
-                   xytext=off, fontsize=5.5, ha="center",
-                   arrowprops=dict(arrowstyle="-", color="gray", lw=0.3)
+                   xytext=off, fontsize=5.5, ha="center", fontweight="bold" if method == "SPAGS" else "normal",
+                   arrowprops=dict(arrowstyle="-", color=color, lw=0.5)
                    if off != (0, 0) else None)
 
     ax.set_xlabel("Inference Speed (FPS)", fontsize=8)
     ax.set_ylabel("Avg PSNR @ 3-view (dB)", fontsize=8)
+    ax.set_xlim(60, 105)
+    ax.set_ylim(19.5, 29.5)
     ax.tick_params(labelsize=7)
-    ax.grid(True, alpha=0.3, linestyle="--")
+    ax.grid(True, alpha=0.2, linestyle="--")
 
-    # Move legend to upper right (less crowded for left side)
+    # Bubble size legend — compact, in caption
     for n_gauss, label in [(90000, "90K"), (130000, "130K")]:
         ax.scatter([], [], s=(n_gauss/1000)*15, c="#bbbbbb",
-                  alpha=0.6, edgecolors="none", label=f"{label} Gauss.")
-    ax.legend(fontsize=5, loc="upper right", framealpha=0.7,
-              handletextpad=0.3, markerscale=0.8)
+                  alpha=0.6, edgecolors="none", label=f"{label}")
+    ax.legend(fontsize=5, loc="lower right", framealpha=0.6,
+              handletextpad=0.2, markerscale=0.7, title="Gauss.",
+              title_fontsize=5)
 
-    plt.tight_layout(pad=0.3)
+    plt.tight_layout(pad=0.2)
     plt.savefig(f"{FIGS_DIR}/fig_efficiency_tradeoff.pdf", dpi=300,
                 bbox_inches="tight", pad_inches=0.02)
     plt.close()
     print("  ✅ fig_efficiency_tradeoff.pdf")
+
+
+# ================================================================
+# 4. fig_convergence — tighter layout, sparser ticks, smaller legend
+# ================================================================
+def make_convergence():
+    print("=== fig_convergence (R5) ===")
+
+    def extract_curve(base_dir):
+        iters, psnrs = [], []
+        eval_dir = f"{base_dir}/eval"
+        if os.path.isdir(eval_dir):
+            for d in sorted(os.listdir(eval_dir)):
+                if d.startswith("iter_"):
+                    try:
+                        iter_n = int(d.split("_")[1])
+                    except:
+                        try:
+                            iter_n = int(d.split("_")[-1])
+                        except:
+                            continue
+                    yml_path = f"{eval_dir}/{d}/eval2d_render_test.yml"
+                    if os.path.exists(yml_path):
+                        with open(yml_path) as f:
+                            for line in f:
+                                if line.startswith("psnr_2d:"):
+                                    psnr = float(line.split(":")[1])
+                                    iters.append(iter_n)
+                                    psnrs.append(psnr)
+                                    break
+        return iters, psnrs
+
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.5))
+
+    for ax, (title_text, xlabel) in zip(axes, [
+        ("PSNR vs Iteration", "Iteration"),
+        ("PSNR vs Time", "Time (seconds)"),
+    ]):
+        ax.set_title(title_text, fontsize=8)
+        ax.set_xlabel(xlabel, fontsize=7)
+        ax.set_ylabel("PSNR (dB)", fontsize=7)
+        ax.tick_params(labelsize=6.5)
+        ax.grid(True, alpha=0.2, linestyle="--")
+        # Right panel: sparser ticks
+        if "Time" in title_text:
+            ax.locator_params(axis='x', nbins=5)
+
+    # SPAGS
+    si, sp = extract_curve(f"{BASE}/output/2026_04_30_chest_3views_spags")
+    if si:
+        p = sorted(zip(si, sp))
+        axes[0].plot([x[0] for x in p], [x[1] for x in p], '-o',
+                    label="SPAGS", color="#c44e52", markersize=2.0, linewidth=0.8)
+        axes[1].plot([x[0]/30000*1680 for x in p], [x[1] for x in p], '-o',
+                    label="SPAGS", color="#c44e52", markersize=2.0, linewidth=0.8)
+
+    # R2
+    ri, rp = extract_curve(f"{BASE}/output/2026_04_30_chest_3views_r2_gaussian")
+    if ri:
+        p = sorted(zip(ri, rp))
+        axes[0].plot([x[0] for x in p], [x[1] for x in p], '-o',
+                    label="R²-Gaussian", color="#4a7bb5", markersize=2.0, linewidth=0.8)
+        axes[1].plot([x[0]/30000*1560 for x in p], [x[1] for x in p], '-o',
+                    label="R²-Gaussian", color="#4a7bb5", markersize=2.0, linewidth=0.8)
+
+    axes[0].legend(fontsize=5.5, handlelength=1, handletextpad=0.3)
+    axes[1].legend(fontsize=5.5, handlelength=1, handletextpad=0.3)
+
+    plt.tight_layout(pad=0.2)
+    plt.savefig(f"{FIGS_DIR}/fig_convergence.pdf", dpi=300,
+                bbox_inches="tight", pad_inches=0.02)
+    plt.close()
+    print("  ✅ fig_convergence.pdf")
 
 
 # ================================================================
@@ -318,6 +394,7 @@ if __name__ == "__main__":
     make_ablation()
     make_consistency()
     make_efficiency()
+    make_convergence()
 
     print("\n✅ All R4 figures updated!")
     for f in sorted(os.listdir(FIGS_DIR)):
