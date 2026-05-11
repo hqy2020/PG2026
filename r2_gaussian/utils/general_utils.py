@@ -32,7 +32,7 @@ def PILtoTorch(pil_image, resolution):
         return resized_image.unsqueeze(dim=-1).permute(2, 0, 1)
 
 
-def safe_state(silent):
+def safe_state(silent, seed=0):
     old_f = sys.stdout
 
     class F:
@@ -58,7 +58,7 @@ def safe_state(silent):
 
     sys.stdout = F(silent)
 
-    random.seed(0)
-    np.random.seed(0)
-    torch.manual_seed(0)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
     torch.cuda.set_device(torch.device("cuda:0"))

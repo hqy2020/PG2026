@@ -161,7 +161,7 @@ def evaluate_volume(
 
 
 def evaluate_render(save_path, name, views, gaussians, pipeline):
-    """Evaluate projection rendering."""
+    """Evaluate projection rendering with timing."""
     proj_save_path = osp.join(save_path, name)
 
     # If already rendered, skip.
@@ -172,11 +172,21 @@ def evaluate_render(save_path, name, views, gaussians, pipeline):
 
     gt_list = []
     render_list = []
+    render_times = []
+
     for view in tqdm(views, desc="render {}".format(name), leave=False):
+        torch.cuda.synchronize()
+        start = torch.cuda.Event(enable_timing=True)
+        end = torch.cuda.Event(enable_timing=True)
+        start.record()
         rendering = render(view, gaussians, pipeline)["render"]
+        end.record()
+        torch.cuda.synchronize()
+        render_times.append(start.elapsed_time(end))
         gt = view.original_image[0:3, :, :]
         gt_list.append(gt)
         render_list.append(rendering)
+
     multithread_write(gt_list, proj_save_path, "_gt")
     multithread_write(render_list, proj_save_path, "_pred")
 
@@ -190,13 +200,29 @@ def evaluate_render(save_path, name, views, gaussians, pipeline):
         "psnr_2d_projs": psnr_2d_projs,
         "ssim_2d_projs": ssim_2d_projs,
     }
-    with open(osp.join(save_path, f"eval2d_{name}.yml"), "w") as f:
+    with open(osp.join(save_path, "eval2d_{}.yml".format(name)), "w") as f:
         yaml.dump(eval_dict, f, default_flow_style=False, sort_keys=False)
+
+    # Write timing results
+    total_ms = sum(render_times)
+    avg_ms = total_ms / len(render_times) if render_times else 0
+    fps = 1000.0 / avg_ms if avg_ms > 0 else 0
+    timing_dict = {
+        "num_views": len(views),
+        "total_render_time_ms": round(total_ms, 2),
+        "avg_render_time_per_view_ms": round(avg_ms, 2),
+        "fps": round(fps, 2),
+    }
+    with open(osp.join(save_path, "timing_{}.yml".format(name)), "w") as f:
+        yaml.dump(timing_dict, f, default_flow_style=False, sort_keys=False)
+
     print(
-        f"{name} complete. psnr_2d: {eval_dict['psnr_2d']}, ssim_2d: {eval_dict['ssim_2d']}."
+        "{} complete. psnr_2d: {}, ssim_2d: {}, "
+        "avg_render: {:.1f}ms, fps: {:.1f}.".format(
+            name, eval_dict["psnr_2d"], eval_dict["ssim_2d"], avg_ms, fps
+        )
     )
-
-
+    
 def multithread_write(image_list, path, suffix):
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=None)
 
