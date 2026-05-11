@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Efficiency comparison between R\textsuperscript{2}-Gaussian and SPAGS.}
+\label{tab:efficiency}
+\begin{tabular}{lcccc}
+\toprule
+ Organ & Method & \#Gaussians & PSNR (dB) & SSIM \\
+\midrule
+ Chest & \r2gaussian & 57,263 & 26.12 & 0.8370 \\
+ Chest & \spags & 111,853 & 27.09 & 0.8474 \\
+\cmidrule{1-5}
+ Head & \r2gaussian & 49,938 & 26.55 & 0.9217 \\
+ Head & \spags & 103,960 & 26.66 & 0.9186 \\
+\cmidrule{1-5}
+ Pancreas & \r2gaussian & 53,657 & 28.61 & 0.9199 \\
+ Pancreas & \spags & 104,872 & 29.24 & 0.9253 \\
+\cmidrule{1-5}
+ Abdomen & \r2gaussian & 50,496 & 29.23 & 0.9361 \\
+ Abdomen & \spags & 105,926 & 29.63 & 0.9379 \\
+\cmidrule{1-5}
+ Foot & \r2gaussian & 50,003 & 28.91 & 0.8979 \\
+ Foot & \spags & 103,059 & 28.42 & 0.8993 \\
+\cmidrule{1-5}
+\midrule
+ Avg & \r2gaussian & 52,271 & 27.89 & 0.9025 \\
+ Avg & \spags      & 105,934 & 28.21 & 0.9057 \\
+\bottomrule
+\end{tabular}
+\end{table}
