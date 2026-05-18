@@ -1,0 +1,114 @@
+[
+  {
+    "dir": "2026_05_02_chest_3views_gar_only",
+    "fps": 255.24,
+    "ms_per_view": 3.92,
+    "total_ms": 195.9,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_02_chest_3views_r2_gaussian",
+    "fps": 353.51,
+    "ms_per_view": 2.83,
+    "total_ms": 141.44,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_densify_test",
+    "fps": 268.75,
+    "ms_per_view": 3.72,
+    "total_ms": 186.05,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_r2_seed0",
+    "fps": 339.56,
+    "ms_per_view": 2.95,
+    "total_ms": 147.25,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_r2_seed1",
+    "fps": 351.93,
+    "ms_per_view": 2.84,
+    "total_ms": 142.07,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_r2_seed2",
+    "fps": 343.18,
+    "ms_per_view": 2.91,
+    "total_ms": 145.7,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_spags_seed0",
+    "fps": 122.88,
+    "ms_per_view": 8.14,
+    "total_ms": 406.9,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_spags_seed1",
+    "fps": 127.97,
+    "ms_per_view": 7.81,
+    "total_ms": 390.71,
+    "n_views": 50
+  },
+  {
+    "dir": "chest_stability_spags_seed2",
+    "fps": 116.33,
+    "ms_per_view": 8.6,
+    "total_ms": 429.81,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_3views_densify",
+    "fps": 101.0,
+    "ms_per_view": 9.9,
+    "total_ms": 495.04,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_r2_seed0",
+    "fps": 129.64,
+    "ms_per_view": 7.71,
+    "total_ms": 385.7,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_r2_seed1",
+    "fps": 197.19,
+    "ms_per_view": 5.07,
+    "total_ms": 253.56,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_r2_seed2",
+    "fps": 118.7,
+    "ms_per_view": 8.42,
+    "total_ms": 421.24,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_spags_seed0",
+    "fps": 20.74,
+    "ms_per_view": 48.23,
+    "total_ms": 2411.37,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_spags_seed1",
+    "fps": 41.02,
+    "ms_per_view": 24.38,
+    "total_ms": 1218.82,
+    "n_views": 50
+  },
+  {
+    "dir": "pancreas_stability_spags_seed2",
+    "fps": 41.33,
+    "ms_per_view": 24.19,
+    "total_ms": 1209.7,
+    "n_views": 50
+  }
+]

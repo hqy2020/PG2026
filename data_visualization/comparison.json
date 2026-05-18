@@ -1,0 +1,632 @@
+[
+  {
+    "method": "corgs",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 18.504776000976562,
+    "ssim_2d": 0.8644564747810364
+  },
+  {
+    "method": "corgs",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 22.44873809814453,
+    "ssim_2d": 0.9089377522468567
+  },
+  {
+    "method": "corgs",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 23.029155731201172,
+    "ssim_2d": 0.9269078969955444
+  },
+  {
+    "method": "corgs",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 14.95787239074707,
+    "ssim_2d": 0.5754127502441406
+  },
+  {
+    "method": "corgs",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 18.548059463500977,
+    "ssim_2d": 0.7076941728591919
+  },
+  {
+    "method": "corgs",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 20.29447364807129,
+    "ssim_2d": 0.7636303901672363
+  },
+  {
+    "method": "corgs",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 20.171480178833008,
+    "ssim_2d": 0.6912835836410522
+  },
+  {
+    "method": "corgs",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 25.532323837280273,
+    "ssim_2d": 0.8511462211608887
+  },
+  {
+    "method": "corgs",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 26.826732635498047,
+    "ssim_2d": 0.8767373561859131
+  },
+  {
+    "method": "corgs",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 16.235340118408203,
+    "ssim_2d": 0.7992886304855347
+  },
+  {
+    "method": "corgs",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 20.364900588989258,
+    "ssim_2d": 0.8643537759780884
+  },
+  {
+    "method": "corgs",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 23.39812469482422,
+    "ssim_2d": 0.9088457226753235
+  },
+  {
+    "method": "corgs",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 16.148069381713867,
+    "ssim_2d": 0.8088452816009521
+  },
+  {
+    "method": "corgs",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 23.248865127563477,
+    "ssim_2d": 0.897389829158783
+  },
+  {
+    "method": "corgs",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 23.957979202270508,
+    "ssim_2d": 0.9083563089370728
+  },
+  {
+    "method": "dngaussian",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 14.301507949829102,
+    "ssim_2d": 0.7663334012031555
+  },
+  {
+    "method": "dngaussian",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 16.018396377563477,
+    "ssim_2d": 0.8257513642311096
+  },
+  {
+    "method": "dngaussian",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 15.763742446899414,
+    "ssim_2d": 0.8485532999038696
+  },
+  {
+    "method": "dngaussian",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 18.838342666625977,
+    "ssim_2d": 0.6675265431404114
+  },
+  {
+    "method": "dngaussian",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 20.5466251373291,
+    "ssim_2d": 0.7499629259109497
+  },
+  {
+    "method": "dngaussian",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 20.99427032470703,
+    "ssim_2d": 0.7791182994842529
+  },
+  {
+    "method": "dngaussian",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 19.325735092163086,
+    "ssim_2d": 0.7801054120063782
+  },
+  {
+    "method": "dngaussian",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 23.509784698486328,
+    "ssim_2d": 0.8568816184997559
+  },
+  {
+    "method": "dngaussian",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 24.723691940307617,
+    "ssim_2d": 0.8666349649429321
+  },
+  {
+    "method": "dngaussian",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 15.720843315124512,
+    "ssim_2d": 0.7295880317687988
+  },
+  {
+    "method": "dngaussian",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 18.041101455688477,
+    "ssim_2d": 0.8096964359283447
+  },
+  {
+    "method": "dngaussian",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 16.241552352905273,
+    "ssim_2d": 0.7923884391784668
+  },
+  {
+    "method": "dngaussian",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 19.06171226501465,
+    "ssim_2d": 0.8082166910171509
+  },
+  {
+    "method": "dngaussian",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 22.4283447265625,
+    "ssim_2d": 0.8848323822021484
+  },
+  {
+    "method": "dngaussian",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 25.47467803955078,
+    "ssim_2d": 0.898202121257782
+  },
+  {
+    "method": "fsgs",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 18.751567840576172,
+    "ssim_2d": 0.8579843640327454
+  },
+  {
+    "method": "fsgs",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 23.342103958129883,
+    "ssim_2d": 0.9067773222923279
+  },
+  {
+    "method": "fsgs",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 23.626060485839844,
+    "ssim_2d": 0.9275662302970886
+  },
+  {
+    "method": "fsgs",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 17.861169815063477,
+    "ssim_2d": 0.6451132893562317
+  },
+  {
+    "method": "fsgs",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 19.99285125732422,
+    "ssim_2d": 0.7428774833679199
+  },
+  {
+    "method": "fsgs",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 21.0266056060791,
+    "ssim_2d": 0.772932231426239
+  },
+  {
+    "method": "fsgs",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 22.174673080444336,
+    "ssim_2d": 0.6843380928039551
+  },
+  {
+    "method": "fsgs",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 25.37158966064453,
+    "ssim_2d": 0.8499526381492615
+  },
+  {
+    "method": "fsgs",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 27.076866149902344,
+    "ssim_2d": 0.8759717345237732
+  },
+  {
+    "method": "fsgs",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 19.43433380126953,
+    "ssim_2d": 0.8334419131278992
+  },
+  {
+    "method": "fsgs",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 21.527830123901367,
+    "ssim_2d": 0.8732498288154602
+  },
+  {
+    "method": "fsgs",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 24.909900665283203,
+    "ssim_2d": 0.9105055332183838
+  },
+  {
+    "method": "fsgs",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 23.032814025878906,
+    "ssim_2d": 0.8563740253448486
+  },
+  {
+    "method": "fsgs",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 25.274534225463867,
+    "ssim_2d": 0.9031269550323486
+  },
+  {
+    "method": "fsgs",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 26.221086502075195,
+    "ssim_2d": 0.9147768616676331
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 24.849130630493164,
+    "ssim_2d": 0.9027940630912781
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 29.25971031188965,
+    "ssim_2d": 0.9362640380859375
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 30.55764389038086,
+    "ssim_2d": 0.9617260098457336
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 21.048986434936523,
+    "ssim_2d": 0.7109506726264954
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 26.216259002685547,
+    "ssim_2d": 0.8366703987121582
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 25.47027587890625,
+    "ssim_2d": 0.8545700311660767
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 19.385908126831055,
+    "ssim_2d": 0.6721960306167603
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 28.475126266479492,
+    "ssim_2d": 0.8977199792861938
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 30.036151885986328,
+    "ssim_2d": 0.9130439162254333
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 23.540143966674805,
+    "ssim_2d": 0.871752917766571
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 26.595212936401367,
+    "ssim_2d": 0.9222542643547058
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 28.664403915405273,
+    "ssim_2d": 0.9550234079360962
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 17.827360153198242,
+    "ssim_2d": 0.8122191429138184
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 28.607866287231445,
+    "ssim_2d": 0.9199380278587341
+  },
+  {
+    "method": "r2_gaussian",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 30.901094436645508,
+    "ssim_2d": 0.9360081553459167
+  },
+  {
+    "method": "spags",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 25.25574493408203,
+    "ssim_2d": 0.906816303730011
+  },
+  {
+    "method": "spags",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 29.545982360839844,
+    "ssim_2d": 0.9374433159828186
+  },
+  {
+    "method": "spags",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 30.904565811157227,
+    "ssim_2d": 0.9626979231834412
+  },
+  {
+    "method": "spags",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 20.970861434936523,
+    "ssim_2d": 0.7110883593559265
+  },
+  {
+    "method": "spags",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 26.633737564086914,
+    "ssim_2d": 0.8390227556228638
+  },
+  {
+    "method": "spags",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 25.6191463470459,
+    "ssim_2d": 0.852327287197113
+  },
+  {
+    "method": "spags",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 19.436660766601562,
+    "ssim_2d": 0.6785132884979248
+  },
+  {
+    "method": "spags",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 28.339250564575195,
+    "ssim_2d": 0.8993028402328491
+  },
+  {
+    "method": "spags",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 29.8432,
+    "ssim_2d": 0.9141
+  },
+  {
+    "method": "spags",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 23.96569061279297,
+    "ssim_2d": 0.8700153231620789
+  },
+  {
+    "method": "spags",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 26.547470092773438,
+    "ssim_2d": 0.9179190993309021
+  },
+  {
+    "method": "spags",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 28.76250648498535,
+    "ssim_2d": 0.9536457061767578
+  },
+  {
+    "method": "spags",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 17.9745,
+    "ssim_2d": 0.8147
+  },
+  {
+    "method": "spags",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 29.3678,
+    "ssim_2d": 0.9247
+  },
+  {
+    "method": "spags",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 30.84,
+    "ssim_2d": 0.9361
+  },
+  {
+    "method": "xgaussian",
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 18.928722381591797,
+    "ssim_2d": 0.8594977855682373
+  },
+  {
+    "method": "xgaussian",
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 23.539894104003906,
+    "ssim_2d": 0.9077196717262268
+  },
+  {
+    "method": "xgaussian",
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 23.84823989868164,
+    "ssim_2d": 0.9257381558418274
+  },
+  {
+    "method": "xgaussian",
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 17.789411544799805,
+    "ssim_2d": 0.6488420963287354
+  },
+  {
+    "method": "xgaussian",
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 20.28789520263672,
+    "ssim_2d": 0.7426571846008301
+  },
+  {
+    "method": "xgaussian",
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 20.90038299560547,
+    "ssim_2d": 0.7688592672348022
+  },
+  {
+    "method": "xgaussian",
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 22.34457015991211,
+    "ssim_2d": 0.6882400512695312
+  },
+  {
+    "method": "xgaussian",
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 25.475479125976562,
+    "ssim_2d": 0.8481093049049377
+  },
+  {
+    "method": "xgaussian",
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 26.922727584838867,
+    "ssim_2d": 0.8740111589431763
+  },
+  {
+    "method": "xgaussian",
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 19.618932723999023,
+    "ssim_2d": 0.8346900343894958
+  },
+  {
+    "method": "xgaussian",
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 21.51612091064453,
+    "ssim_2d": 0.8697035312652588
+  },
+  {
+    "method": "xgaussian",
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 24.4586124420166,
+    "ssim_2d": 0.9078752398490906
+  },
+  {
+    "method": "xgaussian",
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 23.209789276123047,
+    "ssim_2d": 0.8502271175384521
+  },
+  {
+    "method": "xgaussian",
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 25.119470596313477,
+    "ssim_2d": 0.9005737900733948
+  },
+  {
+    "method": "xgaussian",
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 25.554113388061523,
+    "ssim_2d": 0.9123987555503845
+  }
+]

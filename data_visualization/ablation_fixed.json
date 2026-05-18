@@ -1,0 +1,93 @@
+[
+  {
+    "label": "Baseline (R\u00b2-Gaussian)",
+    "dir": "2026_04_30_chest_3views_r2_gaussian",
+    "psnr_2d": 26.1230525970459,
+    "ssim_2d": 0.8369637131690979,
+    "n_gaussians": 57263
+  },
+  {
+    "label": "SPAGS (full 369)",
+    "dir": "2026_04_30_chest_3views_spags",
+    "psnr_2d": 27.091726303100586,
+    "ssim_2d": 0.8474150896072388,
+    "n_gaussians": 111853
+  },
+  {
+    "label": "R\u00b2-Gaussian (234)",
+    "dir": "2026_05_02_chest_3views_r2_gaussian",
+    "psnr_2d": 26.076990127563477,
+    "ssim_2d": 0.8369227647781372,
+    "n_gaussians": 57010
+  },
+  {
+    "label": "SPS only",
+    "dir": "2026_05_02_chest_3views_sps_only",
+    "psnr_2d": 26.645217895507812,
+    "ssim_2d": 0.8371211886405945,
+    "n_gaussians": 55568
+  },
+  {
+    "label": "ADM only",
+    "dir": "2026_05_02_chest_3views_adm_only",
+    "psnr_2d": 26.117170333862305,
+    "ssim_2d": 0.8371955752372742,
+    "n_gaussians": 57276
+  },
+  {
+    "label": "GAP only",
+    "dir": "2026_05_02_chest_3views_gar_only",
+    "psnr_2d": 25.950307846069336,
+    "ssim_2d": 0.8356468081474304,
+    "n_gaussians": 113829
+  },
+  {
+    "label": "SPS+ADM",
+    "dir": "2026_05_02_chest_3views_sps_adm",
+    "psnr_2d": 26.713415145874023,
+    "ssim_2d": 0.8370753526687622,
+    "n_gaussians": 56013
+  },
+  {
+    "label": "SPS+GAP",
+    "dir": "2026_05_02_chest_3views_sps_gar",
+    "psnr_2d": 26.573904037475586,
+    "ssim_2d": 0.8393633365631104,
+    "n_gaussians": 112559
+  },
+  {
+    "label": "ADM+GAP",
+    "dir": "2026_05_02_chest_3views_gar_adm",
+    "psnr_2d": 25.99176025390625,
+    "ssim_2d": 0.8362346887588501,
+    "n_gaussians": 114096
+  },
+  {
+    "label": "R\u00b2-Gaussian (234 test)",
+    "dir": "2026_05_01_chest_3views_r2_gaussian",
+    "psnr_2d": 26.216259002685547,
+    "ssim_2d": 0.8366703987121582,
+    "n_gaussians": 57196
+  },
+  {
+    "label": "SPAGS (234 test)",
+    "dir": "2026_05_01_chest_3views_spags",
+    "psnr_2d": 26.633737564086914,
+    "ssim_2d": 0.8390227556228638,
+    "n_gaussians": 111298
+  },
+  {
+    "label": "R\u00b2-Gaussian (stability)",
+    "dir": "chest_stability_r2_seed0",
+    "psnr_2d": 26.165382385253906,
+    "ssim_2d": 0.8366326093673706,
+    "n_gaussians": 57003
+  },
+  {
+    "label": "SPAGS (stability)",
+    "dir": "chest_stability_spags_seed0",
+    "psnr_2d": 27.502046585083008,
+    "ssim_2d": 0.8494473099708557,
+    "n_gaussians": 151241
+  }
+]

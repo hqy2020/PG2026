@@ -1,0 +1,74 @@
+[
+  {
+    "label": "SPAGS (full)",
+    "dir": "2026_04_30_chest_6views_spags",
+    "psnr_2d_30k": 30.351415634155273,
+    "ssim_2d_30k": 0.922328770160675
+  },
+  {
+    "label": "SPAGS (full)",
+    "dir": "2026_04_30_chest_9views_spags",
+    "psnr_2d_30k": 36.83549118041992,
+    "ssim_2d_30k": 0.9524720907211304
+  },
+  {
+    "label": "SPAGS (full)",
+    "dir": "2026_05_01_chest_2views_spags",
+    "psnr_2d_30k": 20.970861434936523,
+    "ssim_2d_30k": 0.7110883593559265
+  },
+  {
+    "label": "SPAGS (full)",
+    "dir": "2026_05_01_chest_4views_spags",
+    "psnr_2d_30k": 25.6191463470459,
+    "ssim_2d_30k": 0.852327287197113
+  },
+  {
+    "label": "SPAGS (full)",
+    "dir": "2026_05_02_chest_2views_spags",
+    "psnr_2d_30k": 20.963459014892578,
+    "ssim_2d_30k": 0.7111655473709106
+  },
+  {
+    "label": "ADM only",
+    "dir": "2026_05_02_chest_3views_adm_only",
+    "psnr_2d_30k": 26.117170333862305,
+    "ssim_2d_30k": 0.8371955752372742
+  },
+  {
+    "label": "ADM+GAP",
+    "dir": "2026_05_02_chest_3views_gar_adm",
+    "psnr_2d_30k": 25.99176025390625,
+    "ssim_2d_30k": 0.8362346887588501
+  },
+  {
+    "label": "GAP only",
+    "dir": "2026_05_02_chest_3views_gar_only",
+    "psnr_2d_30k": 25.950307846069336,
+    "ssim_2d_30k": 0.8356468081474304
+  },
+  {
+    "label": "Baseline (R\u00b2-Gaussian)",
+    "dir": "2026_05_02_chest_3views_r2_gaussian",
+    "psnr_2d_30k": 26.076990127563477,
+    "ssim_2d_30k": 0.8369227647781372
+  },
+  {
+    "label": "SPS+ADM",
+    "dir": "2026_05_02_chest_3views_sps_adm",
+    "psnr_2d_30k": 26.713415145874023,
+    "ssim_2d_30k": 0.8370753526687622
+  },
+  {
+    "label": "SPS+GAP",
+    "dir": "2026_05_02_chest_3views_sps_gar",
+    "psnr_2d_30k": 26.573904037475586,
+    "ssim_2d_30k": 0.8393633365631104
+  },
+  {
+    "label": "SPS only",
+    "dir": "2026_05_02_chest_3views_sps_only",
+    "psnr_2d_30k": 26.645217895507812,
+    "ssim_2d_30k": 0.8371211886405945
+  }
+]

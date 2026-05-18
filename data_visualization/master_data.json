@@ -1,0 +1,748 @@
+{
+  "comparison": {
+    "r2_gaussian/chest/2": {
+      "psnr_2d": 21.048986434936523,
+      "ssim_2d": 0.7109506726264954,
+      "n_gaussians": 55230
+    },
+    "spags/chest/2": {
+      "psnr_2d": 20.970861434936523,
+      "ssim_2d": 0.7110883593559265,
+      "n_gaussians": 137634
+    },
+    "xgaussian/chest/2": {
+      "psnr_2d": 17.789411544799805,
+      "ssim_2d": 0.6488420963287354,
+      "n_gaussians": null
+    },
+    "fsgs/chest/2": {
+      "psnr_2d": 17.861169815063477,
+      "ssim_2d": 0.6451132893562317,
+      "n_gaussians": null
+    },
+    "corgs/chest/2": {
+      "psnr_2d": 14.95787239074707,
+      "ssim_2d": 0.5754127502441406,
+      "n_gaussians": null
+    },
+    "dngaussian/chest/2": {
+      "psnr_2d": 18.838342666625977,
+      "ssim_2d": 0.6675265431404114,
+      "n_gaussians": null
+    },
+    "r2_gaussian/chest/3": {
+      "psnr_2d": 26.216259002685547,
+      "ssim_2d": 0.8366703987121582,
+      "n_gaussians": 57196
+    },
+    "spags/chest/3": {
+      "psnr_2d": 26.633737564086914,
+      "ssim_2d": 0.8390227556228638,
+      "n_gaussians": 111298
+    },
+    "xgaussian/chest/3": {
+      "psnr_2d": 20.28789520263672,
+      "ssim_2d": 0.7426571846008301,
+      "n_gaussians": null
+    },
+    "fsgs/chest/3": {
+      "psnr_2d": 19.99285125732422,
+      "ssim_2d": 0.7428774833679199,
+      "n_gaussians": null
+    },
+    "corgs/chest/3": {
+      "psnr_2d": 18.548059463500977,
+      "ssim_2d": 0.7076941728591919,
+      "n_gaussians": null
+    },
+    "dngaussian/chest/3": {
+      "psnr_2d": 20.5466251373291,
+      "ssim_2d": 0.7499629259109497,
+      "n_gaussians": null
+    },
+    "r2_gaussian/chest/4": {
+      "psnr_2d": 25.47027587890625,
+      "ssim_2d": 0.8545700311660767,
+      "n_gaussians": 55226
+    },
+    "spags/chest/4": {
+      "psnr_2d": 25.6191463470459,
+      "ssim_2d": 0.852327287197113,
+      "n_gaussians": 95954
+    },
+    "xgaussian/chest/4": {
+      "psnr_2d": 20.90038299560547,
+      "ssim_2d": 0.7688592672348022,
+      "n_gaussians": null
+    },
+    "fsgs/chest/4": {
+      "psnr_2d": 21.0266056060791,
+      "ssim_2d": 0.772932231426239,
+      "n_gaussians": null
+    },
+    "corgs/chest/4": {
+      "psnr_2d": 20.29447364807129,
+      "ssim_2d": 0.7636303901672363,
+      "n_gaussians": null
+    },
+    "dngaussian/chest/4": {
+      "psnr_2d": 20.99427032470703,
+      "ssim_2d": 0.7791182994842529,
+      "n_gaussians": null
+    },
+    "r2_gaussian/head/2": {
+      "psnr_2d": 23.540143966674805,
+      "ssim_2d": 0.871752917766571,
+      "n_gaussians": 49471
+    },
+    "spags/head/2": {
+      "psnr_2d": 23.96569061279297,
+      "ssim_2d": 0.8700153231620789,
+      "n_gaussians": 129696
+    },
+    "xgaussian/head/2": {
+      "psnr_2d": 19.618932723999023,
+      "ssim_2d": 0.8346900343894958,
+      "n_gaussians": null
+    },
+    "fsgs/head/2": {
+      "psnr_2d": 19.43433380126953,
+      "ssim_2d": 0.8334419131278992,
+      "n_gaussians": null
+    },
+    "corgs/head/2": {
+      "psnr_2d": 16.235340118408203,
+      "ssim_2d": 0.7992886304855347,
+      "n_gaussians": null
+    },
+    "dngaussian/head/2": {
+      "psnr_2d": 15.720843315124512,
+      "ssim_2d": 0.7295880317687988,
+      "n_gaussians": null
+    },
+    "r2_gaussian/head/3": {
+      "psnr_2d": 26.595212936401367,
+      "ssim_2d": 0.9222542643547058,
+      "n_gaussians": 49925
+    },
+    "spags/head/3": {
+      "psnr_2d": 26.547470092773438,
+      "ssim_2d": 0.9179190993309021,
+      "n_gaussians": 103259
+    },
+    "xgaussian/head/3": {
+      "psnr_2d": 21.51612091064453,
+      "ssim_2d": 0.8697035312652588,
+      "n_gaussians": null
+    },
+    "fsgs/head/3": {
+      "psnr_2d": 21.527830123901367,
+      "ssim_2d": 0.8732498288154602,
+      "n_gaussians": null
+    },
+    "corgs/head/3": {
+      "psnr_2d": 20.364900588989258,
+      "ssim_2d": 0.8643537759780884,
+      "n_gaussians": null
+    },
+    "dngaussian/head/3": {
+      "psnr_2d": 18.041101455688477,
+      "ssim_2d": 0.8096964359283447,
+      "n_gaussians": null
+    },
+    "r2_gaussian/head/4": {
+      "psnr_2d": 28.664403915405273,
+      "ssim_2d": 0.9550234079360962,
+      "n_gaussians": 49957
+    },
+    "spags/head/4": {
+      "psnr_2d": 28.76250648498535,
+      "ssim_2d": 0.9536457061767578,
+      "n_gaussians": 89152
+    },
+    "xgaussian/head/4": {
+      "psnr_2d": 24.4586124420166,
+      "ssim_2d": 0.9078752398490906,
+      "n_gaussians": null
+    },
+    "fsgs/head/4": {
+      "psnr_2d": 24.909900665283203,
+      "ssim_2d": 0.9105055332183838,
+      "n_gaussians": null
+    },
+    "corgs/head/4": {
+      "psnr_2d": 23.39812469482422,
+      "ssim_2d": 0.9088457226753235,
+      "n_gaussians": null
+    },
+    "dngaussian/head/4": {
+      "psnr_2d": 16.241552352905273,
+      "ssim_2d": 0.7923884391784668,
+      "n_gaussians": null
+    },
+    "r2_gaussian/abdomen/2": {
+      "psnr_2d": 24.849130630493164,
+      "ssim_2d": 0.9027940630912781,
+      "n_gaussians": 50166
+    },
+    "spags/abdomen/2": {
+      "psnr_2d": 25.25574493408203,
+      "ssim_2d": 0.906816303730011,
+      "n_gaussians": 132430
+    },
+    "xgaussian/abdomen/2": {
+      "psnr_2d": 18.928722381591797,
+      "ssim_2d": 0.8594977855682373,
+      "n_gaussians": null
+    },
+    "fsgs/abdomen/2": {
+      "psnr_2d": 18.751567840576172,
+      "ssim_2d": 0.8579843640327454,
+      "n_gaussians": null
+    },
+    "corgs/abdomen/2": {
+      "psnr_2d": 18.504776000976562,
+      "ssim_2d": 0.8644564747810364,
+      "n_gaussians": null
+    },
+    "dngaussian/abdomen/2": {
+      "psnr_2d": 14.301507949829102,
+      "ssim_2d": 0.7663334012031555,
+      "n_gaussians": null
+    },
+    "r2_gaussian/abdomen/3": {
+      "psnr_2d": 29.25971031188965,
+      "ssim_2d": 0.9362640380859375,
+      "n_gaussians": 50467
+    },
+    "spags/abdomen/3": {
+      "psnr_2d": 29.545982360839844,
+      "ssim_2d": 0.9374433159828186,
+      "n_gaussians": 106026
+    },
+    "xgaussian/abdomen/3": {
+      "psnr_2d": 23.539894104003906,
+      "ssim_2d": 0.9077196717262268,
+      "n_gaussians": null
+    },
+    "fsgs/abdomen/3": {
+      "psnr_2d": 23.342103958129883,
+      "ssim_2d": 0.9067773222923279,
+      "n_gaussians": null
+    },
+    "corgs/abdomen/3": {
+      "psnr_2d": 22.44873809814453,
+      "ssim_2d": 0.9089377522468567,
+      "n_gaussians": null
+    },
+    "dngaussian/abdomen/3": {
+      "psnr_2d": 16.018396377563477,
+      "ssim_2d": 0.8257513642311096,
+      "n_gaussians": null
+    },
+    "r2_gaussian/abdomen/4": {
+      "psnr_2d": 30.55764389038086,
+      "ssim_2d": 0.9617260098457336,
+      "n_gaussians": 50407
+    },
+    "spags/abdomen/4": {
+      "psnr_2d": 30.904565811157227,
+      "ssim_2d": 0.9626979231834412,
+      "n_gaussians": 91187
+    },
+    "xgaussian/abdomen/4": {
+      "psnr_2d": 23.84823989868164,
+      "ssim_2d": 0.9257381558418274,
+      "n_gaussians": null
+    },
+    "fsgs/abdomen/4": {
+      "psnr_2d": 23.626060485839844,
+      "ssim_2d": 0.9275662302970886,
+      "n_gaussians": null
+    },
+    "corgs/abdomen/4": {
+      "psnr_2d": 23.029155731201172,
+      "ssim_2d": 0.9269078969955444,
+      "n_gaussians": null
+    },
+    "dngaussian/abdomen/4": {
+      "psnr_2d": 15.763742446899414,
+      "ssim_2d": 0.8485532999038696,
+      "n_gaussians": null
+    },
+    "r2_gaussian/pancreas/2": {
+      "psnr_2d": 17.827360153198242,
+      "ssim_2d": 0.8122191429138184,
+      "n_gaussians": 54148
+    },
+    "spags/pancreas/2": {
+      "psnr_2d": 17.9745,
+      "ssim_2d": 0.8147,
+      "n_gaussians": null
+    },
+    "xgaussian/pancreas/2": {
+      "psnr_2d": 23.209789276123047,
+      "ssim_2d": 0.8502271175384521,
+      "n_gaussians": null
+    },
+    "fsgs/pancreas/2": {
+      "psnr_2d": 23.032814025878906,
+      "ssim_2d": 0.8563740253448486,
+      "n_gaussians": null
+    },
+    "corgs/pancreas/2": {
+      "psnr_2d": 16.148069381713867,
+      "ssim_2d": 0.8088452816009521,
+      "n_gaussians": null
+    },
+    "dngaussian/pancreas/2": {
+      "psnr_2d": 19.06171226501465,
+      "ssim_2d": 0.8082166910171509,
+      "n_gaussians": null
+    },
+    "r2_gaussian/pancreas/3": {
+      "psnr_2d": 28.607866287231445,
+      "ssim_2d": 0.9199380278587341,
+      "n_gaussians": 53794
+    },
+    "spags/pancreas/3": {
+      "psnr_2d": 29.3678,
+      "ssim_2d": 0.9247,
+      "n_gaussians": null
+    },
+    "xgaussian/pancreas/3": {
+      "psnr_2d": 25.119470596313477,
+      "ssim_2d": 0.9005737900733948,
+      "n_gaussians": null
+    },
+    "fsgs/pancreas/3": {
+      "psnr_2d": 25.274534225463867,
+      "ssim_2d": 0.9031269550323486,
+      "n_gaussians": null
+    },
+    "corgs/pancreas/3": {
+      "psnr_2d": 23.248865127563477,
+      "ssim_2d": 0.897389829158783,
+      "n_gaussians": null
+    },
+    "dngaussian/pancreas/3": {
+      "psnr_2d": 22.4283447265625,
+      "ssim_2d": 0.8848323822021484,
+      "n_gaussians": null
+    },
+    "r2_gaussian/pancreas/4": {
+      "psnr_2d": 30.901094436645508,
+      "ssim_2d": 0.9360081553459167,
+      "n_gaussians": 53959
+    },
+    "spags/pancreas/4": {
+      "psnr_2d": 30.84,
+      "ssim_2d": 0.9361,
+      "n_gaussians": null
+    },
+    "xgaussian/pancreas/4": {
+      "psnr_2d": 25.554113388061523,
+      "ssim_2d": 0.9123987555503845,
+      "n_gaussians": null
+    },
+    "fsgs/pancreas/4": {
+      "psnr_2d": 26.221086502075195,
+      "ssim_2d": 0.9147768616676331,
+      "n_gaussians": null
+    },
+    "corgs/pancreas/4": {
+      "psnr_2d": 23.957979202270508,
+      "ssim_2d": 0.9083563089370728,
+      "n_gaussians": null
+    },
+    "dngaussian/pancreas/4": {
+      "psnr_2d": 25.47467803955078,
+      "ssim_2d": 0.898202121257782,
+      "n_gaussians": null
+    },
+    "r2_gaussian/foot/2": {
+      "psnr_2d": 19.385908126831055,
+      "ssim_2d": 0.6721960306167603,
+      "n_gaussians": 49496
+    },
+    "spags/foot/2": {
+      "psnr_2d": 19.436660766601562,
+      "ssim_2d": 0.6785132884979248,
+      "n_gaussians": 123715
+    },
+    "xgaussian/foot/2": {
+      "psnr_2d": 22.34457015991211,
+      "ssim_2d": 0.6882400512695312,
+      "n_gaussians": null
+    },
+    "fsgs/foot/2": {
+      "psnr_2d": 22.174673080444336,
+      "ssim_2d": 0.6843380928039551,
+      "n_gaussians": null
+    },
+    "corgs/foot/2": {
+      "psnr_2d": 20.171480178833008,
+      "ssim_2d": 0.6912835836410522,
+      "n_gaussians": null
+    },
+    "dngaussian/foot/2": {
+      "psnr_2d": 19.325735092163086,
+      "ssim_2d": 0.7801054120063782,
+      "n_gaussians": null
+    },
+    "r2_gaussian/foot/3": {
+      "psnr_2d": 28.475126266479492,
+      "ssim_2d": 0.8977199792861938,
+      "n_gaussians": 49991
+    },
+    "spags/foot/3": {
+      "psnr_2d": 28.339250564575195,
+      "ssim_2d": 0.8993028402328491,
+      "n_gaussians": 103394
+    },
+    "xgaussian/foot/3": {
+      "psnr_2d": 25.475479125976562,
+      "ssim_2d": 0.8481093049049377,
+      "n_gaussians": null
+    },
+    "fsgs/foot/3": {
+      "psnr_2d": 25.37158966064453,
+      "ssim_2d": 0.8499526381492615,
+      "n_gaussians": null
+    },
+    "corgs/foot/3": {
+      "psnr_2d": 25.532323837280273,
+      "ssim_2d": 0.8511462211608887,
+      "n_gaussians": null
+    },
+    "dngaussian/foot/3": {
+      "psnr_2d": 23.509784698486328,
+      "ssim_2d": 0.8568816184997559,
+      "n_gaussians": null
+    },
+    "r2_gaussian/foot/4": {
+      "psnr_2d": 30.036151885986328,
+      "ssim_2d": 0.9130439162254333,
+      "n_gaussians": 49932
+    },
+    "spags/foot/4": {
+      "psnr_2d": 29.8432,
+      "ssim_2d": 0.9141,
+      "n_gaussians": null
+    },
+    "xgaussian/foot/4": {
+      "psnr_2d": 26.922727584838867,
+      "ssim_2d": 0.8740111589431763,
+      "n_gaussians": null
+    },
+    "fsgs/foot/4": {
+      "psnr_2d": 27.076866149902344,
+      "ssim_2d": 0.8759717345237732,
+      "n_gaussians": null
+    },
+    "corgs/foot/4": {
+      "psnr_2d": 26.826732635498047,
+      "ssim_2d": 0.8767373561859131,
+      "n_gaussians": null
+    },
+    "dngaussian/foot/4": {
+      "psnr_2d": 24.723691940307617,
+      "ssim_2d": 0.8666349649429321,
+      "n_gaussians": null
+    }
+  },
+  "gs_counts": {
+    "r2_gaussian/chest/2": 55230,
+    "spags/chest/2": 137634,
+    "r2_gaussian/chest/3": 57196,
+    "spags/chest/3": 111298,
+    "r2_gaussian/chest/4": 55226,
+    "spags/chest/4": 95954,
+    "r2_gaussian/head/2": 49471,
+    "spags/head/2": 129696,
+    "r2_gaussian/head/3": 49925,
+    "spags/head/3": 103259,
+    "r2_gaussian/head/4": 49957,
+    "spags/head/4": 89152,
+    "r2_gaussian/abdomen/2": 50166,
+    "spags/abdomen/2": 132430,
+    "r2_gaussian/abdomen/3": 50467,
+    "spags/abdomen/3": 106026,
+    "r2_gaussian/abdomen/4": 50407,
+    "spags/abdomen/4": 91187,
+    "r2_gaussian/pancreas/2": 54148,
+    "r2_gaussian/pancreas/3": 53794,
+    "r2_gaussian/pancreas/4": 53959,
+    "r2_gaussian/foot/2": 49496,
+    "spags/foot/2": 123715,
+    "r2_gaussian/foot/3": 49991,
+    "spags/foot/3": 103394,
+    "r2_gaussian/foot/4": 49932
+  },
+  "xfield": {
+    "xfield/chest/2": {
+      "psnr_2d": 19.56545066833496,
+      "ssim_2d": 0.6842505931854248,
+      "fps": null
+    },
+    "xfield/chest/3": {
+      "psnr_2d": 23.941133499145508,
+      "ssim_2d": 0.8090112805366516,
+      "fps": null
+    },
+    "xfield/chest/4": {
+      "psnr_2d": 24.451702117919922,
+      "ssim_2d": 0.8254691958427429,
+      "fps": null
+    },
+    "xfield/head/2": {
+      "psnr_2d": 22.494199752807617,
+      "ssim_2d": 0.8412643671035767,
+      "fps": null
+    },
+    "xfield/head/3": {
+      "psnr_2d": 25.057458877563477,
+      "ssim_2d": 0.8877829909324646,
+      "fps": null
+    },
+    "xfield/head/4": {
+      "psnr_2d": 26.778940200805664,
+      "ssim_2d": 0.9089256525039673,
+      "fps": null
+    },
+    "xfield/abdomen/2": {
+      "psnr_2d": 22.202890396118164,
+      "ssim_2d": 0.7190394401550293,
+      "fps": null
+    },
+    "xfield/abdomen/3": {
+      "psnr_2d": 24.868730545043945,
+      "ssim_2d": 0.8632185459136963,
+      "fps": null
+    },
+    "xfield/abdomen/4": {
+      "psnr_2d": 27.185407638549805,
+      "ssim_2d": 0.9103043079376221,
+      "fps": null
+    },
+    "xfield/pancreas/2": {
+      "psnr_2d": 18.11871337890625,
+      "ssim_2d": 0.6870722770690918,
+      "fps": null
+    },
+    "xfield/pancreas/3": {
+      "psnr_2d": 24.93598175048828,
+      "ssim_2d": 0.847412109375,
+      "fps": null
+    },
+    "xfield/pancreas/4": {
+      "psnr_2d": 26.35980224609375,
+      "ssim_2d": 0.9004026055335999,
+      "fps": null
+    },
+    "xfield/foot/2": {
+      "psnr_2d": 20.45407485961914,
+      "ssim_2d": 0.6521754264831543,
+      "fps": null
+    },
+    "xfield/foot/3": {
+      "psnr_2d": 26.031492233276367,
+      "ssim_2d": 0.840501606464386,
+      "fps": null
+    },
+    "xfield/foot/4": {
+      "psnr_2d": 27.246784210205078,
+      "ssim_2d": 0.855567216873169,
+      "fps": null
+    }
+  },
+  "ablation": [
+    {
+      "label": "Baseline (R\u00b2-Gaussian)",
+      "dir": "2026_04_30_chest_3views_r2_gaussian",
+      "psnr_2d": 26.1230525970459,
+      "ssim_2d": 0.8369637131690979,
+      "n_gaussians": 57263
+    },
+    {
+      "label": "SPAGS (full 369)",
+      "dir": "2026_04_30_chest_3views_spags",
+      "psnr_2d": 27.091726303100586,
+      "ssim_2d": 0.8474150896072388,
+      "n_gaussians": 111853
+    },
+    {
+      "label": "R\u00b2-Gaussian (234)",
+      "dir": "2026_05_02_chest_3views_r2_gaussian",
+      "psnr_2d": 26.076990127563477,
+      "ssim_2d": 0.8369227647781372,
+      "n_gaussians": 57010
+    },
+    {
+      "label": "SPS only",
+      "dir": "2026_05_02_chest_3views_sps_only",
+      "psnr_2d": 26.645217895507812,
+      "ssim_2d": 0.8371211886405945,
+      "n_gaussians": 55568
+    },
+    {
+      "label": "ADM only",
+      "dir": "2026_05_02_chest_3views_adm_only",
+      "psnr_2d": 26.117170333862305,
+      "ssim_2d": 0.8371955752372742,
+      "n_gaussians": 57276
+    },
+    {
+      "label": "GAP only",
+      "dir": "2026_05_02_chest_3views_gar_only",
+      "psnr_2d": 25.950307846069336,
+      "ssim_2d": 0.8356468081474304,
+      "n_gaussians": 113829
+    },
+    {
+      "label": "SPS+ADM",
+      "dir": "2026_05_02_chest_3views_sps_adm",
+      "psnr_2d": 26.713415145874023,
+      "ssim_2d": 0.8370753526687622,
+      "n_gaussians": 56013
+    },
+    {
+      "label": "SPS+GAP",
+      "dir": "2026_05_02_chest_3views_sps_gar",
+      "psnr_2d": 26.573904037475586,
+      "ssim_2d": 0.8393633365631104,
+      "n_gaussians": 112559
+    },
+    {
+      "label": "ADM+GAP",
+      "dir": "2026_05_02_chest_3views_gar_adm",
+      "psnr_2d": 25.99176025390625,
+      "ssim_2d": 0.8362346887588501,
+      "n_gaussians": 114096
+    },
+    {
+      "label": "R\u00b2-Gaussian (234 test)",
+      "dir": "2026_05_01_chest_3views_r2_gaussian",
+      "psnr_2d": 26.216259002685547,
+      "ssim_2d": 0.8366703987121582,
+      "n_gaussians": 57196
+    },
+    {
+      "label": "SPAGS (234 test)",
+      "dir": "2026_05_01_chest_3views_spags",
+      "psnr_2d": 26.633737564086914,
+      "ssim_2d": 0.8390227556228638,
+      "n_gaussians": 111298
+    },
+    {
+      "label": "R\u00b2-Gaussian (stability)",
+      "dir": "chest_stability_r2_seed0",
+      "psnr_2d": 26.165382385253906,
+      "ssim_2d": 0.8366326093673706,
+      "n_gaussians": 57003
+    },
+    {
+      "label": "SPAGS (stability)",
+      "dir": "chest_stability_spags_seed0",
+      "psnr_2d": 27.502046585083008,
+      "ssim_2d": 0.8494473099708557,
+      "n_gaussians": 151241
+    }
+  ],
+  "stability": {
+    "chest/R\u00b2-Gaussian": {
+      "seeds": [
+        {
+          "seed": 0,
+          "psnr_2d": 26.165382385253906,
+          "ssim_2d": 0.8366326093673706
+        },
+        {
+          "seed": 1,
+          "psnr_2d": 26.1699275970459,
+          "ssim_2d": 0.8362399339675903
+        },
+        {
+          "seed": 2,
+          "psnr_2d": 26.272974014282227,
+          "ssim_2d": 0.8367506265640259
+        }
+      ],
+      "mean": 26.20276133219401,
+      "std": 0.060848420538861955
+    },
+    "chest/SPAGS": {
+      "seeds": [
+        {
+          "seed": 0,
+          "psnr_2d": 27.502046585083008,
+          "ssim_2d": 0.8494473099708557
+        },
+        {
+          "seed": 1,
+          "psnr_2d": 27.40522003173828,
+          "ssim_2d": 0.8484275937080383
+        },
+        {
+          "seed": 2,
+          "psnr_2d": 27.488140106201172,
+          "ssim_2d": 0.8502649664878845
+        }
+      ],
+      "mean": 27.46513557434082,
+      "std": 0.052352189283164104
+    },
+    "pancreas/R\u00b2-Gaussian": {
+      "seeds": [
+        {
+          "seed": 0,
+          "psnr_2d": 28.646745681762695,
+          "ssim_2d": 0.9199506640434265
+        },
+        {
+          "seed": 1,
+          "psnr_2d": 28.724653244018555,
+          "ssim_2d": 0.9205414056777954
+        },
+        {
+          "seed": 2,
+          "psnr_2d": 28.7956485748291,
+          "ssim_2d": 0.9208006262779236
+        }
+      ],
+      "mean": 28.722349166870117,
+      "std": 0.07447818116412261
+    },
+    "pancreas/SPAGS": {
+      "seeds": [
+        {
+          "seed": 0,
+          "psnr_2d": 29.374601364135742,
+          "ssim_2d": 0.9255370497703552
+        },
+        {
+          "seed": 1,
+          "psnr_2d": 29.346641540527344,
+          "ssim_2d": 0.926403284072876
+        },
+        {
+          "seed": 2,
+          "psnr_2d": 29.316946029663086,
+          "ssim_2d": 0.9253970384597778
+        }
+      ],
+      "mean": 29.346062978108723,
+      "std": 0.02883202124622284
+    }
+  },
+  "densify": {
+    "Pancreas": {
+      "psnr_2d": 29.163410186767578,
+      "ssim_2d": 0.9224972724914551
+    },
+    "Chest": {
+      "psnr_2d": 26.910585403442383,
+      "ssim_2d": 0.8411464095115662
+    }
+  }
+}

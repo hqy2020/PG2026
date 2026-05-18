@@ -1,0 +1,1782 @@
+[
+  {
+    "dir": "2026_04_30_abdomen_3views_corgs",
+    "n_gaussians": 49793
+  },
+  {
+    "dir": "2026_04_30_abdomen_3views_dngaussian",
+    "n_gaussians": 5127
+  },
+  {
+    "dir": "2026_04_30_abdomen_3views_fsgs",
+    "n_gaussians": 48480
+  },
+  {
+    "dir": "2026_04_30_abdomen_3views_r2_gaussian",
+    "n_gaussians": 50496
+  },
+  {
+    "dir": "2026_04_30_abdomen_3views_spags",
+    "n_gaussians": 105926
+  },
+  {
+    "dir": "2026_04_30_abdomen_6views_corgs",
+    "n_gaussians": 47021
+  },
+  {
+    "dir": "2026_04_30_abdomen_6views_dngaussian",
+    "n_gaussians": 5287
+  },
+  {
+    "dir": "2026_04_30_abdomen_6views_fsgs",
+    "n_gaussians": 45329
+  },
+  {
+    "dir": "2026_04_30_abdomen_6views_r2_gaussian",
+    "n_gaussians": 50436
+  },
+  {
+    "dir": "2026_04_30_abdomen_6views_spags",
+    "n_gaussians": 77177
+  },
+  {
+    "dir": "2026_04_30_abdomen_9views_corgs",
+    "n_gaussians": 46807
+  },
+  {
+    "dir": "2026_04_30_abdomen_9views_dngaussian",
+    "n_gaussians": 7137
+  },
+  {
+    "dir": "2026_04_30_abdomen_9views_fsgs",
+    "n_gaussians": 45589
+  },
+  {
+    "dir": "2026_04_30_abdomen_9views_r2_gaussian",
+    "n_gaussians": 50326
+  },
+  {
+    "dir": "2026_04_30_abdomen_9views_spags",
+    "n_gaussians": 69562
+  },
+  {
+    "dir": "2026_04_30_chest_3views_corgs",
+    "n_gaussians": 75603
+  },
+  {
+    "dir": "2026_04_30_chest_3views_dngaussian",
+    "n_gaussians": 77313
+  },
+  {
+    "dir": "2026_04_30_chest_3views_fsgs",
+    "n_gaussians": 72325
+  },
+  {
+    "dir": "2026_04_30_chest_3views_r2_gaussian",
+    "n_gaussians": 57263
+  },
+  {
+    "dir": "2026_04_30_chest_3views_spags",
+    "n_gaussians": 111853
+  },
+  {
+    "dir": "2026_04_30_chest_6views_corgs",
+    "n_gaussians": 62051
+  },
+  {
+    "dir": "2026_04_30_chest_6views_dngaussian",
+    "n_gaussians": 75779
+  },
+  {
+    "dir": "2026_04_30_chest_6views_fsgs",
+    "n_gaussians": 64903
+  },
+  {
+    "dir": "2026_04_30_chest_6views_r2_gaussian",
+    "n_gaussians": 54655
+  },
+  {
+    "dir": "2026_04_30_chest_6views_spags",
+    "n_gaussians": 80642
+  },
+  {
+    "dir": "2026_04_30_chest_9views_corgs",
+    "n_gaussians": 65311
+  },
+  {
+    "dir": "2026_04_30_chest_9views_dngaussian",
+    "n_gaussians": 76929
+  },
+  {
+    "dir": "2026_04_30_chest_9views_fsgs",
+    "n_gaussians": 65844
+  },
+  {
+    "dir": "2026_04_30_chest_9views_r2_gaussian",
+    "n_gaussians": 54552
+  },
+  {
+    "dir": "2026_04_30_chest_9views_spags",
+    "n_gaussians": 73344
+  },
+  {
+    "dir": "2026_04_30_foot_3views_corgs",
+    "n_gaussians": 27353
+  },
+  {
+    "dir": "2026_04_30_foot_3views_dngaussian",
+    "n_gaussians": 3210
+  },
+  {
+    "dir": "2026_04_30_foot_3views_fsgs",
+    "n_gaussians": 27126
+  },
+  {
+    "dir": "2026_04_30_foot_3views_r2_gaussian",
+    "n_gaussians": 50003
+  },
+  {
+    "dir": "2026_04_30_foot_3views_spags",
+    "n_gaussians": 103059
+  },
+  {
+    "dir": "2026_04_30_foot_6views_corgs",
+    "n_gaussians": 25978
+  },
+  {
+    "dir": "2026_04_30_foot_6views_dngaussian",
+    "n_gaussians": 3276
+  },
+  {
+    "dir": "2026_04_30_foot_6views_fsgs",
+    "n_gaussians": 25374
+  },
+  {
+    "dir": "2026_04_30_foot_6views_r2_gaussian",
+    "n_gaussians": 50104
+  },
+  {
+    "dir": "2026_04_30_foot_6views_spags",
+    "n_gaussians": 75775
+  },
+  {
+    "dir": "2026_04_30_foot_9views_corgs",
+    "n_gaussians": 27333
+  },
+  {
+    "dir": "2026_04_30_foot_9views_dngaussian",
+    "n_gaussians": 4795
+  },
+  {
+    "dir": "2026_04_30_foot_9views_fsgs",
+    "n_gaussians": 27054
+  },
+  {
+    "dir": "2026_04_30_foot_9views_r2_gaussian",
+    "n_gaussians": 50108
+  },
+  {
+    "dir": "2026_04_30_foot_9views_spags",
+    "n_gaussians": 68777
+  },
+  {
+    "dir": "2026_04_30_head_3views_corgs",
+    "n_gaussians": 43743
+  },
+  {
+    "dir": "2026_04_30_head_3views_dngaussian",
+    "n_gaussians": 29491
+  },
+  {
+    "dir": "2026_04_30_head_3views_fsgs",
+    "n_gaussians": 49993
+  },
+  {
+    "dir": "2026_04_30_head_3views_r2_gaussian",
+    "n_gaussians": 49938
+  },
+  {
+    "dir": "2026_04_30_head_3views_spags",
+    "n_gaussians": 103960
+  },
+  {
+    "dir": "2026_04_30_head_6views_corgs",
+    "n_gaussians": 47400
+  },
+  {
+    "dir": "2026_04_30_head_6views_dngaussian",
+    "n_gaussians": 56286
+  },
+  {
+    "dir": "2026_04_30_head_6views_fsgs",
+    "n_gaussians": 48580
+  },
+  {
+    "dir": "2026_04_30_head_6views_r2_gaussian",
+    "n_gaussians": 50358
+  },
+  {
+    "dir": "2026_04_30_head_6views_spags",
+    "n_gaussians": 77076
+  },
+  {
+    "dir": "2026_04_30_head_9views_corgs",
+    "n_gaussians": 47363
+  },
+  {
+    "dir": "2026_04_30_head_9views_dngaussian",
+    "n_gaussians": 67328
+  },
+  {
+    "dir": "2026_04_30_head_9views_fsgs",
+    "n_gaussians": 47788
+  },
+  {
+    "dir": "2026_04_30_head_9views_r2_gaussian",
+    "n_gaussians": 50367
+  },
+  {
+    "dir": "2026_04_30_head_9views_spags",
+    "n_gaussians": 69146
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_corgs",
+    "n_gaussians": 40862
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_dngaussian",
+    "n_gaussians": 9413
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_fsgs",
+    "n_gaussians": 40252
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_r2_gaussian",
+    "n_gaussians": 53657
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_spags",
+    "n_gaussians": 104872
+  },
+  {
+    "dir": "2026_04_30_pancreas_6views_corgs",
+    "n_gaussians": 38751
+  },
+  {
+    "dir": "2026_04_30_pancreas_6views_dngaussian",
+    "n_gaussians": 9103
+  },
+  {
+    "dir": "2026_04_30_pancreas_6views_fsgs",
+    "n_gaussians": 35080
+  },
+  {
+    "dir": "2026_04_30_pancreas_6views_r2_gaussian",
+    "n_gaussians": 53608
+  },
+  {
+    "dir": "2026_04_30_pancreas_6views_spags",
+    "n_gaussians": 79349
+  },
+  {
+    "dir": "2026_04_30_pancreas_9views_corgs",
+    "n_gaussians": 41028
+  },
+  {
+    "dir": "2026_04_30_pancreas_9views_dngaussian",
+    "n_gaussians": 11431
+  },
+  {
+    "dir": "2026_04_30_pancreas_9views_fsgs",
+    "n_gaussians": 37356
+  },
+  {
+    "dir": "2026_04_30_pancreas_9views_r2_gaussian",
+    "n_gaussians": 53432
+  },
+  {
+    "dir": "2026_04_30_pancreas_9views_spags",
+    "n_gaussians": 70223
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_corgs",
+    "n_gaussians": 50751
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_dngaussian",
+    "n_gaussians": 3742
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_fsgs",
+    "n_gaussians": 49633
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_r2_gaussian",
+    "n_gaussians": 50166
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_spags",
+    "n_gaussians": 132430
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_corgs",
+    "n_gaussians": 49866
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_dngaussian",
+    "n_gaussians": 5271
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_fsgs",
+    "n_gaussians": 48405
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_r2_gaussian",
+    "n_gaussians": 50467
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_spags",
+    "n_gaussians": 106026
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_corgs",
+    "n_gaussians": 47939
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_dngaussian",
+    "n_gaussians": 5662
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_fsgs",
+    "n_gaussians": 46316
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_r2_gaussian",
+    "n_gaussians": 50407
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_spags",
+    "n_gaussians": 91187
+  },
+  {
+    "dir": "2026_05_01_chest_2views_corgs",
+    "n_gaussians": 88411
+  },
+  {
+    "dir": "2026_05_01_chest_2views_dngaussian",
+    "n_gaussians": 74643
+  },
+  {
+    "dir": "2026_05_01_chest_2views_fsgs",
+    "n_gaussians": 72673
+  },
+  {
+    "dir": "2026_05_01_chest_2views_r2_gaussian",
+    "n_gaussians": 55230
+  },
+  {
+    "dir": "2026_05_01_chest_2views_spags",
+    "n_gaussians": 137634
+  },
+  {
+    "dir": "2026_05_01_chest_2views_spags_opt_gar_thr0.02_2v",
+    "n_gaussians": 139777
+  },
+  {
+    "dir": "2026_05_01_chest_2views_spags_opt_gar_thr0.05_2v",
+    "n_gaussians": 135895
+  },
+  {
+    "dir": "2026_05_01_chest_2views_spags_opt_gar_thr0.12_2v",
+    "n_gaussians": 140500
+  },
+  {
+    "dir": "2026_05_01_chest_3views_corgs",
+    "n_gaussians": 84388
+  },
+  {
+    "dir": "2026_05_01_chest_3views_dngaussian",
+    "n_gaussians": 77723
+  },
+  {
+    "dir": "2026_05_01_chest_3views_fsgs",
+    "n_gaussians": 71789
+  },
+  {
+    "dir": "2026_05_01_chest_3views_r2_gaussian",
+    "n_gaussians": 57196
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags",
+    "n_gaussians": 111298
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_adaptive",
+    "n_gaussians": 97524
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_adm_warmup0_3v",
+    "n_gaussians": 113065
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_adm_warmup15000_3v",
+    "n_gaussians": 112756
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_adm_warmup5000_3v",
+    "n_gaussians": 111697
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_adm_zm_density_confidence_3v",
+    "n_gaussians": 112798
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_gar_thr0.05_3v",
+    "n_gaussians": 112799
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_gar_thr0.08_3v",
+    "n_gaussians": 113452
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags_opt_gar_thr0.12_3v",
+    "n_gaussians": 113482
+  },
+  {
+    "dir": "2026_05_01_chest_4views_corgs",
+    "n_gaussians": 66446
+  },
+  {
+    "dir": "2026_05_01_chest_4views_dngaussian",
+    "n_gaussians": 74906
+  },
+  {
+    "dir": "2026_05_01_chest_4views_fsgs",
+    "n_gaussians": 66897
+  },
+  {
+    "dir": "2026_05_01_chest_4views_r2_gaussian",
+    "n_gaussians": 55226
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags",
+    "n_gaussians": 95954
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags_adaptive",
+    "n_gaussians": 84592
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags_opt_gar_thr0.02_4v",
+    "n_gaussians": 96668
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags_opt_gar_thr0.05_4v",
+    "n_gaussians": 96073
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags_opt_gar_thr0.08_4v",
+    "n_gaussians": 96581
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags_opt_gar_thr0.12_4v",
+    "n_gaussians": 96762
+  },
+  {
+    "dir": "2026_05_01_foot_2views_corgs",
+    "n_gaussians": 31576
+  },
+  {
+    "dir": "2026_05_01_foot_2views_dngaussian",
+    "n_gaussians": 5821
+  },
+  {
+    "dir": "2026_05_01_foot_2views_fsgs",
+    "n_gaussians": 44797
+  },
+  {
+    "dir": "2026_05_01_foot_2views_r2_gaussian",
+    "n_gaussians": 49496
+  },
+  {
+    "dir": "2026_05_01_foot_2views_spags",
+    "n_gaussians": 123715
+  },
+  {
+    "dir": "2026_05_01_foot_2views_spags_adaptive",
+    "n_gaussians": 109994
+  },
+  {
+    "dir": "2026_05_01_foot_3views_corgs",
+    "n_gaussians": 27033
+  },
+  {
+    "dir": "2026_05_01_foot_3views_dngaussian",
+    "n_gaussians": 3131
+  },
+  {
+    "dir": "2026_05_01_foot_3views_fsgs",
+    "n_gaussians": 26997
+  },
+  {
+    "dir": "2026_05_01_foot_3views_r2_gaussian",
+    "n_gaussians": 49991
+  },
+  {
+    "dir": "2026_05_01_foot_3views_spags",
+    "n_gaussians": 103394
+  },
+  {
+    "dir": "2026_05_01_foot_4views_corgs",
+    "n_gaussians": 25653
+  },
+  {
+    "dir": "2026_05_01_foot_4views_dngaussian",
+    "n_gaussians": 2915
+  },
+  {
+    "dir": "2026_05_01_foot_4views_fsgs",
+    "n_gaussians": 25438
+  },
+  {
+    "dir": "2026_05_01_foot_4views_r2_gaussian",
+    "n_gaussians": 49932
+  },
+  {
+    "dir": "2026_05_01_head_2views_corgs",
+    "n_gaussians": 38300
+  },
+  {
+    "dir": "2026_05_01_head_2views_dngaussian",
+    "n_gaussians": 20600
+  },
+  {
+    "dir": "2026_05_01_head_2views_fsgs",
+    "n_gaussians": 49900
+  },
+  {
+    "dir": "2026_05_01_head_2views_r2_gaussian",
+    "n_gaussians": 49471
+  },
+  {
+    "dir": "2026_05_01_head_2views_spags",
+    "n_gaussians": 129696
+  },
+  {
+    "dir": "2026_05_01_head_3views_corgs",
+    "n_gaussians": 42453
+  },
+  {
+    "dir": "2026_05_01_head_3views_dngaussian",
+    "n_gaussians": 29478
+  },
+  {
+    "dir": "2026_05_01_head_3views_fsgs",
+    "n_gaussians": 50023
+  },
+  {
+    "dir": "2026_05_01_head_3views_r2_gaussian",
+    "n_gaussians": 49925
+  },
+  {
+    "dir": "2026_05_01_head_3views_spags",
+    "n_gaussians": 103259
+  },
+  {
+    "dir": "2026_05_01_head_4views_corgs",
+    "n_gaussians": 45524
+  },
+  {
+    "dir": "2026_05_01_head_4views_dngaussian",
+    "n_gaussians": 39050
+  },
+  {
+    "dir": "2026_05_01_head_4views_fsgs",
+    "n_gaussians": 49463
+  },
+  {
+    "dir": "2026_05_01_head_4views_r2_gaussian",
+    "n_gaussians": 49957
+  },
+  {
+    "dir": "2026_05_01_head_4views_spags",
+    "n_gaussians": 89152
+  },
+  {
+    "dir": "2026_05_01_head_4views_spags_adaptive",
+    "n_gaussians": 79084
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_corgs",
+    "n_gaussians": 45510
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_dngaussian",
+    "n_gaussians": 29193
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_fsgs",
+    "n_gaussians": 48209
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_r2_gaussian",
+    "n_gaussians": 54148
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_spags_adaptive",
+    "n_gaussians": 113607
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_corgs",
+    "n_gaussians": 41396
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_dngaussian",
+    "n_gaussians": 9288
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_fsgs",
+    "n_gaussians": 40199
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_r2_gaussian",
+    "n_gaussians": 53794
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_spags_adaptive",
+    "n_gaussians": 91538
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_corgs",
+    "n_gaussians": 38224
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_dngaussian",
+    "n_gaussians": 8632
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_fsgs",
+    "n_gaussians": 37315
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_r2_gaussian",
+    "n_gaussians": 53959
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_spags_adaptive",
+    "n_gaussians": 83069
+  },
+  {
+    "dir": "2026_05_02_abdomen_2views_corgs",
+    "n_gaussians": 50682
+  },
+  {
+    "dir": "2026_05_02_abdomen_2views_dngaussian",
+    "n_gaussians": 3468
+  },
+  {
+    "dir": "2026_05_02_abdomen_2views_fsgs",
+    "n_gaussians": 49512
+  },
+  {
+    "dir": "2026_05_02_abdomen_2views_r2_gaussian",
+    "n_gaussians": 50131
+  },
+  {
+    "dir": "2026_05_02_abdomen_2views_spags",
+    "n_gaussians": 132567
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_adm_only",
+    "n_gaussians": 50511
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_corgs",
+    "n_gaussians": 50059
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_dngaussian",
+    "n_gaussians": 4981
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_fsgs",
+    "n_gaussians": 48379
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_gar_adm",
+    "n_gaussians": 105139
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_gar_only",
+    "n_gaussians": 105269
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_r2_gaussian",
+    "n_gaussians": 50487
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_sps_adm",
+    "n_gaussians": 50454
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_sps_gar",
+    "n_gaussians": 105799
+  },
+  {
+    "dir": "2026_05_02_abdomen_3views_sps_only",
+    "n_gaussians": 50464
+  },
+  {
+    "dir": "2026_05_02_abdomen_4views_dngaussian",
+    "n_gaussians": 4999
+  },
+  {
+    "dir": "2026_05_02_abdomen_4views_fsgs",
+    "n_gaussians": 46356
+  },
+  {
+    "dir": "2026_05_02_abdomen_4views_r2_gaussian",
+    "n_gaussians": 50397
+  },
+  {
+    "dir": "2026_05_02_chest_2views_corgs",
+    "n_gaussians": 80468
+  },
+  {
+    "dir": "2026_05_02_chest_2views_dngaussian",
+    "n_gaussians": 73760
+  },
+  {
+    "dir": "2026_05_02_chest_2views_fsgs",
+    "n_gaussians": 73866
+  },
+  {
+    "dir": "2026_05_02_chest_2views_r2_gaussian",
+    "n_gaussians": 55151
+  },
+  {
+    "dir": "2026_05_02_chest_2views_spags",
+    "n_gaussians": 137784
+  },
+  {
+    "dir": "2026_05_02_chest_3views_adm_only",
+    "n_gaussians": 57276
+  },
+  {
+    "dir": "2026_05_02_chest_3views_corgs",
+    "n_gaussians": 87676
+  },
+  {
+    "dir": "2026_05_02_chest_3views_dngaussian",
+    "n_gaussians": 77470
+  },
+  {
+    "dir": "2026_05_02_chest_3views_fsgs",
+    "n_gaussians": 71845
+  },
+  {
+    "dir": "2026_05_02_chest_3views_gar_adm",
+    "n_gaussians": 114096
+  },
+  {
+    "dir": "2026_05_02_chest_3views_gar_only",
+    "n_gaussians": 113829
+  },
+  {
+    "dir": "2026_05_02_chest_3views_r2_gaussian",
+    "n_gaussians": 57010
+  },
+  {
+    "dir": "2026_05_02_chest_3views_sps_adm",
+    "n_gaussians": 56013
+  },
+  {
+    "dir": "2026_05_02_chest_3views_sps_gar",
+    "n_gaussians": 112559
+  },
+  {
+    "dir": "2026_05_02_chest_3views_sps_only",
+    "n_gaussians": 55568
+  },
+  {
+    "dir": "2026_05_02_chest_4views_corgs",
+    "n_gaussians": 66968
+  },
+  {
+    "dir": "2026_05_02_chest_4views_dngaussian",
+    "n_gaussians": 75297
+  },
+  {
+    "dir": "2026_05_02_chest_4views_fsgs",
+    "n_gaussians": 66442
+  },
+  {
+    "dir": "2026_05_02_chest_4views_r2_gaussian",
+    "n_gaussians": 55273
+  },
+  {
+    "dir": "2026_05_02_foot_2views_corgs",
+    "n_gaussians": 33258
+  },
+  {
+    "dir": "2026_05_02_foot_2views_dngaussian",
+    "n_gaussians": 6173
+  },
+  {
+    "dir": "2026_05_02_foot_2views_fsgs",
+    "n_gaussians": 44701
+  },
+  {
+    "dir": "2026_05_02_foot_2views_r2_gaussian",
+    "n_gaussians": 49506
+  },
+  {
+    "dir": "2026_05_02_foot_3views_adm_only",
+    "n_gaussians": 50073
+  },
+  {
+    "dir": "2026_05_02_foot_3views_corgs",
+    "n_gaussians": 27346
+  },
+  {
+    "dir": "2026_05_02_foot_3views_dngaussian",
+    "n_gaussians": 2574
+  },
+  {
+    "dir": "2026_05_02_foot_3views_fsgs",
+    "n_gaussians": 27045
+  },
+  {
+    "dir": "2026_05_02_foot_3views_gar_adm",
+    "n_gaussians": 103994
+  },
+  {
+    "dir": "2026_05_02_foot_3views_gar_only",
+    "n_gaussians": 103944
+  },
+  {
+    "dir": "2026_05_02_foot_3views_r2_gaussian",
+    "n_gaussians": 50019
+  },
+  {
+    "dir": "2026_05_02_foot_3views_sps_adm",
+    "n_gaussians": 49898
+  },
+  {
+    "dir": "2026_05_02_foot_3views_sps_gar",
+    "n_gaussians": 103395
+  },
+  {
+    "dir": "2026_05_02_foot_3views_sps_only",
+    "n_gaussians": 49938
+  },
+  {
+    "dir": "2026_05_02_foot_4views_corgs",
+    "n_gaussians": 25039
+  },
+  {
+    "dir": "2026_05_02_foot_4views_dngaussian",
+    "n_gaussians": 3394
+  },
+  {
+    "dir": "2026_05_02_foot_4views_fsgs",
+    "n_gaussians": 25192
+  },
+  {
+    "dir": "2026_05_02_foot_4views_r2_gaussian",
+    "n_gaussians": 49943
+  },
+  {
+    "dir": "2026_05_02_foot_4views_spags_retry",
+    "n_gaussians": 90396
+  },
+  {
+    "dir": "2026_05_02_head_2views_corgs",
+    "n_gaussians": 37741
+  },
+  {
+    "dir": "2026_05_02_head_2views_dngaussian",
+    "n_gaussians": 19176
+  },
+  {
+    "dir": "2026_05_02_head_2views_fsgs",
+    "n_gaussians": 49788
+  },
+  {
+    "dir": "2026_05_02_head_2views_r2_gaussian",
+    "n_gaussians": 49474
+  },
+  {
+    "dir": "2026_05_02_head_3views_adm_only",
+    "n_gaussians": 49973
+  },
+  {
+    "dir": "2026_05_02_head_3views_corgs",
+    "n_gaussians": 42824
+  },
+  {
+    "dir": "2026_05_02_head_3views_dngaussian",
+    "n_gaussians": 28493
+  },
+  {
+    "dir": "2026_05_02_head_3views_fsgs",
+    "n_gaussians": 49972
+  },
+  {
+    "dir": "2026_05_02_head_3views_gar_adm",
+    "n_gaussians": 105585
+  },
+  {
+    "dir": "2026_05_02_head_3views_gar_only",
+    "n_gaussians": 105504
+  },
+  {
+    "dir": "2026_05_02_head_3views_r2_gaussian",
+    "n_gaussians": 49941
+  },
+  {
+    "dir": "2026_05_02_head_3views_sps_adm",
+    "n_gaussians": 49643
+  },
+  {
+    "dir": "2026_05_02_head_3views_sps_gar",
+    "n_gaussians": 104794
+  },
+  {
+    "dir": "2026_05_02_head_3views_sps_only",
+    "n_gaussians": 49606
+  },
+  {
+    "dir": "2026_05_02_head_4views_corgs",
+    "n_gaussians": 45185
+  },
+  {
+    "dir": "2026_05_02_head_4views_dngaussian",
+    "n_gaussians": 39811
+  },
+  {
+    "dir": "2026_05_02_head_4views_fsgs",
+    "n_gaussians": 49527
+  },
+  {
+    "dir": "2026_05_02_head_4views_r2_gaussian",
+    "n_gaussians": 49954
+  },
+  {
+    "dir": "2026_05_02_pancreas_2views_corgs",
+    "n_gaussians": 52532
+  },
+  {
+    "dir": "2026_05_02_pancreas_2views_dngaussian",
+    "n_gaussians": 71661
+  },
+  {
+    "dir": "2026_05_02_pancreas_2views_fsgs",
+    "n_gaussians": 48055
+  },
+  {
+    "dir": "2026_05_02_pancreas_2views_r2_gaussian",
+    "n_gaussians": 53970
+  },
+  {
+    "dir": "2026_05_02_pancreas_2views_spags_retry",
+    "n_gaussians": 130974
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_adm_only",
+    "n_gaussians": 53527
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_corgs",
+    "n_gaussians": 41346
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_dngaussian",
+    "n_gaussians": 8993
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_fsgs",
+    "n_gaussians": 40062
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_gar_adm",
+    "n_gaussians": 106344
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_gar_only",
+    "n_gaussians": 106413
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_r2_gaussian",
+    "n_gaussians": 53696
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_spags_retry",
+    "n_gaussians": 105504
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_sps_adm",
+    "n_gaussians": 52682
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_sps_gar",
+    "n_gaussians": 105710
+  },
+  {
+    "dir": "2026_05_02_pancreas_3views_sps_only",
+    "n_gaussians": 52843
+  },
+  {
+    "dir": "2026_05_02_pancreas_4views_dngaussian",
+    "n_gaussians": 9137
+  },
+  {
+    "dir": "2026_05_02_pancreas_4views_fsgs",
+    "n_gaussians": 37269
+  },
+  {
+    "dir": "2026_05_02_pancreas_4views_r2_gaussian",
+    "n_gaussians": 53980
+  },
+  {
+    "dir": "2026_05_02_pancreas_4views_spags_retry",
+    "n_gaussians": 93691
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_gap_th0p015_r2",
+    "n_gaussians": 49748
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_gap_th0p015_r5",
+    "n_gaussians": 49832
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_gap_th0p01_r3",
+    "n_gaussians": 50297
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_gap_th0p02_r3",
+    "n_gaussians": 47507
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_sps_adm_pprune_v1",
+    "n_gaussians": 49882
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_sps_adm_pprune_v2",
+    "n_gaussians": 41927
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_spsv1_admv2",
+    "n_gaussians": 50468
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_spsv1_admv3",
+    "n_gaussians": 50450
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_spsv2_admv1",
+    "n_gaussians": 50504
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_spsv2_admv2",
+    "n_gaussians": 50474
+  },
+  {
+    "dir": "2026_05_03_abdomen_3views_spsv3_admv1",
+    "n_gaussians": 50340
+  },
+  {
+    "dir": "2026_05_03_chest_3views_gap_th0p015_r2",
+    "n_gaussians": 53799
+  },
+  {
+    "dir": "2026_05_03_chest_3views_gap_th0p015_r5",
+    "n_gaussians": 53548
+  },
+  {
+    "dir": "2026_05_03_chest_3views_gap_th0p01_r3",
+    "n_gaussians": 54696
+  },
+  {
+    "dir": "2026_05_03_chest_3views_gap_th0p02_r3",
+    "n_gaussians": 51574
+  },
+  {
+    "dir": "2026_05_03_chest_3views_sps_adm_pprune_v1",
+    "n_gaussians": 53908
+  },
+  {
+    "dir": "2026_05_03_chest_3views_sps_adm_pprune_v2",
+    "n_gaussians": 47215
+  },
+  {
+    "dir": "2026_05_03_chest_3views_spsv1_admv2",
+    "n_gaussians": 56454
+  },
+  {
+    "dir": "2026_05_03_chest_3views_spsv1_admv3",
+    "n_gaussians": 56328
+  },
+  {
+    "dir": "2026_05_03_chest_3views_spsv2_admv1",
+    "n_gaussians": 55805
+  },
+  {
+    "dir": "2026_05_03_chest_3views_spsv2_admv2",
+    "n_gaussians": 56434
+  },
+  {
+    "dir": "2026_05_03_chest_3views_spsv3_admv1",
+    "n_gaussians": 55745
+  },
+  {
+    "dir": "2026_05_03_foot_3views_gap_th0p015_r2",
+    "n_gaussians": 47290
+  },
+  {
+    "dir": "2026_05_03_foot_3views_gap_th0p015_r5",
+    "n_gaussians": 47058
+  },
+  {
+    "dir": "2026_05_03_foot_3views_gap_th0p01_r3",
+    "n_gaussians": 49219
+  },
+  {
+    "dir": "2026_05_03_foot_3views_gap_th0p02_r3",
+    "n_gaussians": 43008
+  },
+  {
+    "dir": "2026_05_03_foot_3views_sps_adm_pprune_v1",
+    "n_gaussians": 47425
+  },
+  {
+    "dir": "2026_05_03_foot_3views_sps_adm_pprune_v2",
+    "n_gaussians": 36522
+  },
+  {
+    "dir": "2026_05_03_foot_3views_spsv1_admv2",
+    "n_gaussians": 49913
+  },
+  {
+    "dir": "2026_05_03_foot_3views_spsv1_admv3",
+    "n_gaussians": 49967
+  },
+  {
+    "dir": "2026_05_03_foot_3views_spsv2_admv1",
+    "n_gaussians": 49881
+  },
+  {
+    "dir": "2026_05_03_foot_3views_spsv2_admv2",
+    "n_gaussians": 49956
+  },
+  {
+    "dir": "2026_05_03_foot_3views_spsv3_admv1",
+    "n_gaussians": 49893
+  },
+  {
+    "dir": "2026_05_03_head_3views_gap_th0p015_r2",
+    "n_gaussians": 48222
+  },
+  {
+    "dir": "2026_05_03_head_3views_gap_th0p015_r5",
+    "n_gaussians": 48213
+  },
+  {
+    "dir": "2026_05_03_head_3views_gap_th0p01_r3",
+    "n_gaussians": 49347
+  },
+  {
+    "dir": "2026_05_03_head_3views_gap_th0p02_r3",
+    "n_gaussians": 44842
+  },
+  {
+    "dir": "2026_05_03_head_3views_sps_adm_pprune_v1",
+    "n_gaussians": 48584
+  },
+  {
+    "dir": "2026_05_03_head_3views_sps_adm_pprune_v2",
+    "n_gaussians": 38602
+  },
+  {
+    "dir": "2026_05_03_head_3views_spsv1_admv2",
+    "n_gaussians": 49687
+  },
+  {
+    "dir": "2026_05_03_head_3views_spsv1_admv3",
+    "n_gaussians": 49693
+  },
+  {
+    "dir": "2026_05_03_head_3views_spsv2_admv1",
+    "n_gaussians": 49691
+  },
+  {
+    "dir": "2026_05_03_head_3views_spsv2_admv2",
+    "n_gaussians": 49714
+  },
+  {
+    "dir": "2026_05_03_head_3views_spsv3_admv1",
+    "n_gaussians": 49638
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_gap_th0p015_r2",
+    "n_gaussians": 47651
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_gap_th0p015_r5",
+    "n_gaussians": 47155
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_gap_th0p01_r3",
+    "n_gaussians": 51206
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_gap_th0p02_r3",
+    "n_gaussians": 40918
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_sps_adm_pprune_v1",
+    "n_gaussians": 48083
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_sps_adm_pprune_v2",
+    "n_gaussians": 32430
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_spsv1_admv2",
+    "n_gaussians": 52877
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_spsv1_admv3",
+    "n_gaussians": 52804
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_spsv2_admv1",
+    "n_gaussians": 52729
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_spsv2_admv2",
+    "n_gaussians": 52787
+  },
+  {
+    "dir": "2026_05_03_pancreas_3views_spsv3_admv1",
+    "n_gaussians": 52597
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_adm_range0p2",
+    "n_gaussians": 49780
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_adm_range0p4",
+    "n_gaussians": 49781
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_adm_res128",
+    "n_gaussians": 49759
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_adm_warm12k",
+    "n_gaussians": 49822
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_adm_warm18k",
+    "n_gaussians": 49801
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_spsv2_gap",
+    "n_gaussians": 49871
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_spsv4_gap",
+    "n_gaussians": 49871
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_spsv5_gap",
+    "n_gaussians": 49729
+  },
+  {
+    "dir": "2026_05_04_abdomen_3views_spsv6_gap",
+    "n_gaussians": 73099
+  },
+  {
+    "dir": "2026_05_04_chest_3views_adm_range0p2",
+    "n_gaussians": 53567
+  },
+  {
+    "dir": "2026_05_04_chest_3views_adm_range0p4",
+    "n_gaussians": 53857
+  },
+  {
+    "dir": "2026_05_04_chest_3views_adm_res128",
+    "n_gaussians": 53837
+  },
+  {
+    "dir": "2026_05_04_chest_3views_adm_warm12k",
+    "n_gaussians": 53782
+  },
+  {
+    "dir": "2026_05_04_chest_3views_adm_warm18k",
+    "n_gaussians": 53714
+  },
+  {
+    "dir": "2026_05_04_chest_3views_spsv2_gap",
+    "n_gaussians": 53957
+  },
+  {
+    "dir": "2026_05_04_chest_3views_spsv4_gap",
+    "n_gaussians": 53878
+  },
+  {
+    "dir": "2026_05_04_chest_3views_spsv5_gap",
+    "n_gaussians": 53371
+  },
+  {
+    "dir": "2026_05_04_chest_3views_spsv6_gap",
+    "n_gaussians": 75998
+  },
+  {
+    "dir": "2026_05_04_foot_3views_adm_range0p2",
+    "n_gaussians": 47230
+  },
+  {
+    "dir": "2026_05_04_foot_3views_adm_range0p4",
+    "n_gaussians": 47292
+  },
+  {
+    "dir": "2026_05_04_foot_3views_adm_res128",
+    "n_gaussians": 47265
+  },
+  {
+    "dir": "2026_05_04_foot_3views_adm_warm12k",
+    "n_gaussians": 47270
+  },
+  {
+    "dir": "2026_05_04_foot_3views_adm_warm18k",
+    "n_gaussians": 47245
+  },
+  {
+    "dir": "2026_05_04_foot_3views_spsv2_gap",
+    "n_gaussians": 47701
+  },
+  {
+    "dir": "2026_05_04_foot_3views_spsv4_gap",
+    "n_gaussians": 47760
+  },
+  {
+    "dir": "2026_05_04_foot_3views_spsv5_gap",
+    "n_gaussians": 47008
+  },
+  {
+    "dir": "2026_05_04_foot_3views_spsv6_gap",
+    "n_gaussians": 68085
+  },
+  {
+    "dir": "2026_05_04_head_3views_adm_range0p2",
+    "n_gaussians": 48211
+  },
+  {
+    "dir": "2026_05_04_head_3views_adm_range0p4",
+    "n_gaussians": 48300
+  },
+  {
+    "dir": "2026_05_04_head_3views_adm_res128",
+    "n_gaussians": 48304
+  },
+  {
+    "dir": "2026_05_04_head_3views_adm_warm12k",
+    "n_gaussians": 48219
+  },
+  {
+    "dir": "2026_05_04_head_3views_adm_warm18k",
+    "n_gaussians": 48175
+  },
+  {
+    "dir": "2026_05_04_head_3views_spsv2_gap",
+    "n_gaussians": 48704
+  },
+  {
+    "dir": "2026_05_04_head_3views_spsv4_gap",
+    "n_gaussians": 48471
+  },
+  {
+    "dir": "2026_05_04_head_3views_spsv5_gap",
+    "n_gaussians": 48074
+  },
+  {
+    "dir": "2026_05_04_head_3views_spsv6_gap",
+    "n_gaussians": 70015
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_adm_range0p2",
+    "n_gaussians": 47438
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_adm_range0p4",
+    "n_gaussians": 47559
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_adm_res128",
+    "n_gaussians": 47772
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_adm_warm12k",
+    "n_gaussians": 47644
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_adm_warm18k",
+    "n_gaussians": 47590
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_spsv2_gap",
+    "n_gaussians": 48147
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_spsv4_gap",
+    "n_gaussians": 48059
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_spsv5_gap",
+    "n_gaussians": 46929
+  },
+  {
+    "dir": "2026_05_04_pancreas_3views_spsv6_gap",
+    "n_gaussians": 66019
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_adm_gap",
+    "n_gaussians": 49615
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_adm_only",
+    "n_gaussians": 50101
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_gap_only",
+    "n_gaussians": 49649
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_sps_adm",
+    "n_gaussians": 49932
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_sps_adm_gap",
+    "n_gaussians": 48920
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_sps_gap",
+    "n_gaussians": 48923
+  },
+  {
+    "dir": "2026_05_05_abdomen_2views_sps_only",
+    "n_gaussians": 49899
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_adm_gap",
+    "n_gaussians": 49757
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_adm_only",
+    "n_gaussians": 50407
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_gap_only",
+    "n_gaussians": 49745
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_sps_adm",
+    "n_gaussians": 50417
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_sps_adm_gap",
+    "n_gaussians": 49767
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_sps_gap",
+    "n_gaussians": 49763
+  },
+  {
+    "dir": "2026_05_05_abdomen_4views_sps_only",
+    "n_gaussians": 50372
+  },
+  {
+    "dir": "2026_05_05_chest_2views_adm_gap",
+    "n_gaussians": 55239
+  },
+  {
+    "dir": "2026_05_05_chest_2views_adm_only",
+    "n_gaussians": 55770
+  },
+  {
+    "dir": "2026_05_05_chest_2views_gap_only",
+    "n_gaussians": 54774
+  },
+  {
+    "dir": "2026_05_05_chest_2views_sps_adm",
+    "n_gaussians": 55877
+  },
+  {
+    "dir": "2026_05_05_chest_2views_sps_adm_gap",
+    "n_gaussians": 53795
+  },
+  {
+    "dir": "2026_05_05_chest_2views_sps_gap",
+    "n_gaussians": 53820
+  },
+  {
+    "dir": "2026_05_05_chest_2views_sps_only",
+    "n_gaussians": 55410
+  },
+  {
+    "dir": "2026_05_05_chest_4views_adm_gap",
+    "n_gaussians": 54313
+  },
+  {
+    "dir": "2026_05_05_chest_4views_adm_only",
+    "n_gaussians": 55288
+  },
+  {
+    "dir": "2026_05_05_chest_4views_gap_only",
+    "n_gaussians": 54225
+  },
+  {
+    "dir": "2026_05_05_chest_4views_sps_adm",
+    "n_gaussians": 54160
+  },
+  {
+    "dir": "2026_05_05_chest_4views_sps_adm_gap",
+    "n_gaussians": 52907
+  },
+  {
+    "dir": "2026_05_05_chest_4views_sps_gap",
+    "n_gaussians": 52764
+  },
+  {
+    "dir": "2026_05_05_chest_4views_sps_only",
+    "n_gaussians": 53976
+  },
+  {
+    "dir": "2026_05_05_foot_2views_adm_gap",
+    "n_gaussians": 49207
+  },
+  {
+    "dir": "2026_05_05_foot_2views_adm_only",
+    "n_gaussians": 49612
+  },
+  {
+    "dir": "2026_05_05_foot_2views_gap_only",
+    "n_gaussians": 49093
+  },
+  {
+    "dir": "2026_05_05_foot_2views_sps_adm",
+    "n_gaussians": 49415
+  },
+  {
+    "dir": "2026_05_05_foot_2views_sps_adm_gap",
+    "n_gaussians": 47838
+  },
+  {
+    "dir": "2026_05_05_foot_2views_sps_gap",
+    "n_gaussians": 47887
+  },
+  {
+    "dir": "2026_05_05_foot_2views_sps_only",
+    "n_gaussians": 49295
+  },
+  {
+    "dir": "2026_05_05_foot_4views_adm_gap",
+    "n_gaussians": 47500
+  },
+  {
+    "dir": "2026_05_05_foot_4views_adm_only",
+    "n_gaussians": 49949
+  },
+  {
+    "dir": "2026_05_05_foot_4views_gap_only",
+    "n_gaussians": 47501
+  },
+  {
+    "dir": "2026_05_05_foot_4views_sps_adm",
+    "n_gaussians": 49870
+  },
+  {
+    "dir": "2026_05_05_foot_4views_sps_adm_gap",
+    "n_gaussians": 47719
+  },
+  {
+    "dir": "2026_05_05_foot_4views_sps_gap",
+    "n_gaussians": 47598
+  },
+  {
+    "dir": "2026_05_05_foot_4views_sps_only",
+    "n_gaussians": 49885
+  },
+  {
+    "dir": "2026_05_05_head_2views_adm_gap",
+    "n_gaussians": 49351
+  },
+  {
+    "dir": "2026_05_05_head_2views_adm_only",
+    "n_gaussians": 49521
+  },
+  {
+    "dir": "2026_05_05_head_2views_gap_only",
+    "n_gaussians": 49235
+  },
+  {
+    "dir": "2026_05_05_head_2views_sps_adm",
+    "n_gaussians": 49613
+  },
+  {
+    "dir": "2026_05_05_head_2views_sps_adm_gap",
+    "n_gaussians": 48596
+  },
+  {
+    "dir": "2026_05_05_head_2views_sps_gap",
+    "n_gaussians": 48576
+  },
+  {
+    "dir": "2026_05_05_head_2views_sps_only",
+    "n_gaussians": 49597
+  },
+  {
+    "dir": "2026_05_05_head_4views_adm_gap",
+    "n_gaussians": 49539
+  },
+  {
+    "dir": "2026_05_05_head_4views_adm_only",
+    "n_gaussians": 49979
+  },
+  {
+    "dir": "2026_05_05_head_4views_gap_only",
+    "n_gaussians": 49474
+  },
+  {
+    "dir": "2026_05_05_head_4views_sps_adm",
+    "n_gaussians": 49972
+  },
+  {
+    "dir": "2026_05_05_head_4views_sps_adm_gap",
+    "n_gaussians": 48631
+  },
+  {
+    "dir": "2026_05_05_head_4views_sps_gap",
+    "n_gaussians": 48499
+  },
+  {
+    "dir": "2026_05_05_head_4views_sps_only",
+    "n_gaussians": 49966
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_adm_gap",
+    "n_gaussians": 49734
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_adm_only",
+    "n_gaussians": 54112
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_gap_only",
+    "n_gaussians": 49879
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_sps_adm",
+    "n_gaussians": 53731
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_sps_adm_gap",
+    "n_gaussians": 48813
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_sps_gap",
+    "n_gaussians": 48748
+  },
+  {
+    "dir": "2026_05_05_pancreas_2views_sps_only",
+    "n_gaussians": 53301
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_adm_gap",
+    "n_gaussians": 49408
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_adm_only",
+    "n_gaussians": 53966
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_gap_only",
+    "n_gaussians": 49098
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_sps_adm",
+    "n_gaussians": 53173
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_sps_adm_gap",
+    "n_gaussians": 47676
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_sps_gap",
+    "n_gaussians": 47474
+  },
+  {
+    "dir": "2026_05_05_pancreas_4views_sps_only",
+    "n_gaussians": 53226
+  },
+  {
+    "dir": "chest_densify_test",
+    "n_gaussians": 90616
+  },
+  {
+    "dir": "chest_stability_r2_seed0",
+    "n_gaussians": 57003
+  },
+  {
+    "dir": "chest_stability_r2_seed1",
+    "n_gaussians": 57316
+  },
+  {
+    "dir": "chest_stability_r2_seed2",
+    "n_gaussians": 57240
+  },
+  {
+    "dir": "chest_stability_spags_seed0",
+    "n_gaussians": 151241
+  },
+  {
+    "dir": "chest_stability_spags_seed1",
+    "n_gaussians": 150840
+  },
+  {
+    "dir": "chest_stability_spags_seed2",
+    "n_gaussians": 151039
+  },
+  {
+    "dir": "pancreas_3views_densify",
+    "n_gaussians": 71235
+  },
+  {
+    "dir": "pancreas_stability_r2_seed0",
+    "n_gaussians": 53599
+  },
+  {
+    "dir": "pancreas_stability_r2_seed1",
+    "n_gaussians": 53454
+  },
+  {
+    "dir": "pancreas_stability_r2_seed2",
+    "n_gaussians": 53472
+  },
+  {
+    "dir": "pancreas_stability_spags_seed0",
+    "n_gaussians": 138013
+  },
+  {
+    "dir": "pancreas_stability_spags_seed1",
+    "n_gaussians": 138284
+  },
+  {
+    "dir": "pancreas_stability_spags_seed2",
+    "n_gaussians": 138354
+  }
+]

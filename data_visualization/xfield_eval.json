@@ -1,0 +1,122 @@
+[
+  {
+    "organ": "chest",
+    "views": 2,
+    "psnr_2d": 19.56545066833496,
+    "ssim_2d": 0.6842505931854248,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "chest",
+    "views": 3,
+    "psnr_2d": 23.941133499145508,
+    "ssim_2d": 0.8090112805366516,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "chest",
+    "views": 4,
+    "psnr_2d": 24.451702117919922,
+    "ssim_2d": 0.8254691958427429,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "head",
+    "views": 2,
+    "psnr_2d": 22.494199752807617,
+    "ssim_2d": 0.8412643671035767,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "head",
+    "views": 3,
+    "psnr_2d": 25.057458877563477,
+    "ssim_2d": 0.8877829909324646,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "head",
+    "views": 4,
+    "psnr_2d": 26.778940200805664,
+    "ssim_2d": 0.9089256525039673,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "abdomen",
+    "views": 2,
+    "psnr_2d": 22.202890396118164,
+    "ssim_2d": 0.7190394401550293,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "abdomen",
+    "views": 3,
+    "psnr_2d": 24.868730545043945,
+    "ssim_2d": 0.8632185459136963,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "abdomen",
+    "views": 4,
+    "psnr_2d": 27.185407638549805,
+    "ssim_2d": 0.9103043079376221,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "pancreas",
+    "views": 2,
+    "psnr_2d": 18.11871337890625,
+    "ssim_2d": 0.6870722770690918,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "pancreas",
+    "views": 3,
+    "psnr_2d": 24.93598175048828,
+    "ssim_2d": 0.847412109375,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "pancreas",
+    "views": 4,
+    "psnr_2d": 26.35980224609375,
+    "ssim_2d": 0.9004026055335999,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "foot",
+    "views": 2,
+    "psnr_2d": 20.45407485961914,
+    "ssim_2d": 0.6521754264831543,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "foot",
+    "views": 3,
+    "psnr_2d": 26.031492233276367,
+    "ssim_2d": 0.840501606464386,
+    "fps": null,
+    "method": "xfield"
+  },
+  {
+    "organ": "foot",
+    "views": 4,
+    "psnr_2d": 27.246784210205078,
+    "ssim_2d": 0.855567216873169,
+    "fps": null,
+    "method": "xfield"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "organ": "chest",
+    "method": "R\u00b2-Gaussian",
+    "seed": 0,
+    "psnr_2d": 26.165382385253906,
+    "ssim_2d": 0.8366326093673706
+  },
+  {
+    "organ": "chest",
+    "method": "R\u00b2-Gaussian",
+    "seed": 1,
+    "psnr_2d": 26.1699275970459,
+    "ssim_2d": 0.8362399339675903
+  },
+  {
+    "organ": "chest",
+    "method": "R\u00b2-Gaussian",
+    "seed": 2,
+    "psnr_2d": 26.272974014282227,
+    "ssim_2d": 0.8367506265640259
+  },
+  {
+    "organ": "chest",
+    "method": "SPAGS",
+    "seed": 0,
+    "psnr_2d": 27.502046585083008,
+    "ssim_2d": 0.8494473099708557
+  },
+  {
+    "organ": "chest",
+    "method": "SPAGS",
+    "seed": 1,
+    "psnr_2d": 27.40522003173828,
+    "ssim_2d": 0.8484275937080383
+  },
+  {
+    "organ": "chest",
+    "method": "SPAGS",
+    "seed": 2,
+    "psnr_2d": 27.488140106201172,
+    "ssim_2d": 0.8502649664878845
+  },
+  {
+    "organ": "pancreas",
+    "method": "R\u00b2-Gaussian",
+    "seed": 0,
+    "psnr_2d": 28.646745681762695,
+    "ssim_2d": 0.9199506640434265
+  },
+  {
+    "organ": "pancreas",
+    "method": "R\u00b2-Gaussian",
+    "seed": 1,
+    "psnr_2d": 28.724653244018555,
+    "ssim_2d": 0.9205414056777954
+  },
+  {
+    "organ": "pancreas",
+    "method": "R\u00b2-Gaussian",
+    "seed": 2,
+    "psnr_2d": 28.7956485748291,
+    "ssim_2d": 0.9208006262779236
+  },
+  {
+    "organ": "pancreas",
+    "method": "SPAGS",
+    "seed": 0,
+    "psnr_2d": 29.374601364135742,
+    "ssim_2d": 0.9255370497703552
+  },
+  {
+    "organ": "pancreas",
+    "method": "SPAGS",
+    "seed": 1,
+    "psnr_2d": 29.346641540527344,
+    "ssim_2d": 0.926403284072876
+  },
+  {
+    "organ": "pancreas",
+    "method": "SPAGS",
+    "seed": 2,
+    "psnr_2d": 29.316946029663086,
+    "ssim_2d": 0.9253970384597778
+  }
+]
