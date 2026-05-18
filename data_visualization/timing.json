@@ -1,5 +1,257 @@
 [
   {
+    "dir": "2026_04_30_abdomen_3views_r2_gaussian",
+    "fps": 136.06,
+    "ms_per_view": 7.35,
+    "total_ms": 367.48,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_abdomen_3views_spags",
+    "fps": 95.68,
+    "ms_per_view": 10.45,
+    "total_ms": 522.6,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_chest_3views_r2_gaussian",
+    "fps": 349.1,
+    "ms_per_view": 2.86,
+    "total_ms": 143.23,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_chest_3views_spags",
+    "fps": 97.32,
+    "ms_per_view": 10.28,
+    "total_ms": 513.76,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_foot_3views_r2_gaussian",
+    "fps": 156.07,
+    "ms_per_view": 6.41,
+    "total_ms": 320.36,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_foot_3views_spags",
+    "fps": 61.27,
+    "ms_per_view": 16.32,
+    "total_ms": 816.04,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_head_3views_r2_gaussian",
+    "fps": 308.84,
+    "ms_per_view": 3.24,
+    "total_ms": 161.9,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_head_3views_spags",
+    "fps": 131.66,
+    "ms_per_view": 7.6,
+    "total_ms": 379.77,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_r2_gaussian",
+    "fps": 186.42,
+    "ms_per_view": 5.36,
+    "total_ms": 268.21,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_04_30_pancreas_3views_spags",
+    "fps": 58.06,
+    "ms_per_view": 17.22,
+    "total_ms": 861.17,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_r2_gaussian",
+    "fps": 194.34,
+    "ms_per_view": 5.15,
+    "total_ms": 257.28,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_2views_spags",
+    "fps": 76.32,
+    "ms_per_view": 13.1,
+    "total_ms": 655.12,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_r2_gaussian",
+    "fps": 180.5,
+    "ms_per_view": 5.54,
+    "total_ms": 277.01,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_3views_spags",
+    "fps": 90.05,
+    "ms_per_view": 11.1,
+    "total_ms": 555.22,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_r2_gaussian",
+    "fps": 210.83,
+    "ms_per_view": 4.74,
+    "total_ms": 237.16,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_abdomen_4views_spags",
+    "fps": 25.73,
+    "ms_per_view": 38.86,
+    "total_ms": 1943.16,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_2views_r2_gaussian",
+    "fps": 263.24,
+    "ms_per_view": 3.8,
+    "total_ms": 189.94,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_2views_spags",
+    "fps": 93.84,
+    "ms_per_view": 10.66,
+    "total_ms": 532.82,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_3views_r2_gaussian",
+    "fps": 262.94,
+    "ms_per_view": 3.8,
+    "total_ms": 190.16,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_3views_spags",
+    "fps": 140.91,
+    "ms_per_view": 7.1,
+    "total_ms": 354.84,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_4views_r2_gaussian",
+    "fps": 300.43,
+    "ms_per_view": 3.33,
+    "total_ms": 166.43,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_chest_4views_spags",
+    "fps": 120.26,
+    "ms_per_view": 8.32,
+    "total_ms": 415.78,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_foot_2views_r2_gaussian",
+    "fps": 152.6,
+    "ms_per_view": 6.55,
+    "total_ms": 327.65,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_foot_2views_spags",
+    "fps": 75.03,
+    "ms_per_view": 13.33,
+    "total_ms": 666.43,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_foot_3views_r2_gaussian",
+    "fps": 131.92,
+    "ms_per_view": 7.58,
+    "total_ms": 379.02,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_foot_3views_spags",
+    "fps": 53.8,
+    "ms_per_view": 18.59,
+    "total_ms": 929.44,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_foot_4views_r2_gaussian",
+    "fps": 156.88,
+    "ms_per_view": 6.37,
+    "total_ms": 318.7,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_2views_r2_gaussian",
+    "fps": 299.62,
+    "ms_per_view": 3.34,
+    "total_ms": 166.88,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_2views_spags",
+    "fps": 65.91,
+    "ms_per_view": 15.17,
+    "total_ms": 758.63,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_3views_r2_gaussian",
+    "fps": 305.07,
+    "ms_per_view": 3.28,
+    "total_ms": 163.9,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_3views_spags",
+    "fps": 91.78,
+    "ms_per_view": 10.9,
+    "total_ms": 544.77,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_4views_r2_gaussian",
+    "fps": 297.7,
+    "ms_per_view": 3.36,
+    "total_ms": 167.96,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_head_4views_spags",
+    "fps": 136.19,
+    "ms_per_view": 7.34,
+    "total_ms": 367.14,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_pancreas_2views_r2_gaussian",
+    "fps": 146.3,
+    "ms_per_view": 6.84,
+    "total_ms": 341.77,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_pancreas_3views_r2_gaussian",
+    "fps": 145.69,
+    "ms_per_view": 6.86,
+    "total_ms": 343.2,
+    "n_views": 50
+  },
+  {
+    "dir": "2026_05_01_pancreas_4views_r2_gaussian",
+    "fps": 189.47,
+    "ms_per_view": 5.28,
+    "total_ms": 263.9,
+    "n_views": 50
+  },
+  {
     "dir": "2026_05_02_chest_3views_gar_only",
     "fps": 255.24,
     "ms_per_view": 3.92,

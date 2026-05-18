@@ -8,13 +8,13 @@ dir,method,organ,n_gaussians,fps,ms_per_view
 2026_05_02_chest_3views_gar_adm,ADM+GAP,Chest,114096,N/A,N/A
 chest_densify_test,More Densify,Chest,90616,268.75,3.72
 pancreas_3views_densify,More Densify,Pancreas,71235,101.0,9.9
-2026_04_30_chest_3views_r2_gaussian,R²-Gaussian,Chest,57263,N/A,N/A
-2026_04_30_chest_3views_spags,SPAGS,Chest,111853,N/A,N/A
-2026_04_30_head_3views_r2_gaussian,R²-Gaussian,Head,49938,N/A,N/A
-2026_04_30_head_3views_spags,SPAGS,Head,103960,N/A,N/A
-2026_04_30_abdomen_3views_r2_gaussian,R²-Gaussian,Abdomen,50496,N/A,N/A
-2026_04_30_abdomen_3views_spags,SPAGS,Abdomen,105926,N/A,N/A
-2026_04_30_pancreas_3views_r2_gaussian,R²-Gaussian,Pancreas,53657,N/A,N/A
-2026_04_30_pancreas_3views_spags,SPAGS,Pancreas,104872,N/A,N/A
-2026_04_30_foot_3views_r2_gaussian,R²-Gaussian,Foot,50003,N/A,N/A
-2026_04_30_foot_3views_spags,SPAGS,Foot,103059,N/A,N/A
+2026_04_30_chest_3views_r2_gaussian,R²-Gaussian,Chest,57263,349.1,2.86
+2026_04_30_chest_3views_spags,SPAGS,Chest,111853,97.32,10.28
+2026_04_30_head_3views_r2_gaussian,R²-Gaussian,Head,49938,308.84,3.24
+2026_04_30_head_3views_spags,SPAGS,Head,103960,131.66,7.6
+2026_04_30_abdomen_3views_r2_gaussian,R²-Gaussian,Abdomen,50496,136.06,7.35
+2026_04_30_abdomen_3views_spags,SPAGS,Abdomen,105926,95.68,10.45
+2026_04_30_pancreas_3views_r2_gaussian,R²-Gaussian,Pancreas,53657,186.42,5.36
+2026_04_30_pancreas_3views_spags,SPAGS,Pancreas,104872,58.06,17.22
+2026_04_30_foot_3views_r2_gaussian,R²-Gaussian,Foot,50003,156.07,6.41
+2026_04_30_foot_3views_spags,SPAGS,Foot,103059,61.27,16.32
