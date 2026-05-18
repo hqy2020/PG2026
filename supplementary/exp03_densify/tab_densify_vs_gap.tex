@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Densification vs GAP ablation on Chest 3-view. More Densify = aggressive vanilla densification (interval=50, thresh=0.0001, cap=800K). +GAP = FSGS proximity densifier + GAP pruning.}
+\label{tab:densify_vs_gap}
+\begin{tabular}{lccc}
+\toprule
+ Config & \#Gaussians & PSNR (dB) & SSIM \\
+\midrule
+ Baseline & 57,010 & 26.08 & 0.8369 \\
+ More Densify & 90,616 & 26.91 & 0.8411 \\
+ +GAP & 113,829 & 25.95 & 0.8356 \\
+\bottomrule
+\end{tabular}
+\end{table}

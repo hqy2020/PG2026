@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Efficiency and quality comparison on Chest 3-view (data/234/). Inference timing measured with CUDA events at test time.}
+\label{tab:efficiency}
+\begin{tabular}{lccccc}
+\toprule
+ Method & \#Gaussians & PSNR (dB) & SSIM & FPS & ms/view \\
+\midrule
+ Baseline (R²-Gaussian) & 57,010 & 26.08 & 0.8369 & 353.51 & 2.8 \\
+ More Densify & 90,616 & 26.91 & 0.8411 & 268.75 & 3.7 \\
+ +GAP & 113,829 & 25.95 & 0.8356 & 255.24 & 3.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
