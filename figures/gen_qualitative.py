@@ -13,7 +13,7 @@ FIGS_DIR = f'{BASE}/figures'
 organs = ['chest', 'head', 'abdomen', 'foot', 'pancreas']
 organ_labels = ['Chest', 'Head', 'Abdomen', 'Foot', 'Pancreas']
 methods = ['dngaussian', 'corgs', 'fsgs', 'xgaussian', 'r2_gaussian', 'spags']
-method_names = ['DN-Gaussian', 'CoR-GS', 'FSGS', 'X-Gaussian', 'R\u00b2-Gaussian', 'SPAGS']
+method_names = ['DN-Gaussian', 'CoR-GS', 'FSGS', 'X-Gaussian', 'R²-Gaussian', 'XRA-GS']
 
 print("Finding slices...")
 slices_map = {}

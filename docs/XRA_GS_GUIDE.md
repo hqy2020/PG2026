@@ -1,4 +1,4 @@
-# SPAGS 论文指引
+# XRA-GS 论文指引
 
 > 本文档提炼自毕业论文第四章《基于三维高斯泼溅的空间感知医疗影像重建方法》
 > 作为 PG2026 论文写作的参考指引
@@ -50,7 +50,7 @@ Phase 3 ── 推理渲染：直接渲染任意新视角（无额外网络开�
 
 ### 2.2 基线：R²-Gaussian (NeurIPS 2024)
 
-SPAGS 构建在 R²-Gaussian 基础上：
+XRA-GS 构建在 R²-Gaussian 基础上：
 - 高斯基元：位置 μ、协方差 Σ、密度 ρ（无颜色，因 X 射线为灰度）
 - 渲染：基于 alpha 合成（Beer-Lambert 定律）
 - 基础损失：L₁ + λ_dssim·L_DSSIM + λ_tv·L_3DTV
@@ -130,7 +130,7 @@ s_prox(Gᵢ) = (1/k) · Σⱼ‖μᵢ - μⱼ‖     # 3D 欧氏距离平均
 
 **完整损失函数**：
 ```
-L_SPAGS = L_recon + λ_dssim·L_DSSIM + λ_tv·L_3DTV + λ_ADM·L_ADM-tv
+L_XRA-GS = L_recon + λ_dssim·L_DSSIM + λ_tv·L_3DTV + λ_ADM·L_ADM-tv
 ```
 
 ---
@@ -194,34 +194,34 @@ L_SPAGS = L_recon + λ_dssim·L_DSSIM + λ_tv·L_3DTV + λ_ADM·L_ADM-tv
 | FSGS | 20.55 | 25.79 | 20.51 | 24.01 | 25.08 | **23.19** |
 | X-Gaussian | 20.48 | 26.03 | 21.02 | 23.56 | 24.93 | **23.20** |
 | R²-Gaussian | **u**26.16 | **u**28.82 | **u**26.59 | **u**29.24 | **u**28.58 | **u27.88** |
-| **SPAGS** | **b27.33** | **b28.83** | **b26.78** | **b29.66** | **b29.13** | **b28.35** |
+| **XRA-GS** | **b27.33** | **b28.83** | **b26.78** | **b29.66** | **b29.13** | **b28.35** |
 
-> **SPAGS +0.47 dB vs R²-Gaussian** ✅ 在极端稀疏下提升最显著
+> **XRA-GS +0.47 dB vs R²-Gaussian** ✅ 在极端稀疏下提升最显著
 
 ### 4.2 6-view 结果
 
 | 方法 | 平均 PSNR |
 |------|:--------:|
 | R²-Gaussian | **u**33.18 |
-| **SPAGS** | **b33.40** |
+| **XRA-GS** | **b33.40** |
 
-> **SPAGS +0.22 dB vs R²-Gaussian** ✅ 中等稀疏仍有提升
+> **XRA-GS +0.22 dB vs R²-Gaussian** ✅ 中等稀疏仍有提升
 
 ### 4.3 9-view 结果
 
 | 方法 | 平均 PSNR |
 |------|:--------:|
 | R²-Gaussian | **b**36.09 |
-| **SPAGS** | **u**36.03 |
+| **XRA-GS** | **u**36.03 |
 
-> **SPAGS -0.06 dB** ⚠️ 基本持平（SSIM 略优 0.967 vs 0.966）
+> **XRA-GS -0.06 dB** ⚠️ 基本持平（SSIM 略优 0.967 vs 0.966）
 > 符合预期：视角充分时空间先验优势自然收敛
 
 ### 4.4 关键趋势
 
 ```mermaid
 xychart-beta
-  title "SPAGS vs R²-Gaussian PSNR 差距"
+  title "XRA-GS vs R²-Gaussian PSNR 差距"
   x-axis ["3-view", "6-view", "9-view"]
   y-axis "PSNR 差距 (dB)" -0.1 --> 0.5
   bar [0.47, 0.22, -0.06]

@@ -1,6 +1,6 @@
-# SPAGS: Spatial-aware Progressive Adaptive Gaussian Splatting
+# XRA-GS: X-ray Reconstruction via Adaptive Gaussian Splatting
 
-**Sparse-view CT Reconstruction with 3D Gaussian Splatting**
+**Sparse-view CT Novel View Synthesis with 3D Gaussian Splatting**
 
 > Pacific Graphics 2026 Submission
 
@@ -10,7 +10,7 @@
 
 ## Overview
 
-**SPAGS** is a spatial-aware progressive adaptive Gaussian splatting framework for sparse-view CT reconstruction. It builds on R²-Gaussian (NeurIPS 2024) and introduces three novel components:
+**XRA-GS** is a novel Gaussian splatting framework for sparse-view CT novel view synthesis. It builds on R²-Gaussian (NeurIPS 2024) and introduces three novel components:
 
 - **SPS** (Spatial Prior Seeding) — Density-weighted FDK initialization for better geometric prior
 - **GAP** (Geometry-aware Pruning) — Proximity-guided densification in world coordinates
@@ -18,14 +18,13 @@
 
 ### Key Results (PSNR / SSIM)
 
-| Setting | Metric | R²-Gaussian | SPAGS (Ours) | Gain |
+| Setting | Metric | R²-Gaussian | XRA-GS (Ours) | Gain |
 |---------|--------|-------------|--------------|------|
-| **3-view** | PSNR ↑ | 27.88 | **28.35** | **+0.47** |
-| **6-view** | PSNR ↑ | 33.18 | **33.40** | **+0.22** |
-| **9-view** | PSNR ↑ | 36.09 | 36.03 | −0.06 |
-| **9-view** | SSIM ↑ | 0.966 | **0.967** | +0.001 |
+| **2-view** | PSNR ↑ | 21.34 | **22.41** | **+1.07** |
+| **3-view** | PSNR ↑ | 27.83 | **28.22** | **+0.39** |
+| **4-view** | PSNR ↑ | 29.18 | **29.30** | **+0.12** |
 
-> SPAGS achieves the largest gains at extreme sparsity (3-view +0.47 dB).
+> XRA-GS achieves consistent gains across all sparsity levels, with the largest improvements at extreme sparsity (2-view +1.07 dB).
 
 ---
 
@@ -37,17 +36,19 @@ PG2026/
 ├── test.py                     # Evaluation
 ├── initialize_pcd.py           # SPS: point cloud initialization
 ├── r2_gaussian/                # Core Python package
-│   ├── gaussian/               # SPAGS / R²-Gaussian core
+│   ├── gaussian/               # XRA-GS / R²-Gaussian core
 │   │   ├── gaussian_model.py   # GaussianModel class
 │   │   ├── render_query.py     # Render/query functions
 │   │   ├── kplanes.py          # K-Planes encoder (ADM)
 │   │   └── initialize.py       # Initialization logic
-│   ├── baselines/              # 5 comparison 3DGS methods
+│   ├── baselines/              # 6 comparison methods
 │   │   ├── registry.py         # Method registry
 │   │   ├── xgaussian/          # X-Gaussian
 │   │   ├── fsgs/               # FSGS
+│   │   ├── corgs/              # CoR-GS
 │   │   ├── dngaussian/         # DN-Gaussian
-│   │   └── corgs/              # CoR-GS
+│   │   ├── xfield/             # X-Field (NeurIPS 2025)
+│   │   └── xgaussian/          # X-Gaussian
 │   ├── innovations/            # Innovation modules
 │   │   └── fsgs/               # Proximity densifier (GAP)
 │   ├── dataset/                # Data loading
@@ -57,7 +58,7 @@ PG2026/
 │       ├── simple-knn/         # KNN CUDA kernel
 │       └── xray-gaussian-*/    # X-ray rasterization CUDA
 ├── docs/                       # Documentation
-│   └── SPAGS_PAPER_GUIDE.md    # Paper writing guide
+│   └── XRA_GS_GUIDE.md         # Paper writing guide
 └── scripts/                    # Utility scripts
 ```
 
@@ -78,37 +79,38 @@ cd r2_gaussian/submodules/xray-gaussian-rasterization-voxelization && pip instal
 
 ### 2. Data Preparation
 
-Download the dataset (contact authors) and place under `data/369/`:
+Download the dataset (contact authors) and place under `data/234/`:
 
 ```
-data/369/
-├── {organ}_50_{3|6|9}views.pickle
-└── init_{organ}_50_{3|6|9}views.npy
+data/234/
+├── {organ}_50_{2|3|4}views.pickle
+└── init_{organ}_50_{2|3|4}views.npy
 ```
 
 ### 3. Run Experiments
 
 ```bash
-# Full SPAGS
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/2026_04_29_foot_3views_spags \
-  --ply_path data/369/init_foot_50_3views.npy \
-  --enable_sps --enable_gap --enable_adm
+# Full XRA-GS
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_xrags \
+  --ply_path data/234-sps/init_foot_50_2views.npy \
+  --enable_fsgs_proximity --enable_adm --enable_gap
 
 # Baseline (R²-Gaussian)
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/2026_04_29_foot_3views_baseline \
-  --ply_path data/369/init_foot_50_3views.npy
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_baseline
 
 # Other 3DGS methods (via --method flag)
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/foot_3views_xgaussian --method xgaussian
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/foot_3views_fsgs --method fsgs
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/foot_3views_corgs --method corgs
-python train.py -s data/369/foot_50_3views.pickle \
-  -m output/foot_3views_dngaussian --method dngaussian
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_xgaussian --method xgaussian
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_fsgs --method fsgs
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_corgs --method corgs
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_dngaussian --method dngaussian
+python train.py -s data/234/foot_50_2views.pickle \
+  -m output/foot_2views_xfield --method xfield
 ```
 
 ### 4. Evaluation
@@ -119,7 +121,7 @@ python test.py -m output/<run_directory>
 
 ---
 
-## SPAGS Ablation Configurations
+## XRA-GS Ablation Configurations
 
 | Config | SPS | GAP | ADM | CLI flags |
 |--------|-----|-----|-----|-----------|
@@ -130,7 +132,7 @@ python test.py -m output/<run_directory>
 | `sps_gap` | ✓ | ✓ | ✗ | `--enable_sps --enable_gap` |
 | `sps_adm` | ✓ | ✗ | ✓ | `--enable_sps --enable_adm` |
 | `gap_adm` | ✗ | ✓ | ✓ | `--enable_gap --enable_adm` |
-| `spags` | ✓ | ✓ | ✓ | `--enable_sps --enable_gap --enable_adm` |
+| `xrags` (full) | ✓ | ✓ | ✓ | `--enable_fsgs_proximity --enable_gap --enable_adm` |
 
 ---
 
@@ -141,17 +143,18 @@ python test.py -m output/<run_directory>
 | **R²-Gaussian** | NeurIPS 2024 | Radiative Gaussian Splatting (baseline) |
 | **X-Gaussian** | ECCV 2024 | X-ray adapted 3DGS |
 | **FSGS** | ECCV 2024 | Few-shot Gaussian Splatting |
-| **DN-Gaussian** | CVPR 2024 | Depth-normalized sparse-view 3DGS |
 | **CoR-GS** | ECCV 2024 | Co-regularized Gaussian Splatting |
+| **DN-Gaussian** | CVPR 2024 | Depth-normalized sparse-view 3DGS |
+| **X-Field** | NeurIPS 2025 | Implicit neural field with Gaussian densification |
 
 ---
 
 ## Citation
 
 ```bibtex
-@inproceedings{spags2026,
-  title={SPAGS: Spatial-aware Progressive Adaptive Gaussian Splatting 
-         for Sparse-view CT Reconstruction},
+@inproceedings{xrags2026,
+  title={XRA-GS: X-ray Reconstruction via Adaptive Gaussian Splatting 
+         for Sparse-view CT Novel View Synthesis},
   author={...},
   booktitle={Pacific Graphics},
   year={2026}
