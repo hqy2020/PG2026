@@ -148,6 +148,11 @@ METHOD_REGISTRY = {
         'description': 'FSGS: Few-Shot Gaussian Splatting with proximity densification (ECCV 2024)',
         'module': 'r2_gaussian.baselines.fsgs',
     },
+    'xfield': {
+        'type': 'gaussian',
+        'description': 'X-Field: Physically Informed 3D X-ray Reconstruction (NeurIPS 2025 Spotlight)',
+        'module': 'r2_gaussian.baselines.xfield',
+    },
 }
 
 

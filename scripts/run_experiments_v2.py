@@ -84,6 +84,12 @@ METHODS = {
         "label": "DN-Gaussian",
         "group": "comparison",
     },
+    "xfield": {
+        "cli": "xfield",
+        "args": ["--ply_path", "data/369/init_{organ}_50_{views}views.npy"],
+        "label": "X-Field",
+        "group": "comparison",
+    },
 }
 
 # 器官和视角

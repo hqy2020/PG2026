@@ -19,19 +19,21 @@ RESULTS = PROJECT / "results"
 RESULTS.mkdir(parents=True, exist_ok=True)
 
 METHOD_LABELS = {
-    "r2_gaussian": "R²-Gaussian", "spags": "SPAGS",
+    "r2_gaussian": "R²-Gaussian", "xra_gs": "XRA-GS",
     "xgaussian": "X-Gaussian", "fsgs": "FSGS",
     "corgs": "CoR-GS", "dngaussian": "DN-Gaussian",
+    "xfield": "X-Field",
 }
 ORGAN_LABELS = {"chest":"Chest","head":"Head","abdomen":"Abdomen","foot":"Foot","pancreas":"Pancreas"}
-METHOD_COLORS = {"r2_gaussian":"#4CAF50","spags":"#2196F3","xgaussian":"#FF9800","fsgs":"#E91E63","corgs":"#9C27B0","dngaussian":"#607D8B"}
+METHOD_COLORS = {"r2_gaussian":"#4CAF50","xra_gs":"#2196F3","xgaussian":"#FF9800","fsgs":"#E91E63","corgs":"#9C27B0","dngaussian":"#607D8B","xfield":"#795548"}
 EVAL_PATTERNS = {
     "r2_gaussian": "eval2d_render_test.yml",
-    "spags": "eval2d_render_test.yml",
+    "xra_gs": "eval2d_render_test.yml",
     "xgaussian": "eval2d_xgaussian.yml",
     "fsgs": "eval2d_fsgs.yml",
     "corgs": "eval2d_corgs.yml",
     "dngaussian": "eval2d_dngaussian.yml",
+    "xfield": "eval2d_render_test.yml",
 }
 
 def find_completed():

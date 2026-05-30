@@ -849,8 +849,8 @@ if __name__ == "__main__":
 
     # 🆕 方法选择参数（必须在其他参数之前添加）
     parser.add_argument("--method", type=str, default="r2_gaussian",
-                        choices=["r2_gaussian", "xgaussian", "naf", "tensorf", "saxnerf", "corgs", "dngaussian", "fsgs"],
-                        help="选择训练方法: r2_gaussian(默认), xgaussian, naf, tensorf, saxnerf, corgs, dngaussian, fsgs")
+                        choices=["r2_gaussian", "xgaussian", "naf", "tensorf", "saxnerf", "corgs", "dngaussian", "fsgs", "xfield"],
+                        help="选择训练方法: r2_gaussian(默认), xgaussian, naf, tensorf, saxnerf, corgs, dngaussian, fsgs, xfield")
 
     lp = ModelParams(parser)
     op = OptimizationParams(parser)
@@ -961,7 +961,20 @@ if __name__ == "__main__":
         # NeRF 方法已移除
         raise ValueError(
             f"NeRF methods ({args.method}) removed from this repo. "
-            f"Use: r2_gaussian, xgaussian, fsgs, corgs, dngaussian"
+            f"Use: r2_gaussian, xgaussian, fsgs, corgs, dngaussian, xfield"
+        )
+    elif args.method == "xfield":
+        # X-Field baseline (NeurIPS 2025 Spotlight)
+        from r2_gaussian.baselines.xfield import training_xfield
+        training_xfield(
+            lp.extract(args),
+            op.extract(args),
+            pp.extract(args),
+            tb_writer,
+            args.test_iterations,
+            args.save_iterations,
+            args.checkpoint_iterations,
+            args.start_checkpoint,
         )
     else:
         raise ValueError(f"Unknown method: {args.method}")

@@ -39,11 +39,12 @@ with open(os.path.join(OUT, "comparison.json"), "w") as f:
 
 methods_pretty = {
     "r2_gaussian": "R²-Gaussian",
-    "spags": "SPAGS",
+    "xra_gs": "XRA-GS",
     "xgaussian": "X-Gaussian",
     "fsgs": "FSGS",
     "corgs": "CoR-GS",
-    "dngaussian": "DN-Gaussian"
+    "dngaussian": "DN-Gaussian",
+    "xfield": "X-Field",
 }
 
 # ============================
