@@ -24,14 +24,14 @@ Full XRA-GS,28.12,0.9039,N/A
 0.020,28.14,0.9032
 0.030,28.13,0.9051
 #
-# === ADM warmup iter sweep (Chest 3v only — no 5-organ data available) ===
+# === ADM warmup iter sweep (5-organ avg, 3-view) ===
 # warmup_iter,PSNR,SSIM
-0,26.59,0.8408
-5000,26.59,0.8388
-10000,26.62,0.8391
-15000 (default),26.66,0.8389
-20000,26.51,0.8384
-25000,26.12,0.8369
+0,28.30,0.9053
+5000,28.09,0.9043
+10000,28.11,0.9042
+15000 (default),28.13,0.9044
+20000,28.16,0.9045
+25000,28.04,0.9041
 #
 # ====== RAW PER-ORGAN DATA ======
 # === Component analysis per-organ (source: 2026-05-02 experiments, iter_030000 eval) ===
