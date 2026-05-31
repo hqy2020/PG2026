@@ -1,0 +1,8 @@
+configuration,psnr,ssim,n_gaussians
+Baseline (R²-Gaussian),27.9288,0.9036,52231
+B + SPS_init,28.136,0.9032,51684
+B + KPlanes,28.059,0.9041,N/A
+B + GAR_proximity,27.9004,0.9037,106992
+B + KPlanes+FSGSprox,28.1948,0.9041,N/A
+B + KPlanes + GAP (new),28.2996,0.9044,N/A
+Full XRA-GS (234-view+P1),28.1668,0.9036,N/A

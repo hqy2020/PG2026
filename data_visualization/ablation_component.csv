@@ -1,0 +1,6 @@
+configuration,psnr,ssim,n_gaussians
+Baseline (R²-Gaussian),27.9288,0.9036,52231
+B + SPS,28.1360,0.9032,51684
+B + GAP,27.9004,0.9037,106992
+B + ADM,28.0590,0.9041,0
+Full XRA-GS,28.1948,0.9041,0
