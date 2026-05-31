@@ -1,0 +1,84 @@
+# Ablation experiment data — 5-organ average for paper table
+# Generated 2026-05-31
+# === Component Analysis (5-organ avg, 3-view) ===
+# Config,PSNR,SSIM,#Gauss
+Baseline (R2-Gaussian),27.80,0.9025,52231
+B + SPS,28.01,0.9021,51684
+B + GAP,27.87,0.9034,106992
+B + ADM,27.91,0.9031,N/A
+Full XRA-GS,28.12,0.9039,N/A
+#
+# === SPS alpha sweep (5-organ avg, 3-view) ===
+# alpha,PSNR,SSIM
+0.0,28.00,0.9023
+0.1,28.00,0.9021
+0.2 (default),28.01,0.9021
+0.5,28.00,0.9032
+1.0,27.93,0.9033
+#
+# === GAP tau sweep (5-organ avg, 3-view) ===
+# tau,PSNR,SSIM
+0.005,27.83,0.9033
+0.010,28.11,0.9028
+0.015 (default),28.22,0.9030
+0.020,28.14,0.9032
+0.030,28.13,0.9051
+#
+# === ADM warmup iter sweep (Chest 3v only — no 5-organ data available) ===
+# warmup_iter,PSNR,SSIM
+0,26.59,0.8408
+5000,26.59,0.8388
+10000,26.62,0.8391
+15000 (default),26.66,0.8389
+20000,26.51,0.8384
+25000,26.12,0.8369
+#
+# ====== RAW PER-ORGAN DATA ======
+# === Component analysis per-organ (source: 2026-05-02 experiments, iter_030000 eval) ===
+# Config,Organ,PSNR,SSIM,#Gauss
+Baseline (R2-Gaussian),chest,26.08,0.8369,57010
+Baseline (R2-Gaussian),head,26.53,0.9224,49941
+Baseline (R2-Gaussian),abdomen,29.20,0.9360,50487
+Baseline (R2-Gaussian),foot,28.57,0.8973,50019
+Baseline (R2-Gaussian),pancreas,28.60,0.9198,53696
+#
+B + SPS,chest,26.65,0.8371,55568
+B + SPS,head,26.39,0.9149,49606
+B + SPS,abdomen,29.45,0.9354,50464
+B + SPS,foot,28.48,0.9019,49938
+B + SPS,pancreas,29.07,0.9212,52843
+#
+B + GAP,chest,25.95,0.8356,113829
+B + GAP,head,26.72,0.9240,105504
+B + GAP,abdomen,29.23,0.9376,105269
+B + GAP,foot,28.60,0.8961,103944
+B + GAP,pancreas,28.83,0.9235,106413
+#
+B + ADM,chest,26.12,0.8372,N/A
+B + ADM,head,26.58,0.9223,N/A
+B + ADM,abdomen,29.33,0.9370,N/A
+B + ADM,foot,28.70,0.8980,N/A
+B + ADM,pancreas,28.84,0.9211,N/A
+#
+Full XRA-GS,chest,26.71,0.8398,N/A
+Full XRA-GS,head,26.72,0.9183,N/A
+Full XRA-GS,abdomen,29.46,0.9368,N/A
+Full XRA-GS,foot,28.41,0.8998,N/A
+Full XRA-GS,pancreas,29.32,0.9245,N/A
+#
+# === SPS alpha per-organ (source: 2026-05-31 experiments, iter_030000 eval) ===
+# Organ,alpha_0.0,alpha_0.1,alpha_0.2,alpha_0.5,alpha_1.0
+chest,26.54/0.8382,26.51/0.8392,26.65/0.8371,26.33/0.8423,26.73/0.8425
+head,26.45/0.9132,26.58/0.9139,26.39/0.9149,26.56/0.9154,26.48/0.9160
+abdomen,29.34/0.9352,29.44/0.9343,29.45/0.9354,29.41/0.9357,29.16/0.9357
+foot,28.62/0.9025,28.59/0.9031,28.48/0.9019,28.69/0.9015,28.30/0.9009
+pancreas,29.05/0.9222,28.86/0.9202,29.07/0.9212,29.03/0.9209,28.99/0.9212
+#
+# === GAP tau per-organ (source: 2026-05-31 τ=0.005/0.030 + 2026-05-03 τ=0.01/0.015/0.02, iter_030000) ===
+# Organ,tau_0.005,tau_0.010,tau_0.015,tau_0.020,tau_0.030
+chest,26.10/0.8353,26.68/0.8380,26.81/0.8392,26.93/0.8411,26.84/0.8435
+head,26.74/0.9248,26.56/0.9156,26.63/0.9149,26.44/0.9146,26.74/0.9237
+abdomen,29.07/0.9355*,29.69/0.9362,29.73/0.9362,29.65/0.9360,29.51/0.9374
+foot,28.49/0.8974,28.24/0.9017,28.49/0.9019,28.31/0.9012,28.59/0.8953
+pancreas,28.75/0.9235,29.39/0.9227,29.43/0.9230,29.40/0.9231,28.98/0.9258
+# * abdomen tau=0.005 only has eval up to iter_015000
